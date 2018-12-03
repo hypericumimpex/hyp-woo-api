@@ -1,0 +1,2710 @@
+# Copyright (C) 2016 Automattic
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: PGS Woo Api 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/tags/_s\n"
+"POT-Creation-Date: 2018-10-17 11:10+0530\n"
+"PO-Revision-Date: 2018-10-17 11:11+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.1.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-KeywordsList: __;_e;_x;_ex;_n;_nx;_n_noop;_nx_noop;"
+"translate_nooped_plural;esc_html__;esc_html_e;esc_html_x;esc_attr__;"
+"esc_attr_e;esc_attr_x;number_format_i18n;date_i18n\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: endpoints/class-pgs-woo-api-attributes-controller.php:242
+#: endpoints/class-pgs-woo-api-home-controller.php:752
+#: endpoints/class-pgs-woo-api-live-search-controller.php:93
+#: endpoints/class-pgs-woo-api-products-controller.php:269
+msgid "No product found"
+msgstr "Не найдено ни одного продукта"
+
+#: endpoints/class-pgs-woo-api-cart-controller.php:56
+msgid "Sorry, that is not valid input. You missed cart_items parameters"
+msgstr "Извините, это неверный ввод. Вы пропустили параметры cart_items"
+
+#: endpoints/class-pgs-woo-api-cart-controller.php:104
+msgid "Cart is empty"
+msgstr "Ваша корзина пуста"
+
+#: endpoints/class-pgs-woo-api-contactus-controller.php:65
+msgid "Please enter your name"
+msgstr "Пожалуйста, введите Ваше имя"
+
+#: endpoints/class-pgs-woo-api-contactus-controller.php:72
+msgid "Please enter subject"
+msgstr "Пожалуйста, введите тему"
+
+#: endpoints/class-pgs-woo-api-contactus-controller.php:78
+#: endpoints/class-pgs-woo-api-deactiveuser-controller.php:75
+#: endpoints/class-pgs-woo-api-login-controller.php:71
+#: endpoints/class-pgs-woo-api-login-controller.php:175
+msgid "Please enter your email"
+msgstr "Введите адрес электронной почты"
+
+#: endpoints/class-pgs-woo-api-contactus-controller.php:84
+#: endpoints/class-pgs-woo-api-login-controller.php:94
+#: endpoints/class-pgs-woo-api-login-controller.php:195
+msgid "Please enter valid email address"
+msgstr "Пожалуйста, введите действующий адрес электронной почты"
+
+#: endpoints/class-pgs-woo-api-contactus-controller.php:89
+msgid "Message can't be blank"
+msgstr "Сообщение не может быть пустым"
+
+#: endpoints/class-pgs-woo-api-contactus-controller.php:109
+#, php-format
+msgid "Message from %s contact us form"
+msgstr ""
+
+#: endpoints/class-pgs-woo-api-contactus-controller.php:110
+msgid "User Details : "
+msgstr ""
+
+#: endpoints/class-pgs-woo-api-contactus-controller.php:111
+#, fuzzy, php-format
+#| msgid "Username: %s"
+msgid "Name : %s"
+msgstr "Имя пользователя: %s"
+
+#: endpoints/class-pgs-woo-api-contactus-controller.php:112
+#, php-format
+msgid "Email : %s"
+msgstr ""
+
+#: endpoints/class-pgs-woo-api-contactus-controller.php:113
+#, php-format
+msgid "Subject : %s"
+msgstr ""
+
+#: endpoints/class-pgs-woo-api-contactus-controller.php:114
+#, php-format
+msgid "Contact No : %s"
+msgstr ""
+
+#: endpoints/class-pgs-woo-api-contactus-controller.php:115
+msgid "Message : "
+msgstr ""
+
+#: endpoints/class-pgs-woo-api-contactus-controller.php:133
+#: endpoints/class-pgs-woo-api-password-controller.php:197
+#: endpoints/class-pgs-woo-api-seller-controller.php:553
+msgid "The e-mail could not be sent.Please try after some time."
+msgstr ""
+"Электронная почта не может быть отправлена. Пожалуйста, попробуйте через "
+"некоторое время."
+
+#: endpoints/class-pgs-woo-api-contactus-controller.php:139
+msgid ""
+"Your email was successfully sent. We will contact you as soon as possible"
+msgstr ""
+"Ваше письмо было успешно отправлено. Мы свяжемся с вами как можно скорее"
+
+#: endpoints/class-pgs-woo-api-coupons-controller.php:79
+#, fuzzy
+#| msgid "Record deleted successfully"
+msgid "Result successfully fetched"
+msgstr "Запись успешно удалена"
+
+#: endpoints/class-pgs-woo-api-coupons-controller.php:90
+#, fuzzy
+#| msgid "No orders found"
+msgid "No Coupons found"
+msgstr "Не найдено ни одного заказа"
+
+#: endpoints/class-pgs-woo-api-coupons-controller.php:225
+#, fuzzy
+#| msgid "User updated successfully"
+msgid "Coupon scratched successfully."
+msgstr "Пользователь обновлен успешно"
+
+#: endpoints/class-pgs-woo-api-deactiveuser-controller.php:69
+#: endpoints/class-pgs-woo-api-login-controller.php:66
+msgid "Please enter your email and password"
+msgstr "Введите адрес электронной почты и пароль"
+
+#: endpoints/class-pgs-woo-api-deactiveuser-controller.php:81
+#: endpoints/class-pgs-woo-api-login-controller.php:77
+msgid "Please enter your password"
+msgstr "Пожалуйста введите ваш пароль"
+
+#: endpoints/class-pgs-woo-api-deactiveuser-controller.php:88
+#: endpoints/class-pgs-woo-api-login-controller.php:110
+msgid "Please enter valid email or password"
+msgstr "Введите действительный адрес электронной почты или пароль"
+
+#: endpoints/class-pgs-woo-api-deactiveuser-controller.php:95
+msgid "You are not allowed to do that"
+msgstr "Вам не разрешено делать это"
+
+#: endpoints/class-pgs-woo-api-deactiveuser-controller.php:103
+msgid "Your account successfully deactivated"
+msgstr "Ваш аккаунт успешно деактивирован"
+
+#: endpoints/class-pgs-woo-api-deactiveuser-controller.php:149
+msgid "Account disabled"
+msgstr "Учетная запись отключена"
+
+#: endpoints/class-pgs-woo-api-geofencing-controller.php:66
+#: endpoints/class-pgs-woo-api-push-notification-controller.php:181
+#: endpoints/class-pgs-woo-api-seller-controller.php:470
+#: endpoints/class-pgs-woo-api-seller-controller.php:507
+msgid "Something went wrong!"
+msgstr "Что-то пошло не так!"
+
+#: endpoints/class-pgs-woo-api-geofencing-controller.php:113
+#: endpoints/class-pgs-woo-api-rewards-points-controller.php:97
+msgid "Result not found!"
+msgstr "Результат не найден!"
+
+#: endpoints/class-pgs-woo-api-info-pages-controller.php:84
+msgid "No data found!"
+msgstr "Данные не найдены!"
+
+#: endpoints/class-pgs-woo-api-login-controller.php:89
+msgid "email does not exist"
+msgstr "электронной почты не существует"
+
+#: endpoints/class-pgs-woo-api-login-controller.php:105
+#: endpoints/class-pgs-woo-api-login-controller.php:211
+msgid ""
+"You are currently deactivated. Please contact to admin for active account"
+msgstr ""
+"Вы в настоящее время деактивированы. Пожалуйста, свяжитесь с администратором "
+"для активной учетной записи"
+
+#: endpoints/class-pgs-woo-api-login-controller.php:180
+msgid "Something went wrong. Please try later"
+msgstr "Что-то пошло не так. Пожалуйста, попробуйте позднее"
+
+#: endpoints/class-pgs-woo-api-login-controller.php:203
+#: endpoints/class-pgs-woo-api-login-controller.php:216
+#: endpoints/class-pgs-woo-api-login-controller.php:258
+#: endpoints/class-pgs-woo-api-password-controller.php:78
+#: endpoints/class-pgs-woo-api-password-controller.php:92
+#: endpoints/class-pgs-woo-api-password-controller.php:234
+#: endpoints/class-pgs-woo-api-password-controller.php:249
+#: endpoints/class-pgs-woo-api-password-controller.php:270
+msgid "Something went wrong. Please try later."
+msgstr "Что-то пошло не так. Пожалуйста, попробуйте позднее."
+
+#: endpoints/class-pgs-woo-api-login-controller.php:295
+#: endpoints/class-pgs-woo-api-user-controller.php:181
+#: endpoints/class-pgs-woo-api-user-controller.php:285
+msgid "Email already exists"
+msgstr "Эл. адрес уже существует"
+
+#: endpoints/class-pgs-woo-api-login-controller.php:300
+#: endpoints/class-pgs-woo-api-user-controller.php:186
+#: endpoints/class-pgs-woo-api-user-controller.php:290
+msgid "Password required"
+msgstr "Требуется пароль"
+
+#: endpoints/class-pgs-woo-api-logout-controller.php:53
+msgid "User logged out successfully"
+msgstr "Пользователь успешно вышел из системы"
+
+#: endpoints/class-pgs-woo-api-orders-controller.php:194
+msgid "No orders found"
+msgstr "Не найдено ни одного заказа"
+
+#: endpoints/class-pgs-woo-api-orders-controller.php:200
+msgid "User not logged in"
+msgstr "Пользователь не вошел в систему"
+
+#: endpoints/class-pgs-woo-api-orders-controller.php:223
+#: endpoints/class-pgs-woo-api-orders-controller.php:232
+msgid "Your order was shipped via"
+msgstr "Ваш заказ был отправлен через"
+
+#: endpoints/class-pgs-woo-api-orders-controller.php:224
+#: endpoints/class-pgs-woo-api-orders-controller.php:233
+msgid "Tracking number is"
+msgstr "Номер отслеживания"
+
+#: endpoints/class-pgs-woo-api-orders-controller.php:349
+#: endpoints/class-pgs-woo-api-orders-controller.php:357
+msgid "Order status changed to Cancelled"
+msgstr "Статус заказа изменен на Отменено"
+
+#: endpoints/class-pgs-woo-api-orders-controller.php:362
+msgid "fail"
+msgstr "потерпеть неудачу"
+
+#: endpoints/class-pgs-woo-api-orders-controller.php:363
+msgid "This Order status not is On-Hold or Pending"
+msgstr "Этот статус заказа не включен или не ожидается"
+
+#: endpoints/class-pgs-woo-api-password-controller.php:84
+#: endpoints/class-pgs-woo-api-password-controller.php:240
+msgid "Please enter password."
+msgstr "Пожалуйста введите пароль."
+
+#: endpoints/class-pgs-woo-api-password-controller.php:104
+#: endpoints/class-pgs-woo-api-password-controller.php:167
+#: endpoints/class-pgs-woo-api-password-controller.php:260
+msgid "password reset not allowed!"
+msgstr "сброс пароля не разрешен!"
+
+#: endpoints/class-pgs-woo-api-password-controller.php:108
+#: endpoints/class-pgs-woo-api-password-controller.php:171
+#: endpoints/class-pgs-woo-api-password-controller.php:264
+msgid "An error occurred!"
+msgstr "Произошла ошибка!"
+
+#: endpoints/class-pgs-woo-api-password-controller.php:115
+#: endpoints/class-pgs-woo-api-password-controller.php:278
+msgid "Your password has been reset."
+msgstr "Ваш пароль был сброшен."
+
+#: endpoints/class-pgs-woo-api-password-controller.php:143
+#: endpoints/class-pgs-woo-api-password-controller.php:149
+#, fuzzy
+#| msgid "Please enter valid email address"
+msgid "Please enter valid email."
+msgstr "Пожалуйста, введите действующий адрес электронной почты"
+
+#: endpoints/class-pgs-woo-api-password-controller.php:156
+#, fuzzy
+#| msgid "Please enter valid email address"
+msgid "Please enter valid registered email."
+msgstr "Пожалуйста, введите действующий адрес электронной почты"
+
+#: endpoints/class-pgs-woo-api-password-controller.php:179
+msgid "Someone requested that the password be reset for the following account:"
+msgstr "Кто-то попросил сбросить пароль для следующей учетной записи:"
+
+#: endpoints/class-pgs-woo-api-password-controller.php:180
+#, php-format
+msgid "Username: %s"
+msgstr "Имя пользователя: %s"
+
+#: endpoints/class-pgs-woo-api-password-controller.php:181
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr ""
+"Если это была ошибка, просто игнорируйте это письмо, и ничего не произойдет."
+
+#: endpoints/class-pgs-woo-api-password-controller.php:202
+msgid ""
+"Key for password reset has been emailed to you. Please check your email."
+msgstr ""
+"Ключ для сброса пароля был отправлен вам по электронной почте. Проверьте "
+"свою электронную почту."
+
+#: endpoints/class-pgs-woo-api-products-controller.php:523
+#: endpoints/class-pgs-woo-api-products-controller.php:524
+msgid "Placeholder"
+msgstr "Заполнитель"
+
+#: endpoints/class-pgs-woo-api-products-controller.php:758
+msgid "Weight"
+msgstr ""
+
+#: endpoints/class-pgs-woo-api-products-controller.php:765
+#, fuzzy
+#| msgid "Dimension: "
+msgid "Dimensions"
+msgstr "Размеры:"
+
+#: endpoints/class-pgs-woo-api-push-notification-controller.php:86
+msgid "Notification added successfully"
+msgstr "Успешно добавлено уведомление"
+
+#: endpoints/class-pgs-woo-api-push-notification-controller.php:89
+#: endpoints/class-pgs-woo-api-push-notification-controller.php:139
+#: endpoints/class-pgs-woo-api-push-notification-controller.php:215
+#: inc/classes/class-pgs-woo-api-token-generations-controller.php:145
+msgid "Something went wrong"
+msgstr "Что-то пошло не так"
+
+#: endpoints/class-pgs-woo-api-push-notification-controller.php:135
+msgid "No data found"
+msgstr "Данные не найдены"
+
+#: endpoints/class-pgs-woo-api-push-notification-controller.php:174
+msgid "Record deleted successfully"
+msgstr "Запись успешно удалена"
+
+#: endpoints/class-pgs-woo-api-push-notification-controller.php:177
+msgid "Record cannot be deleted. Please try after sometime!"
+msgstr ""
+"Запись не может быть удалена. Пожалуйста, попробуйте через некоторое время!"
+
+#: endpoints/class-pgs-woo-api-push-notification-controller.php:212
+#, fuzzy
+#| msgid "Notification added successfully"
+msgid "Notification status updated successfully"
+msgstr "Успешно добавлено уведомление"
+
+#: endpoints/class-pgs-woo-api-reviews-controller.php:93
+#, fuzzy
+#| msgid "Please input 1 to 5 in ratestar."
+msgid "Please input 1 to 5 in rate star."
+msgstr "Пожалуйста, введите от 1 до 5 в ratestar."
+
+#: endpoints/class-pgs-woo-api-reviews-controller.php:97
+msgid "Please type a comment."
+msgstr "Пожалуйста, введите комментарий."
+
+#: endpoints/class-pgs-woo-api-reviews-controller.php:162
+msgid "Sorry, you must be logged in to comment."
+msgstr "Извините, вы должны авторизоваться для комментариев."
+
+#: endpoints/class-pgs-woo-api-reviews-controller.php:170
+#: endpoints/class-pgs-woo-api-reviews-controller.php:182
+msgid "Creating a comment requires valid author name and email values."
+msgstr ""
+"Создание комментария требует действительного имени автора и значений "
+"электронной почты."
+
+#: endpoints/class-pgs-woo-api-reviews-controller.php:233
+#, fuzzy
+#| msgid "Product added successfully"
+msgid "Comment added successfully."
+msgstr "Продукт успешно добавлен"
+
+#: endpoints/class-pgs-woo-api-reviews-controller.php:239
+#, fuzzy
+#| msgid "You are not allowed to do that"
+msgid "Products are not allowed to comment."
+msgstr "Вам не разрешено делать это"
+
+#: endpoints/class-pgs-woo-api-seller-controller.php:296
+msgid "External Store URL"
+msgstr "URL внешнего магазина"
+
+#: endpoints/class-pgs-woo-api-seller-controller.php:385
+msgid "Your comment is awaiting approval"
+msgstr "Ваш комментарий ожидает одобрения"
+
+#: endpoints/class-pgs-woo-api-seller-controller.php:457
+#: endpoints/class-pgs-woo-api-seller-controller.php:462
+#: endpoints/class-pgs-woo-api-seller-controller.php:495
+#: endpoints/class-pgs-woo-api-seller-controller.php:500
+msgid "Please provide your name."
+msgstr "Укажите свое имя."
+
+#: endpoints/class-pgs-woo-api-seller-controller.php:478
+#: endpoints/class-pgs-woo-api-seller-controller.php:563
+msgid "Email sent successfully!"
+msgstr "Письмо успешно отправлено!"
+
+#: endpoints/class-pgs-woo-api-seller-controller.php:543
+#, php-format
+msgid "Customer support alert form %s"
+msgstr ""
+
+#: endpoints/class-pgs-woo-api-seller-controller.php:557
+msgid "Something went wrong. Please try after some time."
+msgstr "Что-то пошло не так. Пожалуйста, попробуйте через некоторое время."
+
+#: endpoints/class-pgs-woo-api-static-pages-controller.php:91
+msgid "page not set"
+msgstr "страница не задана"
+
+#: endpoints/class-pgs-woo-api-static-pages-controller.php:95
+msgid "invalid page name"
+msgstr "неверное имя страницы"
+
+#: endpoints/class-pgs-woo-api-static-pages-controller.php:99
+msgid "Please pass static page name"
+msgstr "Пожалуйста, отправьте статическое имя страницы"
+
+#: endpoints/class-pgs-woo-api-user-controller.php:86
+msgid "Profile image updated successfully"
+msgstr "Изображение профиля успешно обновлено"
+
+#: endpoints/class-pgs-woo-api-user-controller.php:88
+msgid "Invalid image type"
+msgstr "Недопустимый тип изображения"
+
+#: endpoints/class-pgs-woo-api-user-controller.php:93
+msgid "Please upload image"
+msgstr "Загрузите изображение"
+
+#: endpoints/class-pgs-woo-api-user-controller.php:176
+msgid "Username already exists"
+msgstr "Имя пользователя уже занято"
+
+#: endpoints/class-pgs-woo-api-user-controller.php:523
+msgid "User updated successfully"
+msgstr "Пользователь обновлен успешно"
+
+#: endpoints/class-pgs-woo-api-wishlist-controller.php:63
+msgid "Sorry, that is not valid input. You missed user_id parameters"
+msgstr "Извините, это неверный ввод. Вы пропустили параметры user_id"
+
+#: endpoints/class-pgs-woo-api-wishlist-controller.php:82
+msgid "No data for sync."
+msgstr "Нет данных для синхронизации."
+
+#: endpoints/class-pgs-woo-api-wishlist-controller.php:117
+msgid "No record found."
+msgstr "Запись не найдена."
+
+#: endpoints/class-pgs-woo-api-wishlist-controller.php:175
+#: endpoints/class-pgs-woo-api-wishlist-controller.php:375
+msgid "An error occurred while adding products to the wishlist."
+msgstr "При добавлении продуктов в список пожеланий произошла ошибка."
+
+#: endpoints/class-pgs-woo-api-wishlist-controller.php:259
+msgid "Product added!"
+msgstr "Товар добавлен!"
+
+#: endpoints/class-pgs-woo-api-wishlist-controller.php:263
+#: endpoints/class-pgs-woo-api-wishlist-controller.php:465
+msgid "An error occurred while adding products to wishlist."
+msgstr "Произошла ошибка при добавлении продуктов в список пожеланий."
+
+#: endpoints/class-pgs-woo-api-wishlist-controller.php:389
+msgid "exists"
+msgstr "существует"
+
+#: endpoints/class-pgs-woo-api-wishlist-controller.php:459
+msgid "Product added successfully"
+msgstr "Продукт успешно добавлен"
+
+#: endpoints/class-pgs-woo-api-wishlist-controller.php:475
+msgid "You need to login before creating a new wishlist"
+msgstr "Перед созданием нового списка желаний вам нужно зайти"
+
+#: endpoints/class-pgs-woo-api-wishlist-controller.php:622
+msgid "Product deleted successfully"
+msgstr "Продукт удален успешно"
+
+#: endpoints/class-pgs-woo-api-wishlist-controller.php:627
+msgid "An error occurred while removing products from the wishlist"
+msgstr "Произошла ошибка при удалении продуктов из списка желаний"
+
+#: inc/classes/class-pgs-woo-api-controller.php:51
+msgid "Sorry, that is not valid input. You missed "
+msgstr "Извините, это неверный ввод. Ты пропустил "
+
+#: inc/classes/class-pgs-woo-api-controller.php:467
+msgid "Cancellation/Return/Exchange Policy"
+msgstr "Отмена / возврат / политика обмена"
+
+#: inc/classes/class-pgs-woo-api-controller.php:468
+msgid "Refund Policy"
+msgstr "Политика возврата"
+
+#: inc/classes/class-pgs-woo-api-controller.php:469
+msgid "Shipping Policy"
+msgstr "Политика доставки"
+
+#: inc/classes/class-pgs-woo-api-support.php:77
+#: inc/classes/class-pgs-woo-api-support.php:80
+msgid "There was an error processing your request, please try again later!"
+msgstr ""
+
+#: inc/classes/class-pgs-woo-api-token-generations-controller.php:42
+msgid "Click on below button to start token generation process"
+msgstr ""
+
+#: inc/classes/class-pgs-woo-api-token-generations-controller.php:45
+msgid "Let's go!"
+msgstr "Поехали!"
+
+#: inc/classes/class-pgs-woo-api-token-generations-controller.php:55
+msgid "Verification token"
+msgstr "Ток подтверждения"
+
+#: inc/classes/class-pgs-woo-api-token-generations-controller.php:62
+msgid ""
+"Try to re submit. if still not get final token and token secret then refresh "
+"this page and do it again."
+msgstr ""
+"Попробуйте подать. если еще не получить окончательный токен и токен, а затем "
+"обновить эту страницу и сделать это снова."
+
+#: inc/classes/class-pgs-woo-api-token-generations-controller.php:66
+msgid "Click on below link to get authorization token."
+msgstr "Нажмите на ссылку ниже, чтобы получить токен авторизации."
+
+#: inc/classes/class-pgs-woo-api-token-generations-controller.php:68
+msgid "Get verification token"
+msgstr "Получить токен проверки"
+
+#: inc/classes/class-pgs-woo-api-token-generations-controller.php:70
+msgid ""
+"Onces you click above link, it will redirect you to new tab which will "
+"prompt to authorize API, On clicking \"Authorize\" button, you will get "
+"verification token. Copy that token and paste it to below \"Verification "
+"Token\" input box."
+msgstr ""
+"Onces вы щелкаете над ссылкой, он перенаправляет вас на новую вкладку, "
+"которая будет запрашивать авторизацию API. При нажатии кнопки «Авторизовать» "
+"вы получите контрольный токен. Скопируйте этот токен и вставьте его ниже в "
+"поле ввода «Подтверждение маркера»."
+
+#: inc/classes/class-pgs-woo-api-token-generations-controller.php:72
+msgid "Verification Token"
+msgstr "Ток подтверждения"
+
+#: inc/classes/class-pgs-woo-api-token-generations-controller.php:77
+#: inc/setup-wizard/envato_setup/envato_setup.php:826
+#: inc/setup-wizard/envato_setup/envato_setup.php:994
+#: inc/setup-wizard/envato_setup/envato_setup.php:1273
+#: inc/setup-wizard/envato_setup/envato_setup.php:1573
+#, fuzzy
+#| msgid "Content"
+msgid "Continue"
+msgstr "содержание"
+
+#: inc/classes/class-pgs-woo-api-token-generations-controller.php:80
+msgid ""
+"HTTP Header Authorization is disabled. Please check our document for "
+"troubleshooting."
+msgstr ""
+
+#: inc/classes/class-pgs-woo-api-token-generations-controller.php:81
+msgid "Click heare"
+msgstr ""
+
+#: inc/classes/class-pgs-woo-api-token-generations-controller.php:87
+msgid "You're ready to call API."
+msgstr "Вы готовы вызвать API."
+
+#: inc/classes/class-pgs-woo-api-token-generations-controller.php:98
+#: inc/options-pages/setting_page.php:176
+#: inc/options-pages/setting_page.php:490
+msgid "Token"
+msgstr "знак"
+
+#: inc/classes/class-pgs-woo-api-token-generations-controller.php:102
+#: inc/options-pages/setting_page.php:180
+#: inc/options-pages/setting_page.php:491
+msgid "Token Secret"
+msgstr "Секретный токен"
+
+#: inc/classes/class-pgs-woo-api-token-generations-controller.php:168
+#, fuzzy
+#| msgid "Please enter subject"
+msgid "Please enter verification token."
+msgstr "Пожалуйста, введите тему"
+
+#: inc/meta-box/add_coupon_meta.php:3
+msgid "Push notification"
+msgstr "Отправить уведомление"
+
+#: inc/meta-box/add_coupon_meta.php:3
+msgid "Send push notification to all users"
+msgstr "Отправить push-уведомление всем пользователям"
+
+#: inc/meta-box/add_user_meta.php:22
+msgid "Mobile"
+msgstr "Mобильный"
+
+#: inc/meta-box/add_user_meta.php:30
+msgid "Gender"
+msgstr "Пол"
+
+#: inc/meta-box/add_user_meta.php:33
+msgid "Male"
+msgstr "mужчина"
+
+#: inc/meta-box/add_user_meta.php:36
+msgid "Female"
+msgstr "женский"
+
+#: inc/meta-box/add_user_meta.php:41
+msgid "DOB"
+msgstr "DOB"
+
+#: inc/meta-box/add_user_meta.php:49
+msgid "Deactivate User"
+msgstr "Деактивировать пользователя"
+
+#: inc/meta-box/add_user_meta.php:52
+msgid "User can't login if deactivate"
+msgstr "Пользователь не может войти в систему, если отключен"
+
+#: inc/meta-box/add_user_meta.php:140
+msgid "Custom User Profile Image"
+msgstr "Пользовательское изображение профиля пользователя"
+
+#: inc/meta-box/add_user_meta.php:144
+msgid "Profile Image"
+msgstr "Изображение профиля"
+
+#: inc/meta-box/add_user_meta.php:161
+msgid "Upload"
+msgstr "Загрузить"
+
+#: inc/meta-box/add_user_meta.php:162 inc/options-pages/option_page.php:142
+#: inc/options-pages/option_page.php:204 inc/options-pages/option_page.php:356
+#: inc/options-pages/option_page.php:448 inc/options-pages/option_page.php:567
+#: inc/options-pages/option_page.php:752 inc/options-pages/option_page.php:882
+msgid "Remove"
+msgstr "Удалить"
+
+#: inc/meta-box/add_user_meta.php:166
+msgid "Upload a custom image for your user profile"
+msgstr "Загрузите пользовательское изображение для своего профиля пользователя"
+
+#: inc/meta-box/pgs_custom_cat_thumbmail.php:21
+#: inc/meta-box/pgs_custom_cat_thumbmail.php:64
+msgid "App Category Thumbnail"
+msgstr "Категория приложения Thumbnail"
+
+#: inc/meta-box/pgs_custom_cat_thumbmail.php:38
+#: inc/meta-box/pgs_custom_cat_thumbmail.php:81
+msgid "Upload/Add App cat image"
+msgstr "Загрузить / Добавить изображение приложения cat"
+
+#: inc/meta-box/pgs_custom_cat_thumbmail.php:39
+#: inc/meta-box/pgs_custom_cat_thumbmail.php:82
+msgid "Remove image"
+msgstr "Удалить изображение"
+
+#: inc/meta-box/pgs_custom_cat_thumbmail.php:42
+#, fuzzy
+#| msgid "Add mobile application category image"
+msgid "Add mobile application category icon image"
+msgstr "Добавить категорию приложения для мобильных устройств"
+
+#: inc/meta-box/pgs_custom_cat_thumbmail.php:84
+msgid "Add mobile application category image"
+msgstr "Добавить категорию приложения для мобильных устройств"
+
+#: inc/meta-box/pgs_custom_cat_thumbmail.php:111
+msgid "App Image"
+msgstr "Изображение приложения"
+
+#: inc/meta-box/pgs_custom_colorpiker.php:21
+#: inc/meta-box/pgs_custom_colorpiker.php:45
+msgid "Color Code"
+msgstr "Цветовой код"
+
+#: inc/meta-box/pgs_custom_colorpiker.php:77
+msgid "Color"
+msgstr "цвет"
+
+#: inc/options-pages/geo-fencing.php:8 inc/options-pages/geo-fencing.php:9
+#: inc/options-pages/geo-fencing.php:10 inc/options-pages/geo-fencing.php:11
+#: inc/options-pages/geo-fencing.php:58
+msgid "Geofencing"
+msgstr ""
+
+#: inc/options-pages/geo-fencing.php:12
+msgid "Add New"
+msgstr ""
+
+#: inc/options-pages/geo-fencing.php:13
+msgid "Add New Geofencing"
+msgstr ""
+
+#: inc/options-pages/geo-fencing.php:14
+#, fuzzy
+#| msgid "No record found."
+msgid "New Geofencing"
+msgstr "Запись не найдена."
+
+#: inc/options-pages/geo-fencing.php:15
+msgid "Edit Geofencing"
+msgstr ""
+
+#: inc/options-pages/geo-fencing.php:16
+msgid "View Geofencing"
+msgstr ""
+
+#: inc/options-pages/geo-fencing.php:17
+msgid "All Geofencing"
+msgstr ""
+
+#: inc/options-pages/geo-fencing.php:18
+msgid "Search Geofencing"
+msgstr ""
+
+#: inc/options-pages/geo-fencing.php:19
+msgid "Parent Geofencing:"
+msgstr ""
+
+#: inc/options-pages/geo-fencing.php:20
+#, fuzzy
+#| msgid "No record found."
+msgid "No geofencing found."
+msgstr "Запись не найдена."
+
+#: inc/options-pages/geo-fencing.php:21
+#, fuzzy
+#| msgid "No geo fencing found in Trash."
+msgid "No geofencing found in Trash."
+msgstr "В корзине нет геообработки."
+
+#: inc/options-pages/geo-fencing.php:26
+msgid "Description."
+msgstr "Описание."
+
+#: inc/options-pages/option_functions.php:285
+#: inc/options-pages/option_functions.php:422
+msgid "Settings saved."
+msgstr "Настройки сохранены."
+
+#: inc/options-pages/option_functions.php:301
+msgid "The file "
+msgstr "Файл"
+
+#: inc/options-pages/option_functions.php:301
+msgid " has been uploaded."
+msgstr "был загружен."
+
+#: inc/options-pages/option_functions.php:307
+#: inc/options-pages/option_functions.php:313
+msgid "Sorry, there was an error uploading your file."
+msgstr "Извините, произошла ошибка при загрузке файла."
+
+#: inc/options-pages/option_functions.php:479
+#, fuzzy, php-format
+#| msgid ""
+#| "You can get a Google Maps API from <a href=\"%1$s\" target=\"_blank"
+#| "\">here.</a>"
+msgid ""
+"How to create featured product <a href=\"%s\" target=\"_blank\">click here</"
+"a>."
+msgstr ""
+"Вы можете получить API Карт Google из <a href=\"%1$s\" target=\"_blank\"> "
+"здесь. </a>"
+
+#: inc/options-pages/option_functions.php:491
+#, fuzzy, php-format
+#| msgid ""
+#| "You can get a Google Maps API from <a href=\"%1$s\" target=\"_blank"
+#| "\">here.</a>"
+msgid ""
+"How to create special deal products <a href=\"%s\" target=\"_blank\">click "
+"here</a>."
+msgstr ""
+"Вы можете получить API Карт Google из <a href=\"%1$s\" target=\"_blank\"> "
+"здесь. </a>"
+
+#: inc/options-pages/option_functions.php:501
+msgid "It will show recently added product list."
+msgstr ""
+
+#: inc/options-pages/option_functions.php:502
+msgid "It will show the products list based on total sales."
+msgstr ""
+
+#: inc/options-pages/option_functions.php:506
+#, fuzzy
+#| msgid "Feature Box"
+msgid "Feature Products"
+msgstr "Блок возможностей"
+
+#: inc/options-pages/option_functions.php:507
+#, fuzzy
+#| msgid "Categories menu items display on the home screen."
+msgid "Feature products carousels display on the home screen."
+msgstr "На главном экране отображается список элементов меню."
+
+#: inc/options-pages/option_functions.php:513
+msgid "Recent Products"
+msgstr ""
+
+#: inc/options-pages/option_functions.php:514
+#, fuzzy
+#| msgid "Banners displayed on the home screen."
+msgid "Recent products carousels display on the home screen."
+msgstr "Баннеры отображаются на главном экране."
+
+#: inc/options-pages/option_functions.php:520
+msgid "Special Deal Products"
+msgstr ""
+
+#: inc/options-pages/option_functions.php:521
+#, fuzzy
+#| msgid "Categories menu items display on the home screen."
+msgid "Special deal products carousels display on the home screen."
+msgstr "На главном экране отображается список элементов меню."
+
+#: inc/options-pages/option_functions.php:527
+msgid "Popular Products"
+msgstr ""
+
+#: inc/options-pages/option_functions.php:528
+#, fuzzy
+#| msgid "Banners displayed on the home screen."
+msgid "Popular products carousels display on the home screen."
+msgstr "Баннеры отображаются на главном экране."
+
+#: inc/options-pages/option_page.php:57
+msgid ""
+"Current WPML Language URL format settings not compatible with PGS Woo API."
+msgstr ""
+
+#: inc/options-pages/option_page.php:59
+#, fuzzy
+#| msgid "Click for check test API."
+msgid "Click here for change settings."
+msgstr "Нажмите, чтобы проверить API проверки."
+
+#: inc/options-pages/option_page.php:69
+#, fuzzy
+#| msgid "Settings"
+msgid "App Settings"
+msgstr "Hастройки"
+
+#: inc/options-pages/option_page.php:73
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: inc/options-pages/option_page.php:82 inc/options-pages/option_page.php:110
+msgid "Primary Logo"
+msgstr "Основной логотип"
+
+#: inc/options-pages/option_page.php:83 inc/options-pages/option_page.php:169
+msgid "Secondary Logo"
+msgstr "Вторичный логотип"
+
+#: inc/options-pages/option_page.php:85 inc/options-pages/option_page.php:232
+#, fuzzy
+#| msgid "Color"
+msgid "App Color"
+msgstr "цвет"
+
+#: inc/options-pages/option_page.php:86 inc/options-pages/option_page.php:283
+msgid "Main Category Menu"
+msgstr "Главное меню"
+
+#: inc/options-pages/option_page.php:88 inc/options-pages/option_page.php:392
+#, fuzzy
+#| msgid "Main Slider"
+msgid "Home Slider Banner"
+msgstr "Основной слайдер"
+
+#: inc/options-pages/option_page.php:89 inc/options-pages/option_page.php:509
+msgid "Category Banners"
+msgstr "Категория Баннеры"
+
+#: inc/options-pages/option_page.php:90
+#, fuzzy
+#| msgid "Product added!"
+msgid "Products carousel"
+msgstr "Товар добавлен!"
+
+#: inc/options-pages/option_page.php:91 inc/options-pages/option_page.php:692
+msgid "Banner Ads"
+msgstr "Баннерная рекламa"
+
+#: inc/options-pages/option_page.php:92 inc/options-pages/option_page.php:814
+msgid "Feature Box"
+msgstr "Блок возможностей"
+
+#: inc/options-pages/option_page.php:94 inc/options-pages/option_page.php:930
+#, fuzzy
+#| msgid "App Image"
+msgid "App Pages"
+msgstr "Изображение приложения"
+
+#: inc/options-pages/option_page.php:95
+msgid "Checkout Page"
+msgstr "Оформить заказ"
+
+#: inc/options-pages/option_page.php:96
+msgid "Social Links"
+msgstr "Социальные ссылки"
+
+#: inc/options-pages/option_page.php:97 inc/options-pages/option_page.php:1259
+msgid "Contact Info"
+msgstr "Контактная информация"
+
+#: inc/options-pages/option_page.php:98 inc/options-pages/option_page.php:1311
+msgid "WhatsApp"
+msgstr ""
+
+#: inc/options-pages/option_page.php:99 inc/options-pages/option_page.php:1351
+msgid "Sample Data"
+msgstr ""
+
+#: inc/options-pages/option_page.php:100 inc/options-pages/option_page.php:1445
+msgid "WPML"
+msgstr ""
+
+#: inc/options-pages/option_page.php:111
+msgid "Logo display on the header of the app."
+msgstr "Отображение логотипа в заголовке приложения."
+
+#: inc/options-pages/option_page.php:113 inc/options-pages/option_page.php:178
+#: inc/options-pages/option_page.php:394 inc/options-pages/option_page.php:511
+#: inc/options-pages/option_page.php:694 inc/options-pages/option_page.php:852
+msgid "IMPORTANT"
+msgstr "ВАЖНЫЙ"
+
+#: inc/options-pages/option_page.php:114 inc/options-pages/option_page.php:179
+msgid ""
+"For best performance and image quality in the mobile application, strictly "
+"follow the below standards for logo images:"
+msgstr ""
+"Для обеспечения наилучшей производительности и качества изображения в "
+"мобильном приложении строго следуйте приведенным ниже стандартам для "
+"изображений логотипов:"
+
+#: inc/options-pages/option_page.php:116 inc/options-pages/option_page.php:181
+msgid "Dimension: "
+msgstr "Размеры:"
+
+#: inc/options-pages/option_page.php:116 inc/options-pages/option_page.php:181
+msgid "164 x 51"
+msgstr ""
+
+#: inc/options-pages/option_page.php:117 inc/options-pages/option_page.php:182
+msgid "File Type: "
+msgstr "Тип файла:"
+
+#: inc/options-pages/option_page.php:117 inc/options-pages/option_page.php:182
+msgid "PNG"
+msgstr ""
+
+#: inc/options-pages/option_page.php:133 inc/options-pages/option_page.php:195
+#: inc/options-pages/option_page.php:342 inc/options-pages/option_page.php:439
+#: inc/options-pages/option_page.php:558 inc/options-pages/option_page.php:743
+#: inc/options-pages/option_page.php:873
+msgid "Edit"
+msgstr "редактировать"
+
+#: inc/options-pages/option_page.php:139 inc/options-pages/option_page.php:201
+#: inc/options-pages/option_page.php:347 inc/options-pages/option_page.php:353
+#: inc/options-pages/option_page.php:445 inc/options-pages/option_page.php:564
+#: inc/options-pages/option_page.php:749 inc/options-pages/option_page.php:879
+#: inc/woo-api-functions.php:462
+#, fuzzy
+#| msgid "App Image"
+msgid "Add Image"
+msgstr "Изображение приложения"
+
+#: inc/options-pages/option_page.php:171
+msgid "Logo display on other app pages like About Us and Contact Us."
+msgstr ""
+"Отображение логотипа на других страницах приложений, таких как «О нас» и "
+"«Свяжитесь с нами»."
+
+#: inc/options-pages/option_page.php:232
+msgid "You can change app default color and set as per your app design."
+msgstr ""
+"Вы можете изменить цвет по умолчанию для приложения и настроить в "
+"соответствии с вашим дизайном приложения."
+
+#: inc/options-pages/option_page.php:236
+msgid "Header Color"
+msgstr "Цвет заголовка"
+
+#: inc/options-pages/option_page.php:244
+msgid "Primary Color"
+msgstr "Основной цвет"
+
+#: inc/options-pages/option_page.php:252
+msgid "Secondary Color"
+msgstr "Вторичный цвет"
+
+#: inc/options-pages/option_page.php:285
+msgid "Categories menu items display on the home screen."
+msgstr "На главном экране отображается список элементов меню."
+
+#: inc/options-pages/option_page.php:304
+#, fuzzy
+#| msgid "Select Product Category"
+msgid "Select category menu item"
+msgstr "Выберите категорию продукта"
+
+#: inc/options-pages/option_page.php:306 inc/options-pages/option_page.php:454
+#: inc/options-pages/option_page.php:580 inc/options-pages/option_page.php:758
+msgid "Select"
+msgstr "Выбрать"
+
+#: inc/options-pages/option_page.php:330
+#, fuzzy
+#| msgid "Category Banners"
+msgid "Category Icon Image"
+msgstr "Категория Баннеры"
+
+#: inc/options-pages/option_page.php:365 inc/options-pages/option_page.php:483
+#: inc/options-pages/option_page.php:603 inc/options-pages/option_page.php:781
+#: inc/options-pages/option_page.php:904 inc/options-pages/option_page.php:1077
+msgid "Add"
+msgstr "Добавить"
+
+#: inc/options-pages/option_page.php:393
+msgid "These banners display as a slider on the home screen."
+msgstr "Эти баннеры отображаются как слайдер на главном экране."
+
+#: inc/options-pages/option_page.php:398
+msgid ""
+"For best performance and image quality of slider banners in the mobile "
+"application, strictly use <strong>1125 x 633</strong> (WidthxHeight in px) "
+"image for slider banners."
+msgstr ""
+"Для обеспечения наилучшей производительности и качества изображения баннеров "
+"слайдера в мобильном приложении строго используйте <strong> 1125 x 633 </ "
+"strong> (ширина x высота в пикселях) для слайдеров."
+
+#: inc/options-pages/option_page.php:429
+#, fuzzy
+#| msgid "Banner Title"
+msgid "Slider Image"
+msgstr "Название баннера"
+
+#: inc/options-pages/option_page.php:452 inc/options-pages/option_page.php:578
+msgid "Select Product Category"
+msgstr "Выберите категорию продукта"
+
+#: inc/options-pages/option_page.php:510
+msgid "Banners displayed on the home screen."
+msgstr "Баннеры отображаются на главном экране."
+
+#: inc/options-pages/option_page.php:515
+msgid ""
+"For best performance and image quality of category banners in the mobile "
+"application, strictly use <strong>420 x 305</strong> (WidthxHeight in px) "
+"image for category banners."
+msgstr ""
+"Для лучшей производительности и качества изображения баннеров категории в "
+"мобильном приложении строго используйте <strong> 420 x 305 </ strong> "
+"(ширина x высота в пикселях) для баннеров категории."
+
+#: inc/options-pages/option_page.php:548 inc/options-pages/option_page.php:733
+#, fuzzy
+#| msgid "Banner Title"
+msgid "Banner Image"
+msgstr "Название баннера"
+
+#: inc/options-pages/option_page.php:572
+msgid "Banner Title"
+msgstr "Название баннера"
+
+#: inc/options-pages/option_page.php:629
+#, fuzzy
+#| msgid "Product added!"
+msgid "Products Carousel"
+msgstr "Товар добавлен!"
+
+#: inc/options-pages/option_page.php:631
+msgid ""
+"Products Carousels display on the home screen. we can also drag the position "
+"up and down"
+msgstr ""
+
+#: inc/options-pages/option_page.php:652 inc/options-pages/option_page.php:818
+#: inc/options-pages/option_page.php:1451
+#: inc/options-pages/setting_page.php:229
+#: inc/options-pages/setting_page.php:354
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2659
+msgid "Status"
+msgstr "Положение дел"
+
+#: inc/options-pages/option_page.php:653 inc/options-pages/option_page.php:819
+#: inc/options-pages/option_page.php:1452
+#: inc/options-pages/setting_page.php:230
+msgid "Enable"
+msgstr "включить"
+
+#: inc/options-pages/option_page.php:654 inc/options-pages/option_page.php:820
+#: inc/options-pages/option_page.php:1453
+#: inc/options-pages/setting_page.php:231
+msgid "Disable"
+msgstr "запрещать"
+
+#: inc/options-pages/option_page.php:657 inc/options-pages/option_page.php:887
+msgid "Title"
+msgstr "заглавие"
+
+#: inc/options-pages/option_page.php:693
+msgid "Used for advertisement or special offers, displayed on Home screen."
+msgstr ""
+"Используется для рекламы или специальных предложений, отображаемых на "
+"главном экране."
+
+#: inc/options-pages/option_page.php:698
+msgid ""
+"For best performance and image quality of Ad banners in the mobile "
+"application, strictly use <strong>1080 x 353</strong> (WidthxHeight in px) "
+"image for banners."
+msgstr ""
+"Для лучшей производительности и качества изображения баннеров объявлений в "
+"мобильном приложении строго используйте <strong> 1080 x 353 </ strong> "
+"(ширина x высота в пикселях) для баннеров."
+
+#: inc/options-pages/option_page.php:756
+#, fuzzy
+#| msgid "Category Banners"
+msgid "Category for Banner Ad"
+msgstr "Категория Баннеры"
+
+#: inc/options-pages/option_page.php:825
+msgid "Feature Box Title"
+msgstr "Заголовок Feature Feature"
+
+#: inc/options-pages/option_page.php:851
+#, fuzzy
+#| msgid "Feature Box Title"
+msgid "Feature Box Icon Image"
+msgstr "Заголовок Feature Feature"
+
+#: inc/options-pages/option_page.php:856
+msgid ""
+"For best performance and image quality, strictly use <strong>150 x 150</"
+"strong> (WidthxHeight in px) image for feature box."
+msgstr ""
+"Для обеспечения максимальной производительности и качества изображения "
+"строго используйте <strong> 150 x 150 </ strong> (WidthxHeight in px) для "
+"полнофункционального изображения."
+
+#: inc/options-pages/option_page.php:893
+#: inc/setup-wizard/envato_setup/envato_setup.php:388
+msgid "Content"
+msgstr "содержание"
+
+#: inc/options-pages/option_page.php:931
+#, fuzzy
+#| msgid "App Image"
+msgid "App custom pages."
+msgstr "Изображение приложения"
+
+#: inc/options-pages/option_page.php:945
+msgid "About Us"
+msgstr "О нас"
+
+#: inc/options-pages/option_page.php:947 inc/options-pages/option_page.php:975
+#: inc/options-pages/option_page.php:1001
+#: inc/options-pages/option_page.php:1049
+#: inc/options-pages/option_page.php:1106
+msgid "Select page"
+msgstr "Выберите страницу"
+
+#: inc/options-pages/option_page.php:973
+msgid "Terms & Conditions"
+msgstr "Условия и положения"
+
+#: inc/options-pages/option_page.php:999
+msgid "Privacy Policy"
+msgstr "политика конфиденциальности"
+
+#: inc/options-pages/option_page.php:1047
+msgid "Add info Pages"
+msgstr "Добавить страницу"
+
+#: inc/options-pages/option_page.php:1101
+#, fuzzy
+#| msgid "Checkout Page Settings"
+msgid "Checkout Page Setting"
+msgstr "Настройки страницы оплаты"
+
+#: inc/options-pages/option_page.php:1102
+msgid ""
+"Checkout page in any e-commerce website plays the most crucial part as it is "
+"the online equivalent of a physical checkout counter shown to the customer "
+"during the step by step checkout process. Hence, it needs to be appealing "
+"enough. Ciya shop comes with a feature that you can personalize this page as "
+"well. Although the user is having the default page to use they can enhance "
+"their checkout page according to their choice anytime they want by going to "
+"'Checkout Page' option in 'App settings' and selecting the page they have "
+"created."
+msgstr ""
+"Страница Checkout на любом веб-сайте электронной коммерции играет самую "
+"важную роль, так как это онлайн-эквивалент счетчика физического контроля, "
+"показанного клиенту во время пошагового процесса проверки. Следовательно, он "
+"должен быть достаточно привлекательным. Магазин Ciya поставляется с "
+"функцией, которую вы можете персонализировать и на этой странице. Несмотря "
+"на то, что пользователь использует страницу по умолчанию, они могут улучшить "
+"свою страницу проверки в соответствии с их выбором в любое время, выбрав "
+"«Checkout Page» в «Настройки приложения» и выбрав страницу, которую они "
+"создали."
+
+#: inc/options-pages/option_page.php:1104
+#, fuzzy
+#| msgid "Select Checkout Page"
+msgid "Select Checkout Page"
+msgstr "Выберите страницу проверки"
+
+#: inc/options-pages/option_page.php:1136
+msgid "Custom Redirect URL(s)"
+msgstr ""
+
+#: inc/options-pages/option_page.php:1137
+msgid ""
+"Please add custom redirect url(s) you set in payment getway(s). Leave blank "
+"if you did not set. For example, your payment gateway redirect URL is."
+msgstr ""
+
+#: inc/options-pages/option_page.php:1139
+msgid "Separate each entry with the new line."
+msgstr ""
+
+#: inc/options-pages/option_page.php:1154
+msgid "Custom Css"
+msgstr ""
+
+#: inc/options-pages/option_page.php:1155
+msgid "You can add custom css code for app checkout page here."
+msgstr ""
+
+#: inc/options-pages/option_page.php:1194
+#, fuzzy
+#| msgid "Social Page Settings"
+msgid "Social Media Settings"
+msgstr "Настройки социальной страницы"
+
+#: inc/options-pages/option_page.php:1195
+msgid ""
+"Specify social media URLs, where the user redirected once he/she clicks on "
+"social media icons."
+msgstr ""
+"Укажите URL-адреса социальных сетей, в которых пользователь перенаправляется "
+"после нажатия на значки социальных сетей."
+
+#: inc/options-pages/option_page.php:1207
+msgid "Facebook"
+msgstr "Facebook"
+
+#: inc/options-pages/option_page.php:1211
+msgid "Twitter"
+msgstr "Twitter"
+
+#: inc/options-pages/option_page.php:1216
+#, fuzzy
+#| msgid "linkedin"
+msgid "LinkedIn"
+msgstr "linkedin"
+
+#: inc/options-pages/option_page.php:1220
+msgid "Google Plus"
+msgstr "Google Plus"
+
+#: inc/options-pages/option_page.php:1224
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: inc/options-pages/option_page.php:1229
+msgid "Instagram"
+msgstr ""
+
+#: inc/options-pages/option_page.php:1268
+msgid "Address Line 1"
+msgstr "Адресная строка 1"
+
+#: inc/options-pages/option_page.php:1272
+msgid "Address Line 2"
+msgstr "Адресная строка 2"
+
+#: inc/options-pages/option_page.php:1277
+msgid "Email"
+msgstr "Эл. адрес"
+
+#: inc/options-pages/option_page.php:1281
+msgid "Phone"
+msgstr "Телефон"
+
+#: inc/options-pages/option_page.php:1312
+msgid "Enter your WhatsApp number here"
+msgstr ""
+
+#: inc/options-pages/option_page.php:1319
+msgid "WhatsApp No"
+msgstr ""
+
+#: inc/options-pages/option_page.php:1353
+msgid ""
+"You can import pre-defined sample data, as shown on our demo site, from here."
+msgstr ""
+
+#: inc/options-pages/option_page.php:1354
+msgid ""
+"Please take a backup before importing any sample data to prevent any data "
+"loss during installation."
+msgstr ""
+
+#: inc/options-pages/option_page.php:1425
+#: inc/setup-wizard/envato_setup/envato_setup.php:1011
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2824
+msgid "Install"
+msgstr ""
+
+#: inc/options-pages/setting_page.php:95
+#, fuzzy
+#| msgid "Settings"
+msgid "API Settings"
+msgstr "Hастройки"
+
+#: inc/options-pages/setting_page.php:97
+msgid "Publish"
+msgstr "Публиковать"
+
+#: inc/options-pages/setting_page.php:101
+#: inc/setup-wizard/envato_setup/envato_setup.php:1016
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2830
+msgid "Update"
+msgstr "Обновить"
+
+#: inc/options-pages/setting_page.php:109
+msgid "API Keys"
+msgstr "Ключи API"
+
+#: inc/options-pages/setting_page.php:112
+msgid "WooCommerce API"
+msgstr "WooCommerce API"
+
+#: inc/options-pages/setting_page.php:113
+#, fuzzy
+#| msgid "Google Plus"
+msgid "Google Maps API"
+msgstr "Google Plus"
+
+#: inc/options-pages/setting_page.php:114
+#: inc/options-pages/setting_page.php:223
+msgid "Push Notification"
+msgstr "Отправить уведомление"
+
+#: inc/options-pages/setting_page.php:115
+#: inc/options-pages/setting_page.php:326
+msgid "App URL"
+msgstr "URL-адрес приложения"
+
+#: inc/options-pages/setting_page.php:121
+#: inc/options-pages/setting_page.php:349
+msgid "Vendor Settings"
+msgstr "Настройки поставщика"
+
+#: inc/options-pages/setting_page.php:128
+#: inc/options-pages/setting_page.php:369
+msgid "Test API"
+msgstr "Тест-API"
+
+#: inc/options-pages/setting_page.php:129
+#: inc/options-pages/setting_page.php:389
+#, fuzzy
+#| msgid "Email"
+msgid "Emails"
+msgstr "Эл. адрес"
+
+#: inc/options-pages/setting_page.php:130
+#: inc/options-pages/setting_page.php:481
+#, fuzzy
+#| msgid "OAuth Credentials"
+msgid "Credentials Code"
+msgstr "OAuth Credentials"
+
+#: inc/options-pages/setting_page.php:138
+#: inc/options-pages/setting_page.php:199
+msgid "OAuth Credentials"
+msgstr "OAuth Credentials"
+
+#: inc/options-pages/setting_page.php:142
+msgid ""
+"<p class=\"PGS-WOO-API-Support-info\"><strong>Alert: </strong>In order to "
+"configure OAuth Credentials data, Please verify your item purchase by "
+"providing purchase key <a href=\""
+msgstr ""
+
+#: inc/options-pages/setting_page.php:156
+#: inc/options-pages/setting_page.php:201
+#, fuzzy
+#| msgid "This credentials just for backup purpose"
+msgid "These credentials are just for the backup purpose."
+msgstr "Эти учетные данные только для целей резервного копирования"
+
+#: inc/options-pages/setting_page.php:158
+msgid ""
+"Note: Before performing token generation process, please check your htaccess "
+"file add below code to the top of the .htaccess file for header "
+"authorizations"
+msgstr ""
+
+#: inc/options-pages/setting_page.php:159
+msgid "click here for htaccess file code"
+msgstr ""
+
+#: inc/options-pages/setting_page.php:164
+#: inc/options-pages/setting_page.php:488
+msgid "Client Key"
+msgstr "Ключ клиента"
+
+#: inc/options-pages/setting_page.php:169
+#: inc/options-pages/setting_page.php:489
+msgid "Client Secret"
+msgstr "Секрет клиента"
+
+#: inc/options-pages/setting_page.php:206
+#: inc/options-pages/setting_page.php:492
+msgid "Consumer Key"
+msgstr "Потребительский ключ"
+
+#: inc/options-pages/setting_page.php:210
+#: inc/options-pages/setting_page.php:493
+#, fuzzy
+#| msgid "Token Secret"
+msgid "Consumer Secret"
+msgstr "Секретный токен"
+
+#: inc/options-pages/setting_page.php:232
+msgid "Enable / Disable Push notification"
+msgstr "Включение / отключение Push-уведомления"
+
+#: inc/options-pages/setting_page.php:236
+msgid "Mode"
+msgstr "Режим"
+
+#: inc/options-pages/setting_page.php:237
+msgid "Sandbox"
+msgstr "Sandbox"
+
+#: inc/options-pages/setting_page.php:238
+msgid "Live"
+msgstr "Live"
+
+#: inc/options-pages/setting_page.php:239
+msgid "IOS Push notification mode"
+msgstr "Режим уведомления IOS Push"
+
+#: inc/options-pages/setting_page.php:243
+#, fuzzy
+#| msgid "Upload Dev Pem File"
+msgid "Upload Development Pem File"
+msgstr "Загрузить файл Dev Pem"
+
+#: inc/options-pages/setting_page.php:255
+#: inc/options-pages/setting_page.php:276
+msgid "File Upload"
+msgstr "Загрузка изображения"
+
+#: inc/options-pages/setting_page.php:256
+msgid "Upload IOS Push notification Pem File for development"
+msgstr "Загрузите файл Pem для уведомлений IOS Push для разработки"
+
+#: inc/options-pages/setting_page.php:260
+msgid "Password for Development Pem File"
+msgstr "Пароль для разработки Pem File"
+
+#: inc/options-pages/setting_page.php:265
+#, fuzzy
+#| msgid "Upload Dist Pem File"
+msgid "Upload Distribution Pem File"
+msgstr "Загрузите файл Dist Pem"
+
+#: inc/options-pages/setting_page.php:277
+msgid "Upload IOS Push notification Pem File for production"
+msgstr "Загрузите файл Pem IOS Push для производства"
+
+#: inc/options-pages/setting_page.php:281
+msgid "Password for Distribution Pem File"
+msgstr "Пароль к файлу Pem для распространения"
+
+#: inc/options-pages/setting_page.php:287
+msgid "Android Legacy server key"
+msgstr ""
+
+#: inc/options-pages/setting_page.php:294
+msgid "Coupon code notification title"
+msgstr "Название уведомления о купоне"
+
+#: inc/options-pages/setting_page.php:298
+msgid "Coupon code notification message"
+msgstr "Уведомление о купоне"
+
+#: inc/options-pages/setting_page.php:300
+msgid "{{coupon}} add this code for show in notification"
+msgstr "{{coupon}} добавить этот код для показа в уведомлении"
+
+#: inc/options-pages/setting_page.php:304
+msgid "Order status notification title"
+msgstr "Заголовок уведомления о статусе заказа"
+
+#: inc/options-pages/setting_page.php:308
+msgid "Order status notification message"
+msgstr "Уведомление о статусе заказа"
+
+#: inc/options-pages/setting_page.php:310
+msgid "{{status}}, {{order_id}} add this code for show in notification"
+msgstr "{{status}}, {{order_id}} добавить этот код для показа в уведомлении"
+
+#: inc/options-pages/setting_page.php:332
+msgid "IOS App URL"
+msgstr "IOS App URL"
+
+#: inc/options-pages/setting_page.php:355
+msgid "Dokan"
+msgstr "Dokan"
+
+#: inc/options-pages/setting_page.php:356
+msgid "WC Marketplace"
+msgstr "WC Marketplace"
+
+#: inc/options-pages/setting_page.php:357
+msgid "Please select vendor plugin"
+msgstr "Пожалуйста, выберите плагин поставщика"
+
+#: inc/options-pages/setting_page.php:370
+msgid "Click for check test API."
+msgstr "Нажмите, чтобы проверить API проверки."
+
+#: inc/options-pages/setting_page.php:377 inc/support/templates/support.php:129
+#: inc/support/templates/support.php:141
+msgid "Check"
+msgstr "Проверьте"
+
+#: inc/options-pages/setting_page.php:392
+#, fuzzy
+#| msgid "Contact Info"
+msgid "Contact Us"
+msgstr "Контактная информация"
+
+#: inc/options-pages/setting_page.php:395
+msgid "Recipient(s)"
+msgstr ""
+
+#: inc/options-pages/setting_page.php:399
+#: inc/options-pages/setting_page.php:416
+#: inc/options-pages/setting_page.php:432
+msgid "From Name"
+msgstr ""
+
+#: inc/options-pages/setting_page.php:403
+#: inc/options-pages/setting_page.php:420
+#: inc/options-pages/setting_page.php:436
+msgid "From Address"
+msgstr ""
+
+#: inc/options-pages/setting_page.php:408
+msgid "Forgot Password"
+msgstr ""
+
+#: inc/options-pages/setting_page.php:412
+#: inc/options-pages/setting_page.php:428
+msgid "Subject"
+msgstr ""
+
+#: inc/options-pages/setting_page.php:425
+msgid "Vendor Contact Email"
+msgstr ""
+
+#: inc/options-pages/setting_page.php:449
+#, fuzzy
+#| msgid "Google Plus"
+msgid "Google Map API"
+msgstr "Google Plus"
+
+#: inc/options-pages/setting_page.php:453
+#, php-format
+msgid ""
+"You can get a Google Maps API from <a href=\"%1$s\" target=\"_blank\">here.</"
+"a>"
+msgstr ""
+"Вы можете получить API Карт Google из <a href=\"%1$s\" target=\"_blank\"> "
+"здесь. </a>"
+
+#: inc/options-pages/setting_page.php:463
+msgid "Note"
+msgstr "Заметка"
+
+#: inc/options-pages/setting_page.php:463
+msgid ""
+"This key used for the geofencing functionality, for initializing google map "
+"using google map API."
+msgstr ""
+"Этот ключ используется для функции геообработки, для инициализации карты "
+"google с использованием API-интерфейсов google."
+
+#: inc/options-pages/setting_page.php:468
+msgid "Google Maps API Key"
+msgstr ""
+
+#: inc/options-pages/setting_page.php:483
+#, fuzzy
+#| msgid ""
+#| "Click on respected icon for generate the code of OAuth key and url for "
+#| "Android and iOS application."
+msgid ""
+"Click on respected icons for generate the code of OAuth key and url for "
+"Android and iOS application."
+msgstr ""
+"Нажмите на уважаемый значок для генерации кода ключа OAuth и URL для "
+"приложения Android и iOS."
+
+#: inc/options-pages/setting_page.php:499
+msgid "is missing"
+msgstr "пропал, отсутствует"
+
+#: inc/sample_data/sample_data_functions.php:177
+msgid ""
+"Unable to validate security check. Please reload the page and try again."
+msgstr ""
+
+#: inc/sample_data/sample_data_functions.php:188
+#, fuzzy
+#| msgid "Something went wrong. Please try later."
+msgid "Something went wrong or invalid sample selected."
+msgstr "Что-то пошло не так. Пожалуйста, попробуйте позднее."
+
+#: inc/sample_data/sample_data_functions.php:196
+#, fuzzy
+#| msgid "You are not allowed to do that"
+msgid "You are not allowed to perform this action."
+msgstr "Вам не разрешено делать это"
+
+#: inc/sample_data/sample_data_functions.php:354
+#, fuzzy
+#| msgid "Record deleted successfully"
+msgid "Sample data successfully imported."
+msgstr "Запись успешно удалена"
+
+#: inc/sample_data/sample_data_functions.php:357
+msgid "All done."
+msgstr ""
+
+#: inc/sample_data/sample_data_functions.php:362
+msgid "Unable to get options file."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:336
+#: inc/setup-wizard/envato_setup/envato_setup.php:341
+msgid "Setup Wizard"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:361
+msgid "Introduction"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:369
+#: inc/setup-wizard/envato_setup/envato_setup.php:821
+#: inc/setup-wizard/envato_setup/envato_setup.php:1009
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2833
+#, fuzzy
+#| msgid "Deactivate User"
+msgid "Activate"
+msgstr "Деактивировать пользователя"
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:382
+#, fuzzy
+#| msgid "plugin"
+msgid "Plugins"
+msgstr "плагин"
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:393
+#: inc/support/templates/support.php:47
+msgid "Support"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:398
+msgid "Ready!"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:446
+msgid "...verifying"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:504
+msgid "Plugin &rsaquo; Setup Wizard"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:533
+msgid "Return to the WordPress Dashboard"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:544
+#: inc/setup-wizard/wizard.php:83
+#, php-format
+msgid "&copy; Created by %s"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:619
+#, fuzzy, php-format
+#| msgid "Result not found!"
+msgid "Post type %s not found."
+msgstr "Результат не найден!"
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:621
+#, php-format
+msgid "Looking for post id %s"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:635
+#, php-format
+msgid "Welcome to the steps for setting the %s plugin."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:636
+msgid ""
+"It seems that you have already been through the setup medium. Below are some "
+"choices:"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:640
+msgid "Run Setup Wizard Again"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:646
+#: inc/woo-api-functions.php:501
+msgid "Cancel"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:652
+#, php-format
+msgid "Welcome to Ciyashop Native ( %s ) Setup Wizard"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:653
+#, php-format
+msgid "Thank you for choosing Ciyashop Native ( %s ) Application."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:654
+msgid ""
+"This setup wizard will help you to refresh and configure your application "
+"home screen with a new layout. You will have Content, and Plugins installed "
+"in 5-10 minutes (depending on your server configuration). "
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:655
+msgid ""
+"No time right now? If you do not want to go through the wizard, you can "
+"skip, and get back to WordPress dashboard. Come back any time to continue!"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:658
+#, fuzzy
+#| msgid "Let's go!"
+msgid "Let's Go!"
+msgstr "Поехали!"
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:660
+msgid "Not right now"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:702
+msgid ""
+"Options have been reset. Please go to Appearance > Customize in the "
+"WordPress backend."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:717
+#, fuzzy
+#| msgid "Deactivate User"
+msgid "Activate Plugin"
+msgstr "Деактивировать пользователя"
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:719
+msgid "Enter purchase code to activate your plugin."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:778
+#: inc/support/templates/support.php:95
+msgid "Please enter product purchase key to activate plugin."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:794
+msgid "Purchase code ( e.g. 9g2b13fa-10aa-2267-883a-9201a94cf9b5 )"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:799
+msgid "iOS Purchase code ( e.g. 9g2b13fa-10aa-2267-883a-9201a94cf9b5 )"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:803
+msgid "Instructions to find the Purchase Code"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:805
+#: inc/support/templates/support.php:150
+msgid "Log into your Envato Market account."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:806
+#: inc/support/templates/support.php:154
+msgid "Hover the mouse over your username at the top of the screen."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:807
+msgid "Click 'Downloads' from the drop-down menu."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:810
+#, php-format
+msgid ""
+"Click 'License certificate & purchase code' (available as PDF or text file). "
+"Click <a href=\"%s\" target=\"_blank\">here</a> for more information."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:942
+msgid "Default Plugins"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:964
+msgid ""
+"The following plugins can be installed for some supplemented features to "
+"your website for Application API:"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:970
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2378
+msgid "Required"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:976
+msgid "Needed for this version"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:985
+msgid ""
+"Good news! All plugins are already installed and up to date. Please continue."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:991
+msgid ""
+"Please, note that every external plugin can affect your website loading "
+"speed. You can add and remove plugins later on from within WordPress."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1010
+#, fuzzy
+#| msgid "Password required"
+msgid "Activation required"
+msgstr "Требуется пароль"
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1012
+msgid "Installation required"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1013
+msgid "Update and Activate"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1014
+msgid "Update and Activation required"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1015
+#, fuzzy
+#| msgid "Password required"
+msgid "Update required"
+msgstr "Требуется пароль"
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1028
+msgid "View details"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1071
+#, fuzzy
+#| msgid "No product found"
+msgid "No Slug Found"
+msgstr "Не найдено ни одного продукта"
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1089
+msgid "Activating Plugin"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1104
+msgid "Updating Plugin"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1119
+msgid "Installing Plugin"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1129
+msgid "Success"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1155
+#, fuzzy
+#| msgid "Content"
+msgid "Default Content"
+msgstr "содержание"
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1157
+msgid ""
+"Select the most suitable option from the below mentioned list of variants to "
+"complete the default content for your Application. Also, choose the "
+"appropriate pages to be imported from the list. The WordPress dashboard "
+"handles this content once you import them."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1162
+msgid ""
+"One, or more, required plugins (listed below) not installed or activated. "
+"Some features may not work correctly, i.e., Sample Data import."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1177
+msgid "Please acivate plugin using Purchase Code to display sample data list."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1256
+msgid "Live Preview"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1274
+msgid "Skip this step"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1538
+msgid "Help and Support"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1539
+msgid ""
+"The Application can be used on one website. To use on another site, please "
+"buy an additional license."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1542
+#, php-format
+msgid ""
+"You can get the item support from <a href=\"%s\" target=\"_blank\" rel="
+"\"noopener\">Potenza Support Center</a> and that is comprised of:"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1549
+msgid "Item Support comprises of:"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1551
+msgid "In detail explanation of the technical elements of the product"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1552
+msgid "Help if there is any error or concern."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1553
+msgid "Extensive support for 3rd party plugins (bundled)."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1557
+msgid "Item Support <strong>DOES NOT</strong> comprise of:"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1559
+msgid "Customization services"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1560
+msgid "Installation services"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1561
+msgid "Assistance for non-bundled 3rd party plugins."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1569
+#, php-format
+msgid ""
+"ThemeForest <a href=\"%s\" target=\"_blank\" rel=\"noopener\">Item Support "
+"Policy</a> can be used to gather extra details about the item support."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1589
+#, fuzzy
+#| msgid "Settings saved."
+msgid "Your Settings are Ready!"
+msgstr "Настройки сохранены."
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1591
+msgid ""
+"Praises to you, your settings are ready now. The required plugins have been "
+"turned on to enhance the functionality of your site. You can modify the "
+"content and make required changes, if important by logging into the "
+"Wordpress Dashboard."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1594
+#, php-format
+msgid ""
+"Please encourage us by <a href=\"%s\" target=\"_blank\" rel=\"noopener"
+"\">dropping 5-star</a>."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1602
+msgid "Next Steps"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1604
+msgid "Follow PotenzaGlobalSolutions on ThemeForest"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1605
+#, fuzzy
+#| msgid "OAuth Credentials"
+msgid "Please configure your OAuth Credentials"
+msgstr "OAuth Credentials"
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1605
+msgid "if already set ignore and move to build your App"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1611
+msgid "More Resources"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1613
+msgid "Read the Documentation"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1614
+msgid "Learn how to use WordPress"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1615
+msgid "Leave an Item Rating"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1616
+msgid "Get Help and Support"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1717
+#: inc/support/templates/support-header.php:8
+#, php-format
+msgid "Welcome to %s"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1721
+msgid ""
+"You're almost there. PGS Woo API contains many useful features and "
+"functionalities. For this, some settings are to be done, to enable all "
+"features and functionalities. And, PGS Woo API Setup Wizard might be of a "
+"great help to you for same."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1722
+msgid "Run the Setup Wizard"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1722
+msgid "Skip setup"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1736
+msgid "Action failed. Please refresh the page and retry."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup.php:1740
+msgid "You don&#8217;t have permission to do this."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup_init.php:64
+msgid "Upgrade"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup_init.php:65
+msgid "Upgrade Content and Settings"
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup_init.php:66
+msgid "Pending."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup_init.php:67
+msgid "Installing Updates."
+msgstr ""
+
+#: inc/setup-wizard/envato_setup/envato_setup_init.php:68
+msgid "Success."
+msgstr ""
+
+#: inc/setup-wizard/wizard.php:86
+msgid "Potenza Global Solutions"
+msgstr ""
+
+#: inc/support/templates/support-header.php:17
+#, php-format
+msgid "Version %s"
+msgstr ""
+
+#: inc/support/templates/support-header.php:21
+msgid ""
+"<strong>CiyaShop Application API</strong> is now active and ready to use! "
+"<strong>CiyaShop Application</strong> is the perfect solution for your "
+"shopping business or your client shopping store as an agency or freelancer. "
+"It Engages consumers to constitute Loyalty with sharp design and features "
+"which make sense for the online shop. It is well-suited for retail stores, "
+"marketplaces, fashion shops, cosmetics and household appliances of any size. "
+"The CiyaShop application is the new way of building robust WooCommerce-based "
+"online shops and businesses."
+msgstr ""
+
+#: inc/support/templates/support.php:51
+#, fuzzy
+#| msgid "Please enter your password"
+msgid "Please Enter Item Purchase Code"
+msgstr "Пожалуйста введите ваш пароль"
+
+#: inc/support/templates/support.php:53
+#, php-format
+msgid ""
+"Thank you for installing %s plugin! Please enter the item purchase code of "
+"%1$s plugin to be able to install demos and get updates of the plugin."
+msgstr ""
+
+#: inc/support/templates/support.php:102
+#, php-format
+msgid "<p>Click here for Goto <a href=\"%1$s\">API Settings</a>."
+msgstr ""
+
+#: inc/support/templates/support.php:146
+msgid "Instructions For Find Purchase Code"
+msgstr ""
+
+#: inc/support/templates/support.php:149
+msgid "01"
+msgstr ""
+
+#: inc/support/templates/support.php:153
+msgid "02"
+msgstr ""
+
+#: inc/support/templates/support.php:157
+msgid "03"
+msgstr ""
+
+#: inc/support/templates/support.php:158
+msgid "Click 'Downloads' from the drop down menu."
+msgstr ""
+
+#: inc/support/templates/support.php:161
+msgid "04"
+msgstr ""
+
+#: inc/support/templates/support.php:165
+#, php-format
+msgid ""
+"Click 'License certificate & purchase code' (available as PDF or text file). "
+"For more information <a href=\"%1$s\" target=\"_blank\">click here</a>."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:334
+msgid "Install Required Plugins"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:335
+#: inc/woo-api-functions.php:502
+msgid "Install Plugins"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:337
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:339
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:340
+#, fuzzy
+#| msgid "Something went wrong"
+msgid "Something went wrong with the plugin API."
+msgstr "Что-то пошло не так"
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:343
+#, fuzzy, php-format
+#| msgid "Requires the following plugins to be activated"
+msgid "Please check requires the following plugin: %1$s."
+msgstr "Требуется активировать следующие плагины"
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:349
+#, php-format
+msgid "Please check recommends the following plugin: %1$s."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:355
+#, php-format
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with PGS Woo API: %1$s."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:361
+#, php-format
+msgid "There is an update available for: %1$s."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:367
+#, php-format
+msgid "The following required plugin is currently inactive: %1$s."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:373
+#, php-format
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:378
+msgid "Begin installing plugin"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:383
+msgid "Begin updating plugin"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:388
+msgid "Begin activating plugin"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:392
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:393
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:914
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2638
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3673
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:394
+#, fuzzy
+#| msgid "User updated successfully"
+msgid "Plugin activated successfully."
+msgstr "Пользователь обновлен успешно"
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:395
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3059
+#, fuzzy
+#| msgid "Requires the following plugins to be activated"
+msgid "The following plugin was activated successfully:"
+msgstr "Требуется активировать следующие плагины"
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:397
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:399
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this PGS Woo API. "
+"Please update the plugin."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:401
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:402
+msgid "Dismiss this notice"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:403
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:404
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:609
+msgid "This plugin needs to be updated to be compatible with your PGS Woo API."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:610
+msgid "Update Required"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:1021
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:1021
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:1024
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:1024
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:1208
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3055
+#, fuzzy
+#| msgid "Sandbox"
+msgid "and"
+msgstr "Sandbox"
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2069
+#, php-format
+msgid "TGMPA v%s"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2381
+msgid "Recommended"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2397
+msgid "WordPress Repository"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2400
+#, fuzzy
+#| msgid "External Store URL"
+msgid "External Source"
+msgstr "URL внешнего магазина"
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2403
+msgid "Pre-Packaged"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2420
+msgid "Not Installed"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2424
+#, fuzzy
+#| msgid "install / activate"
+msgid "Installed But Not Activated"
+msgstr "установить / активировать"
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2426
+msgid "Active"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2432
+msgid "Required Update not Available"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2435
+msgid "Requires Update"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2438
+msgid "Update recommended"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2447
+#, php-format
+msgid "%1$s, %2$s"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2493
+#, php-format
+msgid "All <span class=\"count\">(%s)</span>"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2497
+#, php-format
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2501
+#, php-format
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2505
+#, php-format
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2587
+msgid "unknown"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2595
+msgid "Installed version:"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2603
+msgid "Minimum required version:"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2615
+msgid "Available version:"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2638
+msgid "No plugins to install, update or activate."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2652
+#, fuzzy
+#| msgid "plugin"
+msgid "Plugin"
+msgstr "плагин"
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2653
+msgid "Source"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2654
+msgid "Type"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2658
+msgid "Version"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2708
+#, php-format
+msgid "Install %2$s"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2713
+#, fuzzy, php-format
+#| msgid "Update"
+msgid "Update %2$s"
+msgstr "Обновить"
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2719
+#, fuzzy, php-format
+#| msgid "Deactivate User"
+msgid "Activate %2$s"
+msgstr "Деактивировать пользователя"
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2791
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2864
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2866
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2907
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2909
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3015
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3041
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3265
+msgid "Plugin activation failed."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3586
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3590
+#, fuzzy, php-format
+#| msgid "An error occurred while adding products to wishlist."
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr "Произошла ошибка при добавлении продуктов в список пожеланий."
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3592
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3596
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3598
+#, fuzzy, php-format
+#| msgid "User updated successfully"
+msgid "%1$s installed and activated successfully."
+msgstr "Пользователь обновлен успешно"
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3599
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3601
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3604
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3606
+#, fuzzy, php-format
+#| msgid "Product added successfully"
+msgid "%1$s installed successfully."
+msgstr "Продукт успешно добавлен"
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3607
+msgid "All installations have been completed."
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3609
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3613
+msgid "Show Details"
+msgstr ""
+
+#: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:3613
+msgid "Hide Details"
+msgstr ""
+
+#: inc/woo-api-functions.php:460
+msgid "Are you sure you want to delete this element?"
+msgstr "Вы действительно хотите удалить этот элемент?"
+
+#: inc/woo-api-functions.php:461
+msgid "Choose Image"
+msgstr "Выберите изображение"
+
+#: inc/woo-api-functions.php:499
+msgid "Warning"
+msgstr ""
+
+#: inc/woo-api-functions.php:500
+msgid "Proceed"
+msgstr ""
+
+#: inc/woo-api-functions.php:503
+msgid ""
+"Importing demo content will import contents, widgets and theme options. "
+"Importing sample data will override current widgets and theme options. It "
+"can take some time to complete the import process."
+msgstr ""
+
+#: inc/woo-api-functions.php:816
+msgid "Please enter client key, client secret from Users -> Applications"
+msgstr ""
+
+#: inc/woo-api-functions.php:980
+#, php-format
+msgid "[%s] Password Reset"
+msgstr "[%s] Восстановление пароля"
+
+#: pgs-woo-api.php:81
+msgid "PGS Woo Api"
+msgstr "PGS Woo Api"
+
+#: pgs-woo-api.php:82
+msgid "Requires the following plugins to be activated"
+msgstr "Требуется активировать следующие плагины"
+
+#: pgs-woo-api.php:85 pgs-woo-api.php:89 pgs-woo-api.php:92 pgs-woo-api.php:97
+#: pgs-woo-api.php:100
+msgid "Please"
+msgstr "пожалуйста"
+
+#: pgs-woo-api.php:85
+msgid "install / activate"
+msgstr "установить / активировать"
+
+#: pgs-woo-api.php:85 pgs-woo-api.php:89 pgs-woo-api.php:92 pgs-woo-api.php:97
+#: pgs-woo-api.php:100
+msgid "plugin"
+msgstr "плагин"
+
+#: pgs-woo-api.php:89 pgs-woo-api.php:97
+msgid "install"
+msgstr ""
+
+#: pgs-woo-api.php:92 pgs-woo-api.php:100
+#, fuzzy
+#| msgid "Deactivate User"
+msgid "activate"
+msgstr "Деактивировать пользователя"
+
+#: template/app_checkout.php:87
+msgid "Your cart is empty."
+msgstr "Ваша корзина пуста."
+
+#~ msgid "Enter a value for this field"
+#~ msgstr "Введите значение для этого поля"
+
+#~ msgid "Abandoned From"
+#~ msgstr "Отказано от"
+
+#~ msgid "Abandon cart alert!"
+#~ msgstr "Предупреждение о брошенной корзине!"
+
+#, fuzzy
+#~| msgid "Something went wrong!"
+#~ msgid "Somthing went wrong!"
+#~ msgstr "Что-то пошло не так!"
+
+#~ msgid "PGS Woo Api working fine"
+#~ msgstr "PGS Woo Api работает отлично"
+
+#~ msgid "Click on icon for generate credentials code."
+#~ msgstr "Нажмите на значок для создания кода учетных данных."
+
+#, fuzzy
+#~| msgid "App URL"
+#~ msgid "App Logo"
+#~ msgstr "URL-адрес приложения"
+
+#, fuzzy
+#~| msgid "Upload a custom image for your user profile"
+#~ msgid "Upload Logo image for app only"
+#~ msgstr ""
+#~ "Загрузите пользовательское изображение для своего профиля пользователя"
+
+#~ msgid ""
+#~ "Upload Light Logo image for app only. if want to use dark and light logo "
+#~ "image."
+#~ msgstr ""
+#~ "Загрузите изображение логотипа только для приложения. если хотите "
+#~ "использовать темный и легкий логотип."
+
+#~ msgid "Main Category"
+#~ msgstr "Главная категория"
+
+#~ msgid "Select main app menu category"
+#~ msgstr "Выберите категорию меню главного приложения"
+
+#~ msgid "Select banner ad category"
+#~ msgstr "Выберите категорию рекламных баннеров"
+
+#~ msgid "Terms of Use"
+#~ msgstr "Условия эксплуатации"
+
+#~ msgid "Enable / Disable Feature Box"
+#~ msgstr "Включить / отключить панель возможностей"
+
+#~ msgid "Submit"
+#~ msgstr "Отправить"
+
+#~ msgid ""
+#~ "This is App Checkout page used in Application checkout process. This page "
+#~ "created by PGS Woo Api plugin. Please do not delete this page"
+#~ msgstr ""
+#~ "Это страница проверки приложений, используемая в процессе проверки "
+#~ "приложений. Эта страница создана плагином PGS Woo Api. Не удаляйте эту "
+#~ "страницу"
+
+#~ msgid "Please enter auth details in setting page"
+#~ msgstr "Пожалуйста, введите данные авторизации на странице настроек"
+
+#~ msgid "PGS Woo API"
+#~ msgstr "PGS Woo API"
+
+#~ msgid "Info Pages"
+#~ msgstr "Информационные страницы"
+
+#~ msgid "Add Info Pages"
+#~ msgstr "Добавить информационные страницы"
