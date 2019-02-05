@@ -499,19 +499,16 @@ function pgs_woo_api_token_callback(){
                                             echo '<p> '. esc_html($key).' '. esc_html__('is missing', 'pgs-woo-api') .'.</p>';
                                         }
                                     }
-                                    $activated_with = pgs_woo_api_activated_with();
                                     ?>
                                     <div class="<?php echo esc_attr($class); ?>">
-                                        <?php if($activated_with['purchased_android']){?>
+
                                         <a href="javascript:void(0)" class="button button-primary android-device credentials-code-device-img" data-target="credentials-code-android">
                                             <img class="img-responsive" src="<?php echo PGS_API_URL . 'img/android/android.png' ?>" />
                                         </a>
-                                        <?php }
-                                        if($activated_with['purchased_ios']){?>
                                         <a href="javascript:void(0)" class="button button-primary ios-device credentials-code-device-img" data-target="credentials-code-ios">
                                             <img class="img-responsive" src="<?php echo PGS_API_URL . 'img/ios/ios.png' ?>" />
                                         </a>
-                                        <?php }?>
+
                                     </div>
                                 </div>
                                 <div class="pgs-woo-api-form-groups">

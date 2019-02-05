@@ -372,6 +372,16 @@ function pgs_remove_tax_in_price_html( $price, $product ){
 add_filter( "woocommerce_rest_prepare_product_variation_object", 'pgs_woo_api_woocommerce_rest_prepare_product_object',10,3 );
 function pgs_woo_api_woocommerce_rest_prepare_product_object( $response, $object, $request ){    
     $is_currency_switcher_active = pgs_woo_api_is_currency_switcher_active();
+    $wc_tax_enabled = wc_tax_enabled(); 
+    $tax_status =  'none';
+    $tax_class = '';
+    if($wc_tax_enabled){
+        $tax_price = wc_get_price_to_display( $object );	//tax
+        $price_including_tax = wc_get_price_including_tax( $object );
+        $price_excluding_tax = wc_get_price_excluding_tax( $object );
+        $tax_status =  $object->get_tax_status();
+        $tax_class = $object->get_tax_class();
+    }
     if($is_currency_switcher_active){
         $get_price = pgs_woo_api_update_currency_rate_for_default_api($response->data['price']);
         $regular_price = pgs_woo_api_update_currency_rate_for_default_api($response->data['regular_price']);
@@ -380,7 +390,17 @@ function pgs_woo_api_woocommerce_rest_prepare_product_object( $response, $object
         $response->data['price'] = $get_price;  
         $response->data['regular_price'] = $regular_price;
         $response->data['sale_price'] = $sale_price;
-    }
+        if($wc_tax_enabled){
+            $tax_price = pgs_woo_api_update_currency_rate_for_default_api($tax_price);            
+            $price_including_tax = pgs_woo_api_update_currency_rate_for_default_api($price_including_tax);
+            $price_excluding_tax = pgs_woo_api_update_currency_rate_for_default_api($price_excluding_tax);
+        }
+    }    
+    $response->data['tax_price'] = (isset($tax_price))?$tax_price:'';
+    $response->data['price_including_tax'] = (isset($price_including_tax))?$price_including_tax:'';
+    $response->data['price_excluding_tax'] = (isset($price_excluding_tax))?$price_excluding_tax:'';
+    $response->data['tax_status'] =  $tax_status;
+    $response->data['tax_class'] = $tax_class;
     return apply_filters( "pgs_woo_api_woocommerce_rest_prepare_product_object", $response, $object, $request );
 }
 
@@ -439,17 +459,13 @@ function pgs_api_woocommerce_rest_prepare_product_variation_object($response, $o
 
 function pgs_woo_script_style_admin() {
     
-    wp_register_style( 'pgs-woo-api-css', PGS_API_URL.'css/pgs-woo-api.css' );
     wp_register_style( 'pgs-woo-api-geofance-css', PGS_API_URL.'css/geofance.css' );    
     wp_register_style( 'jquery-ui', PGS_API_URL.'css/jquery-ui.min.css' );
     wp_register_style( 'pgs-woo-api-support', PGS_API_URL.'css/pgs-woo-api-support.css' );    
     wp_register_style( 'jquery-confirm-bootstrap' , PGS_API_URL.'css/jquery-confirm/jquery-confirm-bootstrap.css' );
     wp_register_style( 'jquery-confirm', PGS_API_URL.'css/jquery-confirm/jquery-confirm.css' );
-    
-    
     wp_register_style( 'pgs-woo-api-css', PGS_API_URL.'css/pgs-woo-api.css' );
     
-
     wp_register_script('jquery-repeater-min', PGS_API_URL.'js/jquery.repeater.min.js', array(), false, false );
     wp_register_script( 'jquery-confirm', PGS_API_URL.'js/jquery-confirm/jquery-confirm.js', array('jquery'), false, false );
     wp_register_script( 'pgs-ace-editor-js', PGS_API_URL.'js/ace_editor/ace.js', array('jquery'), false, false );
@@ -494,6 +510,7 @@ function pgs_woo_script_style_admin() {
         //wp_localize_script( 'pgs-woo-api-js', 'pgs_app_plugin_url', PGS_API_URL );
         $pgs_woo_api_sample_data_required_plugins_list = pgs_woo_api_sample_data_required_plugins_list();
         $plugin_data = pgs_woo_api_get_plugin_data();        
+        $activated_with = pgs_woo_api_activated_with();
         wp_localize_script( 'pgs-woo-api-js', 'pgs_app_sample_data_import_object', array(
             'ajaxurl'                          => admin_url( 'admin-ajax.php' ),
             'alert_title'                      => esc_html__( 'Warning', 'pgs_woo_api' ),
@@ -504,7 +521,9 @@ function pgs_woo_script_style_admin() {
             'tgmpa_url'                        => admin_url( 'themes.php?page=theme-plugins' ),			
             'sample_data_required_plugins_list'=> ( !empty($pgs_woo_api_sample_data_required_plugins_list) ) ? array_values($pgs_woo_api_sample_data_required_plugins_list) : false,
             'sample_import_nonce'              => wp_create_nonce( 'pgs_woo_api_sample_data_security' ),
-            'plugin_ver' => ( isset($plugin_data['Version']) ) ? $plugin_data['Version'] : '' 
+            'plugin_ver' => ( isset($plugin_data['Version']) ) ? $plugin_data['Version'] : '',
+            'purchased_android' => ( $activated_with['purchased_android'] ) ? $activated_with['purchased_android'] : false,
+            'purchased_ios' => ( $activated_with['purchased_ios'] ) ? $activated_with['purchased_ios'] : false
         ));
         wp_enqueue_script( 'jquery-confirm' );
         wp_enqueue_script( 'pgs-ace-editor-js' );
@@ -751,6 +770,22 @@ function pgs_woo_api_feature_box_status($lang=''){
 }
 
 /**
+ * Get whatsapp floating button status  
+ */
+function pgs_woo_api_whatsapp_floating_button_status(){
+    $pgs_woo_api_home_option = get_option('pgs_woo_api_home_option');
+    $whatsapp_floating_button = $pgs_woo_api_home_option['pgs_app_contact_info']['whatsapp_floating_button'];
+    $whatsapp_floating_button_status = (isset($whatsapp_floating_button) && !empty($whatsapp_floating_button))?$whatsapp_floating_button:'enable';       
+    
+    if($whatsapp_floating_button_status == 'enable'){
+        $style = 'style="display: block;"';
+    } else {
+        $style = 'style="display: none;"';
+    }
+    echo $style;    
+}
+
+/**
  * Send checkout page url for android
  * */
 add_action( 'wp_footer' , 'pgs_woo_api_add_to_cart_android' );
@@ -840,6 +875,9 @@ function pgs_woo_api_get_plugin_info(){
     return $plugin_info;
 }
 
+/**
+ * Check item validated with purchesh key or not.
+ */
 function pgs_woo_api_is_activated() {
     $pgs_token_android = get_option('pgs_woo_api_pgs_token_android');
     $pgs_token_ios = get_option('pgs_woo_api_pgs_token_ios');
@@ -851,7 +889,9 @@ function pgs_woo_api_is_activated() {
     }
 	return false;
 }
-
+/**
+ * Check item validate with android or iOS
+ */
 function pgs_woo_api_activated_with() {
     $pgs_token_android = get_option('pgs_woo_api_pgs_token_android');
     $pgs_token_ios = get_option('pgs_woo_api_pgs_token_ios');
@@ -870,7 +910,9 @@ function pgs_woo_api_activated_with() {
     );
     return $result;
 }
-
+/**
+ * Allowed html for language file translation etc
+ */
 function pgs_woo_api_allowed_html( $allowed_els = '' ){
 
 	// bail early if parameter is empty
@@ -890,18 +932,21 @@ function pgs_woo_api_allowed_html( $allowed_els = '' ){
 			$allowed_html[$el] = $allowed_tags[$el];
 		}
 	}
-
 	return $allowed_html;
 }
 
-
+/**
+ * Widzard process check plugin active
+ */
 function pgs_woo_api_widzard_check_plugin_active( $plugin = '' ) {
 
 	if( empty($plugin) ) return false;
 
 	return ( in_array( $plugin, (array) get_option( 'active_plugins', array() ) ) || ( function_exists('is_plugin_active_for_network') && is_plugin_active_for_network($plugin) ) );
 }
-
+/**
+ * Check item token is activated with purches key
+ */
 function pgs_woo_api_token_is_activated() {
 	$pgs_token_android = get_option('pgs_woo_api_pgs_token_android');
     $pgs_token_ios = get_option('pgs_woo_api_pgs_token_ios');
@@ -933,12 +978,15 @@ function pgs_woo_api_activate_au(){
 	
 	new Pgs_woo_api_WP_AutoUpdate ( $plugin_current_version, $plugin_remote_path, $plugin_slug, $token, $product_key, $site_url);
 }
- 
-function pgs_woo_api_remove_admin_bar() {    
+/**
+ * Remove admin bar to App Checkout page
+ */ 
+function pgs_woo_api_remove_admin_bar() {
     show_admin_bar(false);
 }
-
-
+/**
+ * Get contact us email option data 
+ */
 function pgs_woo_api_get_contact_mail_options_data() {    
     $admin_email = get_bloginfo( 'admin_email' ); 
     $woocommerce_email_from_name = get_option('woocommerce_email_from_name');
@@ -961,7 +1009,9 @@ function pgs_woo_api_get_contact_mail_options_data() {
         'contact_us_from_email' => $contact_us_from_email
     );    
 }
-
+/**
+ * Get forgot password us email option data 
+ */
 function pgs_woo_api_get_forgot_password_mail_options_data() {
     $site_name = get_bloginfo( 'name' );
     $admin_email = get_bloginfo( 'admin_email' ); 
@@ -979,7 +1029,6 @@ function pgs_woo_api_get_forgot_password_mail_options_data() {
     }
     $subject = sprintf( __('[%s] Password Reset'), $blogname );
     
-    
     $option_forgot_password_subject = get_option('pgs_woo_api_emails_forgot_password_subject');
     $option_forgot_password_from_name = get_option('pgs_woo_api_emails_forgot_password_from_name');
     $option_forgot_password_from_address = get_option('pgs_woo_api_emails_forgot_password_address');
@@ -987,8 +1036,6 @@ function pgs_woo_api_get_forgot_password_mail_options_data() {
     $forgot_password_from_name = (!empty($option_forgot_password_from_name))?$option_forgot_password_from_name:$forgot_password_from_name;
     $forgot_password_from_email = (!empty($option_forgot_password_from_address))?$option_forgot_password_from_address:$forgot_password_from_email;
 
-    
-    
     return array(
         'forgot_password_subject' => $subject,
         'forgot_password_from_name' => $forgot_password_from_name,
@@ -996,7 +1043,9 @@ function pgs_woo_api_get_forgot_password_mail_options_data() {
     );  
 }
 
-
+/**
+ * Get vendor contact email option data 
+ */
 function pgs_woo_api_get_vendor_contact_mail_options_data() {
     $site_name = get_bloginfo( 'name' );
     $admin_email = get_bloginfo( 'admin_email' ); 
@@ -1022,7 +1071,9 @@ function pgs_woo_api_get_vendor_contact_mail_options_data() {
         'vendor_contact_from_email' => $vendor_contact_from_email
     );  
 }
-
+/**
+ * Get vendor contact email option data 
+ */
 function pgs_woo_api_wpml_get_lang( ){    
     $lang = '';
     if(isset($_GET['lang']) && !empty($_GET['lang'])){        
@@ -1055,8 +1106,159 @@ function pgs_woo_api_wpml_get_lang( ){
     }
     return $lang; 
 }
-
+/**
+ * Remove admin toolbar menu item for WPML 
+ */
 function pgs_woo_api_remove_toolbar_menu_item_wpml() {
 	global $wp_admin_bar;    
 	$wp_admin_bar->remove_menu('WPML_ALS_all');
+}
+/**
+ * Get products carousel data for home API and options page 
+ */
+function pgs_woo_api_get_products_carousel(){
+    $pgs_woo_api_home_option = get_option('pgs_woo_api_home_option');
+    $lang='';
+    $is_wpml_active = pgs_woo_api_is_wpml_active();        
+    if($is_wpml_active){            
+        $lang = pgs_woo_api_wpml_get_lang();
+        if(!empty($lang)){                
+            $lang_prifix = '_'.$lang;
+            $products_carousel = get_option('pgs_woo_api_home_option'.$lang_prifix);                                
+            if(isset($products_carousel['products_carousel']) && !empty($products_carousel['products_carousel'])){
+                $pgs_woo_api_home_option = $products_carousel;
+            }
+             
+        }
+    }        
+    
+    $feature_doc_description = sprintf(
+        // %s = Link to documentation
+        wp_kses( __( 'How to create featured product <a href="%s" target="_blank">click here</a>.', 'pgs-woo-api' ),
+    		array(
+    			'a'    => array(
+    				'href' => array(),
+                    'target' => array(),
+    			),
+    		)
+        ),
+        'https://docs.woocommerce.com/document/managing-products/#section-20'
+    );
+    $special_deal_doc_description = sprintf(
+        // %s = Link to documentation
+        wp_kses( __( 'How to create special deal products <a href="%s" target="_blank">click here</a>.', 'pgs-woo-api' ),
+    		array(
+    			'a'    => array(
+    				'href' => array(),
+                    'target' => array(),
+    			),
+    		)
+        ),
+        'http://docs.potenzaglobalsolutions.com/docs/ciya-shop-mobile-apps/#special-deal-products-or-schedule-sale-products'
+    );    
+    $recent_doc_description = esc_html__( 'It will show recently added product list.', 'pgs-woo-api' );    
+    $popular_doc_description = esc_html__( 'It will show the products list based on total sales.', 'pgs-woo-api' );
+    $top_rated_products = esc_html__( 'It will show the products list based on top rating.', 'pgs-woo-api' );
+    
+            
+    $products_carousel_default = array(
+        'feature_products' => array(
+            'label' => esc_html__("Feature Products",'pgs-woo-api'),
+            'description' => esc_html__('Feature products view display on the home screen.','pgs-woo-api'),            
+            'doc_description' => '<p class="description">'.$feature_doc_description.'</p>',
+            'status' => "enable",
+            'title' => "Feature products"
+        ),
+        'recent_products' => array(
+            'label' => esc_html__("Recent Products",'pgs-woo-api'),
+            'description' => esc_html__("Recent products view display on the home screen.",'pgs-woo-api'),
+            'doc_description' => '<p class="description">'.$recent_doc_description.'</p>',
+            'status' => "enable",
+            'title' => "Recent products"
+        ),
+        'special_deal_products' => array(
+            'label' => esc_html__("Special Deal Products",'pgs-woo-api'),
+            'description' => esc_html__("Special deal products view display on the home screen.",'pgs-woo-api'),
+            'doc_description' => '<p class="description">'.$special_deal_doc_description.'</p>',
+            'status' => "enable",
+            'title' => "Special deal"
+        ),
+        'popular_products' => array(
+            'label' => esc_html__("Popular Products",'pgs-woo-api'),
+            'description' => esc_html__("Popular products view display on the home screen.",'pgs-woo-api'),
+            'doc_description' => '<p class="description">'.$popular_doc_description.'</p>',
+            'status' => "enable",
+            'title' => "Popular products"
+        ),
+        'top_rated_products' => array(
+            'label' => esc_html__("Top Rated Products",'pgs-woo-api'),
+            'description' => esc_html__("Top Rated products view display on the home screen.",'pgs-woo-api'),
+            'doc_description' => '<p class="description">'.$top_rated_products.'</p>',
+            'status' => "enable",
+            'title' => "Top Rated products"
+        )
+    );
+    $products_carousel['products_carousel'] = $products_carousel_default;
+    $product_view_array = array(
+        'feature_products','recent_products','special_deal_products','popular_products','top_rated_products'
+    );
+    foreach($product_view_array as $v){
+        $products_carousel['products_carousel'][$v]['label'] = $products_carousel_default[$v]['label'];
+        $products_carousel['products_carousel'][$v]['description'] = $products_carousel_default[$v]['description'];
+        $products_carousel['products_carousel'][$v]['doc_description'] = $products_carousel_default[$v]['doc_description'];    
+        
+        $status = $products_carousel_default[$v]['status']; 
+        if(isset($pgs_woo_api_home_option['products_carousel'][$v]['status'])){
+            $status = $pgs_woo_api_home_option['products_carousel'][$v]['status'];     
+        }
+        $title = $products_carousel_default[$v]['title']; 
+        if(isset($pgs_woo_api_home_option['products_carousel'][$v]['title'])){
+            $title = $pgs_woo_api_home_option['products_carousel'][$v]['title'];     
+        }
+        $products_carousel['products_carousel'][$v]['status'] = $status;
+        $products_carousel['products_carousel'][$v]['title'] = $title;        
+    }
+    
+    if(isset($pgs_woo_api_home_option['products_carousel'])){
+        $old_productscarousel_key['products_carousel'] = $pgs_woo_api_home_option['products_carousel'];        
+        if(!in_array( 'top_rated_products', $pgs_woo_api_home_option['products_carousel'])){
+            $old_productscarousel_key['products_carousel']['top_rated_products'] = $products_carousel['products_carousel']['top_rated_products'];     
+        }
+
+        foreach($old_productscarousel_key['products_carousel'] as $k => $v){            
+            if( $k == 'feature_products' ){
+                $new_products_carousel['products_carousel'][$k]['label'] = $products_carousel['products_carousel'][$k]['label'];
+                $new_products_carousel['products_carousel'][$k]['description'] = $products_carousel['products_carousel'][$k]['description'];
+                $new_products_carousel['products_carousel'][$k]['doc_description'] = $products_carousel['products_carousel'][$k]['doc_description'];
+                $new_products_carousel['products_carousel'][$k]['status'] = $products_carousel['products_carousel'][$k]['status'];
+                $new_products_carousel['products_carousel'][$k]['title'] = $products_carousel['products_carousel'][$k]['title'];
+            } elseif( $k == 'recent_products' ){
+                $new_products_carousel['products_carousel'][$k]['label'] = $products_carousel['products_carousel'][$k]['label'];
+                $new_products_carousel['products_carousel'][$k]['description'] = $products_carousel['products_carousel'][$k]['description'];
+                $new_products_carousel['products_carousel'][$k]['doc_description'] = $products_carousel['products_carousel'][$k]['doc_description'];
+                $new_products_carousel['products_carousel'][$k]['status'] = $products_carousel['products_carousel'][$k]['status'];
+                $new_products_carousel['products_carousel'][$k]['title'] = $products_carousel['products_carousel'][$k]['title'];
+            } elseif( $k == 'special_deal_products' ){
+                $new_products_carousel['products_carousel'][$k]['label'] = $products_carousel['products_carousel'][$k]['label'];
+                $new_products_carousel['products_carousel'][$k]['description'] = $products_carousel['products_carousel'][$k]['description'];
+                $new_products_carousel['products_carousel'][$k]['doc_description'] = $products_carousel['products_carousel'][$k]['doc_description'];
+                $new_products_carousel['products_carousel'][$k]['status'] = $products_carousel['products_carousel'][$k]['status'];
+                $new_products_carousel['products_carousel'][$k]['title'] = $products_carousel['products_carousel'][$k]['title'];
+            } elseif( $k == 'popular_products' ){
+                $new_products_carousel['products_carousel'][$k]['label'] = $products_carousel['products_carousel'][$k]['label'];
+                $new_products_carousel['products_carousel'][$k]['description'] = $products_carousel['products_carousel'][$k]['description'];
+                $new_products_carousel['products_carousel'][$k]['doc_description'] = $products_carousel['products_carousel'][$k]['doc_description'];
+                $new_products_carousel['products_carousel'][$k]['status'] = $products_carousel['products_carousel'][$k]['status'];
+                $new_products_carousel['products_carousel'][$k]['title'] = $products_carousel['products_carousel'][$k]['title'];
+            } elseif( $k == 'top_rated_products' ){
+                $new_products_carousel['products_carousel'][$k]['label'] = $products_carousel['products_carousel'][$k]['label'];
+                $new_products_carousel['products_carousel'][$k]['description'] = $products_carousel['products_carousel'][$k]['description'];
+                $new_products_carousel['products_carousel'][$k]['doc_description'] = $products_carousel['products_carousel'][$k]['doc_description'];
+                $new_products_carousel['products_carousel'][$k]['status'] = $products_carousel['products_carousel'][$k]['status'];
+                $new_products_carousel['products_carousel'][$k]['title'] = $products_carousel['products_carousel'][$k]['title'];
+            }     
+        }
+        $products_carousel['products_carousel'] = $new_products_carousel['products_carousel'];
+    }
+    return $products_carousel['products_carousel'];
 }

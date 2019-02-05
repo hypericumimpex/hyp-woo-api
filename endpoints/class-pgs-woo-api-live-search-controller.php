@@ -46,11 +46,6 @@ class PGS_WOO_API_LiveSearchController extends PGS_WOO_API_Controller{
         $input = file_get_contents("php://input");
         $request = json_decode($input,true);
         
-        /*global $sitepress;
-        $current_lang = $sitepress->get_current_language();
-        $default_lang = $sitepress->get_default_language();
-        $sitepress->switch_lang($_GET['lang']);*/
-        
         $per_page = 10;
         if(isset($request['product-per-page'])) {
     		$per_page = $request['product-per-page'];
@@ -62,8 +57,6 @@ class PGS_WOO_API_LiveSearchController extends PGS_WOO_API_Controller{
     		'ignore_sticky_posts'   => 1,        
     		'posts_per_page'		=> $per_page            
         );
-        		
-		
         
         $search = isset($request['search']) ? $request['search'] : false;
         if(!empty($search) && $search != null){

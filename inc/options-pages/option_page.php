@@ -87,7 +87,7 @@ function pgs_woo_api_callback(){
                     <?php }?>
                     <li><a href="#pgs-woo-api-tabs-home-slider"><?php esc_html_e('Home Slider Banner','pgs-woo-api')?></a></li>
                     <li><a href="#pgs-woo-api-tabs-category-banners"><?php esc_html_e('Category Banners','pgs-woo-api')?></a></li>
-                    <li><a href="#pgs-woo-api-tabs-products-carousel"><?php esc_html_e('Products carousel','pgs-woo-api')?></a></li>
+                    <li><a href="#pgs-woo-api-tabs-products-carousel"><?php esc_html_e('Products View','pgs-woo-api')?>(carousel)</a></li>
                     <li><a href="#pgs-woo-api-tabs-banner-ads"><?php esc_html_e('Banner Ads','pgs-woo-api')?></a></li>
                     <li><a href="#pgs-woo-api-tabs-feature-box"><?php esc_html_e('Feature Box','pgs-woo-api')?></a></li>                    
                     <?php if($lang == ''){?>
@@ -97,10 +97,10 @@ function pgs_woo_api_callback(){
                     <li><a href="#pgs-woo-api-tabs-contact-info"><?php esc_html_e('Contact Info','pgs-woo-api')?></a></li>
                     <li><a href="#pgs-woo-api-tabs-whatsapp"><?php esc_html_e('WhatsApp','pgs-woo-api')?></a></li>
                     <li><a href="#pgs-woo-api-tabs-sample-data"><?php esc_html_e('Sample Data','pgs-woo-api')?></a></li>
-                    <li><a href="#pgs-woo-api-tabs-is-wpml"><?php esc_html_e('WPML','pgs-woo-api')?></a></li>
+                    <li><a href="#pgs-woo-api-tabs-is-wpml"><?php esc_html_e('WPML','pgs-woo-api')?></a></li>                    
+                    <li><a href="#pgs-woo-api-tabs-filters"><?php esc_html_e('Filters','pgs-woo-api')?></a></li>
                     <?php }?>
                 </ul>                
-                
                 
                 
                 <div id="pgs-woo-api-tabs-app-primary-logo">
@@ -626,9 +626,9 @@ function pgs_woo_api_callback(){
             
                 <div class="pgs-woo-api-panel" id="pgs-woo-api-products-carousel">
                     <div class="pgs-woo-api-panel-body">
-                        <div class="pgs-woo-api-panel-heading"><?php esc_html_e('Products Carousel','pgs-woo-api')?></div>
+                        <div class="pgs-woo-api-panel-heading"><?php esc_html_e('Products View','pgs-woo-api')?></div>
                         <div class="pgs-woo-api-repeater-field-group">
-                            <p class="description"><?php esc_html_e('Products Carousels display on the home screen. we can also drag the position up and down','pgs-woo-api')?></p>
+                            <p class="description"><?php esc_html_e('Products View display on the home screen. we can also drag the position up and down','pgs-woo-api')?></p>
                             <div id="pgs-expand-div-options-products-carousel" class="pgs-woo-api-sort-products-carousel">
                                 <?php
                                 foreach($products_carousel as $key => $carousel){
@@ -973,52 +973,52 @@ function pgs_woo_api_callback(){
                                 <label><?php esc_html_e( 'Terms & Conditions','pgs-woo-api' )?></label>                                        
                                 <select class="pgs-woo-api-form-control pgs-woo-api_pages" name="pgs[static_page][terms_of_use]">
                                     <option value=""><?php esc_html_e('Select page','pgs-woo-api')?></option>
-                                    <?php                                    
-                                    $pages = get_pages(); 
+                                    <?php
+                                    $pages = get_pages();
                                     if(!empty($pages)):
-                                        foreach ( $pages as $page ) {                                                    
+                                        foreach ( $pages as $page ) {
                                             $sel = '';
                                             if( defined( 'ICL_LANGUAGE_CODE' ) && function_exists( 'icl_object_id' ) && ($lang != '') ) {
-                                                $id = icl_object_id($terms_of_use, 'page', true,$lang);                                            
+                                                $id = icl_object_id($terms_of_use, 'page', true,$lang);
                                                 $terms_of_use = $id;
                                             }
                                             if($terms_of_use == $page->ID){
-                                                $sel = 'selected="selected"';    
-                                            }                                                                                           
-                                            $option = '<option value="' . $page->ID . '" '. $sel .'>';                                
+                                                $sel = 'selected="selected"';
+                                            }
+                                            $option = '<option value="' . $page->ID . '" '. $sel .'>';
                                             $option .= $page->post_title;
                                             $option .= '</option>';
                                             echo $option;
                                         }
-                                    endif;                                            
+                                    endif;
                                     ?>
-                                </select>                                    
+                                </select>
                             </div>
                             
                             <div class="pgs-woo-api-form-group">
                                 <label><?php esc_html_e( 'Privacy Policy','pgs-woo-api' )?></label>                                        
                                 <select class="pgs-woo-api-form-control pgs-woo-api_pages" name="pgs[static_page][privacy_policy]">
                                     <option value=""><?php esc_html_e('Select page','pgs-woo-api')?></option>
-                                    <?php                                    
-                                    $pages = get_pages(); 
+                                    <?php
+                                    $pages = get_pages();
                                     if(!empty($pages)):
-                                        foreach ( $pages as $page ) {                                                    
+                                        foreach ( $pages as $page ) {
                                             $sel = '';
                                             if( defined( 'ICL_LANGUAGE_CODE' ) && function_exists( 'icl_object_id' ) && ($lang != '') ) {
-                                                $id = icl_object_id($privacy_policy, 'page', true,$lang);                                            
+                                                $id = icl_object_id($privacy_policy, 'page', true,$lang);
                                                 $privacy_policy = $id;
                                             }
                                             if($privacy_policy == $page->ID){
-                                                $sel = 'selected="selected"';    
-                                            }                                                                                           
-                                            $option = '<option value="' . $page->ID . '" '. $sel .'>';                                
+                                                $sel = 'selected="selected"';
+                                            }
+                                            $option = '<option value="' . $page->ID . '" '. $sel .'>';
                                             $option .= $page->post_title;
                                             $option .= '</option>';
                                             echo $option;
                                         }
-                                    endif;                                            
+                                    endif;
                                     ?>
-                                </select>                        
+                                </select>
                                     
                             </div>
                             
@@ -1028,8 +1028,8 @@ function pgs_woo_api_callback(){
                              */
                             $default_array['info_pages'] = array(
                                 array(
-                                    'info_pages_page_id' => ''                                                                            
-                                )           
+                                    'info_pages_page_id' => ''
+                                )
                             );
                             $info_pages = array();
                             $info_pages = $pgs_woo_api_home_option;
@@ -1047,32 +1047,32 @@ function pgs_woo_api_callback(){
                                         <label><?php esc_html_e( 'Add info Pages','pgs-woo-api' )?></label>
                                         <select class="pgs-woo-api-form-control pgs-woo-api_pages" name="pgs[info_pages][<?php echo $i?>][info_pages_page_id]">
                                             <option value=""><?php esc_html_e('Select page','pgs-woo-api')?></option>
-                                            <?php                                    
-                                            $pages = get_pages(); 
+                                            <?php
+                                            $pages = get_pages();
                                             if(!empty($pages)):
-                                                foreach ( $pages as $page ) {                                                    
+                                                foreach ( $pages as $page ) {
                                                     $sel = '';
                                                     if( defined( 'ICL_LANGUAGE_CODE' ) && function_exists( 'icl_object_id' ) && ($lang != '') ) {
-                                                        $id = icl_object_id($val['info_pages_page_id'], 'page', true,$lang);                                            
+                                                        $id = icl_object_id($val['info_pages_page_id'], 'page', true,$lang);
                                                         $val['info_pages_page_id'] = $id;
                                                     }
                                                     if($val['info_pages_page_id'] == $page->ID){
-                                                        $sel = 'selected="selected"';    
-                                                    }                                                                                           
-                                                    $option = '<option value="' . $page->ID . '" '. $sel .'>';                                
+                                                        $sel = 'selected="selected"';
+                                                    }
+                                                    $option = '<option value="' . $page->ID . '" '. $sel .'>';
                                                     $option .= $page->post_title;
                                                     $option .= '</option>';
                                                     echo $option;
                                                 }
-                                            endif;                                            
+                                            endif;
                                             ?>
-                                        </select>                        
-                                        <span class="removeBanner dashicons dashicons-dismiss" data-repeater-delete><!-- Remove --></span>    
+                                        </select>
+                                        <span class="removeBanner dashicons dashicons-dismiss" data-repeater-delete><!-- Remove --></span>
                                     </div>
-                                    <?php 
-                                    $i++;                                                
-                                }                                           
-                            }?>                                        
+                                    <?php
+                                    $i++;
+                                }
+                            }?>
                             </div>
                             <button type="button" class="pgs-woo-api-btn button button-primary" data-repeater-create><?php esc_html_e('Add','pgs-woo-api')?></button>    
                         </div>
@@ -1095,40 +1095,40 @@ function pgs_woo_api_callback(){
                     </div>
                 </div><!-- #pgs-woo-api-tabs-app-pages -->
                 <div id="pgs-woo-api-tabs-checkout-page">
-                
+
                     <div class="pgs-woo-api-panel" id="pgs-woo-api-checkout-page">
                         <div class="pgs-woo-api-panel-body">
-                            <div class="pgs-woo-api-panel-heading"><?php esc_html_e('Checkout Page Setting','pgs-woo-api')?></div>  
-                            <p class="description"><?php esc_html_e( 'Checkout page in any e-commerce website plays the most crucial part as it is the online equivalent of a physical checkout counter shown to the customer during the step by step checkout process. Hence, it needs to be appealing enough. Ciya shop comes with a feature that you can personalize this page as well. Although the user is having the default page to use they can enhance their checkout page according to their choice anytime they want by going to \'Checkout Page\' option in \'App settings\' and selecting the page they have created.','pgs-woo-api')?></p>                
+                            <div class="pgs-woo-api-panel-heading"><?php esc_html_e('Checkout Page Setting','pgs-woo-api')?></div>
+                            <p class="description"><?php esc_html_e( 'Checkout page in any e-commerce website plays the most crucial part as it is the online equivalent of a physical checkout counter shown to the customer during the step by step checkout process. Hence, it needs to be appealing enough. Ciya shop comes with a feature that you can personalize this page as well. Although the user is having the default page to use they can enhance their checkout page according to their choice anytime they want by going to \'Checkout Page\' option in \'App settings\' and selecting the page they have created.','pgs-woo-api')?></p>               
                             <div class="pgs-woo-api-form-group">
-                                <label><?php esc_html_e( 'Select Checkout Page','pgs-woo-api' )?></label>                                        
+                                <label><?php esc_html_e( 'Select Checkout Page','pgs-woo-api' )?></label>
                                 <select class="pgs-woo-api-form-control pgs-woo-api_pages" name="pgs_checkout_page">
                                     <option value=""><?php echo esc_attr( __( 'Select page' ) ); ?></option>
-                                    <?php 
+                                    <?php
                                     $checkout_page = '';
-                                    $checkout_page = get_option('pgs_checkout_page'); 
-                                    $pages = get_pages(); 
+                                    $checkout_page = get_option('pgs_checkout_page');
+                                    $pages = get_pages();
                                     foreach ( $pages as $page ) {
-                                        $selected = '';                                        
-                                        if(isset($checkout_page) && !empty($checkout_page)){                                            
+                                        $selected = '';
+                                        if(isset($checkout_page) && !empty($checkout_page)){
                                             if($checkout_page == $page->ID){
-                                                $selected = 'selected';   
-                                            }    
+                                                $selected = 'selected';
+                                            }
                                         } else {
                                             $is_page = pgs_woo_api_get_page_title_for_slug('my-account');
                                             if($is_page){
                                                 if($is_page->ID == $page->ID){
-                                                    $selected = 'selected';   
-                                                }                                        
+                                                    $selected = 'selected';
+                                                }
                                             }
-                                        }                                        
+                                        }
                                         $option = '<option value="' . $page->ID . '" '. $selected .'>';                                
                                         $option .= $page->post_title;
                                         $option .= '</option>';
                                         echo $option;
                                     }
                                     ?>
-                                </select>                        
+                                </select>
                             </div>
                             
                             <!--Payment Gateway redirect URLs Start -->
@@ -1164,7 +1164,7 @@ function pgs_woo_api_callback(){
                             <div class="pgs-woo-api-form-group">                                
                                 <input id="pgs_woo_api_custom_css_editor_field" name="pgs_woo_api_checkout_custom_css" type="hidden" value="<?php echo htmlspecialchars( $custom_css );?>" style="display: none;">                                
                                 <pre id="pgs_woo_api_custom_css_editor"><?php echo htmlspecialchars( $custom_css );?></pre>                                                       
-                            </div>                               
+                            </div>
                         </div>
                         
                         <div class="pgs-woo-api-panel-sidebar">
@@ -1247,7 +1247,7 @@ function pgs_woo_api_callback(){
 							<div id="social-links-ios-section" class="device-display hidden">
 								<img src="<?php echo PGS_API_URL.'img/ios/social-links.png'?>" />
 							</div>
-						</div>               
+						</div>
                     </div>
                 
             </div><!-- #pgs-woo-api-tabs-social-links -->
@@ -1280,7 +1280,7 @@ function pgs_woo_api_callback(){
                                 <div class="pgs-woo-api-form-groups">
                                     <label><?php esc_html_e("Phone",'pgs-woo-api')?></label>                                        
                                     <input type="text" name="pgs[pgs_app_contact_info][phone]" class="pgs-woo-api-form-control" value="<?php echo esc_attr($phone)?>" />                        
-                                </div>                                
+                                </div>
                             </div>
                         </div>
                         
@@ -1299,7 +1299,7 @@ function pgs_woo_api_callback(){
 							<div id="contact-info-ios-section" class="device-display hidden">
 								<img src="<?php echo PGS_API_URL.'img/ios/contact-info.png'?>" />
 							</div>
-						</div>               
+						</div>
                     </div>
                 
             </div><!-- #pgs-woo-api-tabs-contact-info -->
@@ -1308,17 +1308,31 @@ function pgs_woo_api_callback(){
                 
                     <div class="pgs-woo-api-panel" id="">
                         <div class="pgs-woo-api-panel-body">
-                            <div class="pgs-woo-api-panel-heading"><?php esc_html_e('WhatsApp','pgs-woo-api')?></div>                        
-                            <p class="description"><?php esc_html_e( 'Enter your WhatsApp number here','pgs-woo-api')?></p>
+                            <div class="pgs-woo-api-panel-heading"><?php esc_html_e('WhatsApp','pgs-woo-api')?></div>                            
                             <?php
+                            $whatsapp_floating_button = $pgs_woo_api_home_option['pgs_app_contact_info']['whatsapp_floating_button'];
                             $whatsapp_no = $pgs_woo_api_home_option['pgs_app_contact_info']['whatsapp_no'];
                             $whatsappno = (isset($whatsapp_no) && !empty($whatsapp_no))?esc_attr($whatsapp_no):'';                            
+                            if(!isset($whatsapp_floating_button)){
+                                if(empty($whatsappno)){
+                                    $whatsapp_floating_button = 'disable';       
+                                } else {
+                                    $whatsapp_floating_button = 'enable';
+                                }
+                            }
                             ?>
-                            <div class="pgs-woo-api-field-groups">
+                            <div class="pgs-woo-api-form-groups radio-button-inline">
+                                <label><?php esc_html_e("WhatsApp Floating Button",'pgs-woo-api')?></label><br />                                        
+                                <label><input type="radio" name="pgs[pgs_app_contact_info][whatsapp_floating_button]" class="pgs-woo-api-form-control whatsapp-floating-button-status" value="enable" <?php echo ($whatsapp_floating_button == "enable")?'checked=""':'';?> /><?php esc_html_e( 'Enable','pgs-woo-api')?></label> 
+                                <label><input type="radio" name="pgs[pgs_app_contact_info][whatsapp_floating_button]" class="pgs-woo-api-form-control whatsapp-floating-button-status" value="disable" <?php echo ($whatsapp_floating_button == "disable")?'checked=""':'';?> /><?php esc_html_e( 'Disable','pgs-woo-api')?></label>                         
+                            </div>
+                            
+                            <div class="pgs-woo-api-field-group pgs-woo-api-whatsapp-no" <?php echo pgs_woo_api_whatsapp_floating_button_status()?>>
+                                <p class="description"><?php esc_html_e( 'Enter your WhatsApp number here','pgs-woo-api')?></p>
                                 <div class="pgs-woo-api-form-groups">
                                     <label><?php esc_html_e("WhatsApp No",'pgs-woo-api')?></label>                                        
-                                    <input type="text" name="pgs[pgs_app_contact_info][whatsapp_no]" class="pgs-woo-api-form-control" value="<?php echo $whatsappno?>" />                        
-                                </div>                                                                
+                                    <input id="pgs-woo-api-whatsapp-no-validation" type="text" name="pgs[pgs_app_contact_info][whatsapp_no]" class="pgs-woo-api-form-control" value="<?php echo $whatsappno?>" />                        
+                                </div>
                             </div>
                         </div>
                         
@@ -1337,7 +1351,7 @@ function pgs_woo_api_callback(){
 							<div id="contact-info-ios-section" class="device-display hidden">
 								<img src="<?php echo PGS_API_URL.'img/ios/contact-info.png'?>" />
 							</div>
-						</div>               
+						</div>
                     </div>
                 
             </div><!-- #pgs-woo-api-tabs-whatsapp -->
@@ -1358,8 +1372,8 @@ function pgs_woo_api_callback(){
                                     $sample_datas = pgs_woo_api_plugin_sample_datas();
                                     if( !pgs_woo_api_token_is_activated() ){
                     					$sample_datas = array();
-                    				}                                    
-                                    $nonce    = wp_create_nonce( "pgs_woo_api_sample_data_security"); 
+                    				}
+                                    $nonce = wp_create_nonce( "pgs_woo_api_sample_data_security"); 
                                     if( !empty($sample_datas) && is_array($sample_datas) ){
 				
                         				$sample_data_path = PGS_API_PATH.'inc/sample_data';
@@ -1367,7 +1381,7 @@ function pgs_woo_api_callback(){
                         				?>
                         				<div class="sample-data-items">
                         					<?php
-                        					$imported_samples = array();                    
+                        					$imported_samples = array();
                                             $pgs_woo_api_sample_data_arr = get_option( 'pgs_woo_api_default_sample_data_arr' );                     
                         					if(isset($pgs_woo_api_sample_data_arr) && !empty($pgs_woo_api_sample_data_arr)){                         
                                                 $imported_samples = json_decode($pgs_woo_api_sample_data_arr);
@@ -1377,21 +1391,17 @@ function pgs_woo_api_callback(){
                         						$sample_data_id = sanitize_title($sample_data['id']);
                                                 //Hide already install sample data
                                                 $sample_data_item_classes_array = array(                        							
-                        							'sample-data-item sample-data-item-'.$sample_data_id,                            
-                        						);
-                        						if(isset($imported_samples) && !empty($imported_samples)){
-                                                    $sample_data_item_classes_array[] = in_array($sample_data_id, $imported_samples)? 'disable' : '';
-                                                }
+                        							'sample-data-item sample-data-item-'.$sample_data_id                            
+                        						);                        						
                         						$sample_data_item_classes = implode( ' ', array_filter( array_unique( $sample_data_item_classes_array ) ) );
                                                 
                                                 
                                                 $preview_img_path = trailingslashit(trailingslashit($sample_data_path).$sample_data['id']).'preview.jpg';
                         						$preview_img_url = trailingslashit(trailingslashit($sample_data_url).$sample_data['id']).'preview.jpg';
                         						
-                                                $html = '';$do_disable = '';$check_icon='';
+                                                $html = '';$check_icon='';
                                                 if(!empty($imported_samples) && in_array($sample_data_id, $imported_samples)){
                                                     $html = '<i class="fa fa-check"></i>';
-                                                    $do_disable = 'disabled="disabled"';
                                                     $check_icon = '<span class="dashicons dashicons-yes"></span>';
                                                 }
                                                 
@@ -1420,7 +1430,6 @@ function pgs_woo_api_callback(){
                         									data-title="<?php echo esc_attr($sample_data['name']);?>"
                         									data-title="<?php echo esc_attr($sample_data['name']);?>"
                         									data-message="<?php echo esc_attr($sample_data['message']); ?>"
-                        									<?php echo $do_disable?>
                                                             <?php echo ( !empty($required_plugins_list) ) ? 'data-required-plugins="'.esc_attr(count($required_plugins_list)).'"' : '';?>>
                         									<?php echo esc_html__('Install', 'pgs-core');?>
                         								</button>
@@ -1441,17 +1450,58 @@ function pgs_woo_api_callback(){
                 
                 <div id="pgs-woo-api-tabs-is-wpml">
                     <div class="pgs-woo-api-panel" id="pgs-woo-api-is-wpml">
-                        <div class="pgs-woo-api-panel-body">                                                        
+                        <div class="pgs-woo-api-panel-body">
                             <div class="pgs-woo-api-panel-heading"><?php esc_html_e('WPML','pgs-woo-api')?></div>
-                            <div class="pgs-woo-api-repeater-field-group">                                                                
+                            <div class="pgs-woo-api-repeater-field-group">
                                 <div class="pgs-woo-api-form-groups radio-button-inline">
                                     <?php                                     
                                     $pgs_api_is_wpml_status = (isset($pgs_woo_api_home_option['pgs_api_is_wpml']))?$pgs_woo_api_home_option['pgs_api_is_wpml']:'enable';                                    
                                     ?>
                                     <label><?php esc_html_e("Status",'pgs-woo-api')?></label>                                        
-                                    <label><input type="radio" name="pgs[pgs_api_is_wpml]" class="pgs-woo-api-form-control feature-box-status" value="enable" <?php echo ($pgs_api_is_wpml_status == "enable")?'checked=""':'';?> /><?php esc_html_e( 'Enable','pgs-woo-api')?></label> 
-                                    <label><input type="radio" name="pgs[pgs_api_is_wpml]" class="pgs-woo-api-form-control feature-box-status" value="disable" <?php echo ($pgs_api_is_wpml_status == "disable")?'checked=""':'';?> /><?php esc_html_e( 'Disable','pgs-woo-api')?></label>                         
+                                    <label><input type="radio" name="pgs[pgs_api_is_wpml]" class="pgs-woo-api-form-control feature-box-status" value="enable" <?php echo ($pgs_api_is_wpml_status == "enable")?'checked=""':'';?> /><?php esc_html_e( 'Enable','pgs-woo-api')?></label>
+                                    <label><input type="radio" name="pgs[pgs_api_is_wpml]" class="pgs-woo-api-form-control feature-box-status" value="disable" <?php echo ($pgs_api_is_wpml_status == "disable")?'checked=""':'';?> /><?php esc_html_e( 'Disable','pgs-woo-api')?></label>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="pgs-woo-api-tabs-filters">
+                    <div class="pgs-woo-api-panel" id="pgs-woo-api-filters">
+                        <div class="pgs-woo-api-panel-body">
+                            <div class="pgs-woo-api-panel-heading"><?php esc_html_e('Filters','pgs-woo-api')?></div>
+                            <div class="pgs-woo-api-repeater-field-group">                                                                
+                                    <?php
+                                    $pgs_price_filters = (isset($pgs_woo_api_home_option['pgs_api_filters']['pgs_price']))?$pgs_woo_api_home_option['pgs_api_filters']['pgs_price']:'enable';
+                                    $pgs_average_rating = (isset($pgs_woo_api_home_option['pgs_api_filters']['pgs_average_rating']))?$pgs_woo_api_home_option['pgs_api_filters']['pgs_average_rating']:'enable';
+                                    ?>
+                                    <div class="pgs-woo-api-form-groups radio-button-inline">
+                                        <label><?php esc_html_e("Price",'pgs-woo-api')?></label><br />
+                                        <label><input type="radio" name="pgs[pgs_api_filters][pgs_price]" class="pgs-woo-api-form-control" value="enable"  <?php echo ($pgs_price_filters == "enable")?'checked=""':'';?> /><?php esc_html_e( 'Enable','pgs-woo-api')?></label>
+                                        <label><input type="radio" name="pgs[pgs_api_filters][pgs_price]" class="pgs-woo-api-form-control" value="disable" <?php echo ($pgs_price_filters == "disable")?'checked=""':'';?> /><?php esc_html_e( 'Disable','pgs-woo-api')?></label>
+                                    </div>
+                                    <?php
+                                    $attribute_taxonomies = wc_get_attribute_taxonomies();
+                                    if ( ! empty( $attribute_taxonomies ) ) {
+                        				foreach ( $attribute_taxonomies as $tax ) {                        					
+                                            $attribute    = wc_sanitize_taxonomy_name( $tax->attribute_name );
+                        					$taxonomy     = wc_attribute_taxonomy_name( $attribute );
+                                            $pgs_taxonomy_filters = (isset($pgs_woo_api_home_option['pgs_api_filters'][$taxonomy]))?$pgs_woo_api_home_option['pgs_api_filters'][$taxonomy]:'enable';
+                                            ?>
+                                            <div class="pgs-woo-api-form-groups radio-button-inline">
+                                                <label><?php echo ucfirst($tax->attribute_label)?></label><br />
+                                                <label><input type="radio" name="pgs[pgs_api_filters][<?php echo $taxonomy?>]" class="pgs-woo-api-form-control" value="enable" <?php echo ($pgs_taxonomy_filters == "enable")?'checked=""':'';?> /><?php esc_html_e( 'Enable','pgs-woo-api')?></label>
+                                                <label><input type="radio" name="pgs[pgs_api_filters][<?php echo $taxonomy?>]" class="pgs-woo-api-form-control" value="disable" <?php echo ($pgs_taxonomy_filters == "disable")?'checked=""':'';?> /><?php esc_html_e( 'Disable','pgs-woo-api')?></label>
+                                            </div>
+                                            <?php
+                                        }
+                        			}
+                                    ?>
+                                    <div class="pgs-woo-api-form-groups radio-button-inline">
+                                        <label><?php esc_html_e("Average Rating",'pgs-woo-api')?></label><br />
+                                        <label><input type="radio" name="pgs[pgs_api_filters][pgs_average_rating]" class="pgs-woo-api-form-control" value="enable" <?php echo ($pgs_average_rating == "enable")?'checked=""':'';?>/><?php esc_html_e( 'Enable','pgs-woo-api')?></label>
+                                        <label><input type="radio" name="pgs[pgs_api_filters][pgs_average_rating]" class="pgs-woo-api-form-control" value="disable" <?php echo ($pgs_average_rating == "disable")?'checked=""':'';?> /><?php esc_html_e( 'Disable','pgs-woo-api')?></label>
+                                    </div>
                             </div>
                         </div>
                     </div>

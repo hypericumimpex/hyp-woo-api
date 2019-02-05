@@ -118,9 +118,15 @@ if( isset($_POST['submit-api']) ){
             $string_url=sanitize_textarea_field($_POST['pgs_woo_api_checkout_custom_redirect_urls']);
             update_option('pgs_woo_api_checkout_custom_redirect_urls',$string_url);
         }
+        
+        if(isset($_POST['pgs']['pgs_app_contact_info']['whatsapp_floating_button'])){
+            if(empty($_POST['pgs']['pgs_app_contact_info']['whatsapp_no'])){
+                $_POST['pgs']['pgs_app_contact_info']['whatsapp_floating_button'] = 'disable';
+            }
+        }
+        
         //Payment Gateway redirect URLs Ends
         update_option('pgs_woo_api_home_option',$_POST['pgs']);
-        
         $app_assets = array();
         
         /**
@@ -136,21 +142,20 @@ if( isset($_POST['submit-api']) ){
             'primary_color' => '#1e73be',
             'secondary_color' => '#8224e3'
         );
-        
         update_option( 'pgs_woo_api_app_assets_options',$app_assets );
     } else {
         
         if(isset($_POST['pgs']['app_logo_light'])){
-            $_POST['pgs'.$lang]['app_logo_light'] = stripslashes($_POST['pgs']['app_logo_light']);                        
+            $_POST['pgs'.$lang]['app_logo_light'] = stripslashes($_POST['pgs']['app_logo_light']);
         }
         
         if(isset($_POST['pgs']['app_logo'])){
-            $_POST['pgs'.$lang]['app_logo'] = stripslashes($_POST['pgs']['app_logo']);                        
+            $_POST['pgs'.$lang]['app_logo'] = stripslashes($_POST['pgs']['app_logo']);
         }
 
         if(isset($_POST['pgs']['main_slider'])){
             $t = 0;
-            foreach($_POST['pgs']['main_slider'] as $k => $v){                    
+            foreach($_POST['pgs']['main_slider'] as $k => $v){
                 $_POST['pgs'.$lang]['main_slider'][$t]['upload_image_id'] = $v['upload_image_id'];
                 if(isset($v['upload_image_id']) && !empty($v['upload_image_id']) ){                    
                     $vsrc = wp_get_attachment_image_src($v['upload_image_id'], 'large' );                    
@@ -163,15 +168,14 @@ if( isset($_POST['submit-api']) ){
                 
                 if(isset($v['slider_cat_id']) && !empty($v['slider_cat_id']) ){
                                         
-                    if(!empty($v['slider_cat_id'])){                            
+                    if(!empty($v['slider_cat_id'])){
                         $_POST['pgs'.$lang]['main_slider'][$t]['slider_cat_id'] = $v['slider_cat_id'];                            
                     } else {
                         $_POST['pgs'.$lang]['main_slider'][$t]['slider_cat_id'] = ''; 
                     }
                 }
-                                
-                $t++;                                            
-            }                   
+                $t++;
+            }
         }
         
         
@@ -181,8 +185,8 @@ if( isset($_POST['submit-api']) ){
                 $_POST['pgs'.$lang]['category_banners'][$p]['cat_banners_image_id'] = $v['cat_banners_image_id'];
                 if(isset($v['cat_banners_image_id']) && !empty($v['cat_banners_image_id']) ){                    
                     $vsrc = wp_get_attachment_image_src($v['cat_banners_image_id'], 'app_thumbnail' );                    
-                    if(!empty($vsrc)){                            
-                        $_POST['pgs'.$lang]['category_banners'][$p]['cat_banners_image_url'] = esc_url($vsrc[0]);                            
+                    if(!empty($vsrc)){
+                        $_POST['pgs'.$lang]['category_banners'][$p]['cat_banners_image_url'] = esc_url($vsrc[0]);
                     } else {
                         $_POST['pgs'.$lang]['category_banners'][$p]['cat_banners_image_url'] = ''; 
                     }
@@ -197,15 +201,14 @@ if( isset($_POST['submit-api']) ){
                 } else {
                     $_POST['pgs'.$lang]['category_banners'][$p]['cat_banners_cat_id'] = '';
                 }
-                
-                $p++;                                            
-            }                   
+                $p++;
+            }
         }
         
         
         if(isset($_POST['pgs']['banner_ad'])){
             $p = 0;
-            foreach($_POST['pgs']['banner_ad'] as $k => $v){                    
+            foreach($_POST['pgs']['banner_ad'] as $k => $v){
                 $_POST['pgs'.$lang]['banner_ad'][$p]['banner_ad_image_id'] = $v['banner_ad_image_id'];
                 if(isset($v['banner_ad_image_id']) && !empty($v['banner_ad_image_id']) ){
                     $banner_ad_image_id = $v['banner_ad_image_id'];                     
@@ -236,9 +239,9 @@ if( isset($_POST['submit-api']) ){
         }
                 
         if(isset($_POST['pgs']['feature_box'])){
-            $p = 0;        
-            foreach($_POST['pgs']['feature_box'] as $k => $v){                
-                $_POST['pgs'.$lang]['feature_box'][$p]['feature_image_id'] = $v['feature_image_id'];                
+            $p = 0;
+            foreach($_POST['pgs']['feature_box'] as $k => $v){
+                $_POST['pgs'.$lang]['feature_box'][$p]['feature_image_id'] = $v['feature_image_id'];
                 if(isset($v['feature_title'])){
                     $_POST['pgs'.$lang]['feature_box'][$p]['feature_title'] = stripslashes($v['feature_title']);
                 }
@@ -253,7 +256,7 @@ if( isset($_POST['submit-api']) ){
             $products_carousel_default = array(
                 'feature_products' => array(
                     'status' => "enable",
-                    'title' => ""
+                    'title' => "Feature Products"
                 ),
                 'recent_products' => array(
                     'status' => "enable",
@@ -261,25 +264,29 @@ if( isset($_POST['submit-api']) ){
                 ),
                 'special_deal_products' => array(
                     'status' => "enable",
-                    'title' => ""
+                    'title' => "Special Deal"
                 ),
                 'popular_products' => array(
                     'status' => "enable",
-                    'title' => ""
+                    'title' => "Popular Products"
+                ),
+                'top_rated_products' => array(
+                    'status' => "enable",
+                    'title' => "Top Rated products"
                 )
             );  
                       
-            foreach($products_carousel_default as $key => $val){
+            foreach($_POST['pgs']['products_carousel'] as $key => $val){
                 $status = (isset($_POST['pgs']['products_carousel'][$key]['status']))?$_POST['pgs']['products_carousel'][$key]['status']:$products_carousel_default[$key]['status'];
                 $title = (isset($_POST['pgs']['products_carousel'][$key]['title']))?$_POST['pgs']['products_carousel'][$key]['title']:$products_carousel_default[$key]['title'];
-                foreach($products_carousel_default as $key => $val){
+                foreach($_POST['pgs']['products_carousel'] as $key => $val){
                     $status = (isset($_POST['pgs']['products_carousel'][$key]['status']))?$_POST['pgs']['products_carousel'][$key]['status']:$products_carousel_default[$key]['status'];
                     $title = (isset($_POST['pgs']['products_carousel'][$key]['title']))?$_POST['pgs']['products_carousel'][$key]['title']:$products_carousel_default[$key]['title'];
                     $_POST['pgs'.$lang]['products_carousel'][$key]['status'] = $status;  
                     $_POST['pgs'.$lang]['products_carousel'][$key]['title'] = $title;
                 }
             }
-        }               
+        }
         update_option('pgs_woo_api_home_option_'.$lang,$_POST['pgs'.$lang]);
     }
     $message = esc_html__( 'Settings saved.', 'pgs-woo-api' );
@@ -456,103 +463,4 @@ function pgs_woo_api_get_app_cat_icon_id($id='',$echo=true){
             echo $product_app_cat_thumbnail_id;
         }    
     }        
-}
-
-function pgs_woo_api_get_products_carousel(){
-    $pgs_woo_api_home_option = get_option('pgs_woo_api_home_option');
-    $lang='';
-    $is_wpml_active = pgs_woo_api_is_wpml_active();        
-    if($is_wpml_active){            
-        $lang = pgs_woo_api_wpml_get_lang();
-        if(!empty($lang)){                
-            $lang_prifix = '_'.$lang;
-            $products_carousel = get_option('pgs_woo_api_home_option'.$lang_prifix);                                
-            if(isset($products_carousel['products_carousel']) && !empty($products_carousel['products_carousel'])){
-                $pgs_woo_api_home_option = $products_carousel;
-            }
-             
-        }
-    }        
-    
-    $feature_doc_description = sprintf(
-        // %s = Link to documentation
-        wp_kses( __( 'How to create featured product <a href="%s" target="_blank">click here</a>.', 'pgs-woo-api' ),
-    		array(
-    			'a'    => array(
-    				'href' => array(),
-                    'target' => array(),
-    			),
-    		)
-        ),
-        'https://docs.woocommerce.com/document/managing-products/#section-20'
-    );
-    $special_deal_doc_description = sprintf(
-        // %s = Link to documentation
-        wp_kses( __( 'How to create special deal products <a href="%s" target="_blank">click here</a>.', 'pgs-woo-api' ),
-    		array(
-    			'a'    => array(
-    				'href' => array(),
-                    'target' => array(),
-    			),
-    		)
-        ),
-        'http://docs.potenzaglobalsolutions.com/docs/ciya-shop-mobile-apps/#special-deal-products-or-schedule-sale-products'
-    );    
-    $recent_doc_description = esc_html__( 'It will show recently added product list.', 'pgs-woo-api' );    
-    $popular_doc_description = esc_html__( 'It will show the products list based on total sales.', 'pgs-woo-api' );
-            
-    $products_carousel_default = array(
-        'feature_products' => array(
-            'label' => esc_html__("Feature Products",'pgs-woo-api'),
-            'description' => esc_html__('Feature products carousels display on the home screen.','pgs-woo-api'),            
-            'doc_description' => '<p class="description">'.$feature_doc_description.'</p>',
-            'status' => "enable",
-            'title' => ""
-        ),
-        'recent_products' => array(
-            'label' => esc_html__("Recent Products",'pgs-woo-api'),
-            'description' => esc_html__("Recent products carousels display on the home screen.",'pgs-woo-api'),
-            'doc_description' => '<p class="description">'.$recent_doc_description.'</p>',
-            'status' => "enable",
-            'title' => ""
-        ),
-        'special_deal_products' => array(
-            'label' => esc_html__("Special Deal Products",'pgs-woo-api'),
-            'description' => esc_html__("Special deal products carousels display on the home screen.",'pgs-woo-api'),
-            'doc_description' => '<p class="description">'.$special_deal_doc_description.'</p>',
-            'status' => "enable",
-            'title' => ""
-        ),
-        'popular_products' => array(
-            'label' => esc_html__("Popular Products",'pgs-woo-api'),
-            'description' => esc_html__("Popular products carousels display on the home screen.",'pgs-woo-api'),
-            'doc_description' => '<p class="description">'.$popular_doc_description.'</p>',
-            'status' => "enable",
-            'title' => ""
-        )
-    );
-    $products_carousel['products_carousel'] = $products_carousel_default;    
-    if(isset($pgs_woo_api_home_option['products_carousel'])){
-        $products_carousel['products_carousel'] = $pgs_woo_api_home_option['products_carousel'];
-        foreach($products_carousel['products_carousel'] as $k => $v){
-            if( $k == 'feature_products' ){
-                $products_carousel['products_carousel'][$k]['label'] = $products_carousel_default[$k]['label'];
-                $products_carousel['products_carousel'][$k]['description'] = $products_carousel_default[$k]['description'];
-                $products_carousel['products_carousel'][$k]['doc_description'] = $products_carousel_default[$k]['doc_description'];
-            } elseif( $k == 'recent_products' ){
-                $products_carousel['products_carousel'][$k]['label'] = $products_carousel_default[$k]['label'];
-                $products_carousel['products_carousel'][$k]['description'] = $products_carousel_default[$k]['description'];
-                $products_carousel['products_carousel'][$k]['doc_description'] = $products_carousel_default[$k]['doc_description'];
-            } elseif( $k == 'special_deal_products' ){
-                $products_carousel['products_carousel'][$k]['label'] = $products_carousel_default[$k]['label'];
-                $products_carousel['products_carousel'][$k]['description'] = $products_carousel_default[$k]['description'];
-                $products_carousel['products_carousel'][$k]['doc_description'] = $products_carousel_default[$k]['doc_description'];
-            } elseif( $k == 'popular_products' ){
-                $products_carousel['products_carousel'][$k]['label'] = $products_carousel_default[$k]['label'];
-                $products_carousel['products_carousel'][$k]['description'] = $products_carousel_default[$k]['description'];
-                $products_carousel['products_carousel'][$k]['doc_description'] = $products_carousel_default[$k]['doc_description'];
-            }
-        }
-    }
-    return $products_carousel['products_carousel'];
 }

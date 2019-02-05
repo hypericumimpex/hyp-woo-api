@@ -17,6 +17,8 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
 	 * @var string
 	 */
 	protected $rest_base = 'home';
+    private $is_currency_switcher_active = false;
+    private $app_ver = '';
     	
 	public function __construct() {
 		$this->register_routes();	
@@ -42,24 +44,31 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
         
         $input = file_get_contents("php://input");
         $request = json_decode($input,true);
-        $app_ver = '';
+        
         if(isset($request['app-ver']) && !empty($request['app-ver'])) {
-    		$app_ver = $request['app-ver'];
-    	}        
+    		$this->app_ver = $request['app-ver'];
+    	}
+
+        /**
+         * Update currency rale if currency switcher plugin is active 
+         */ 
+        $this->is_currency_switcher_active = pgs_woo_api_is_currency_switcher_active();
+        
+        
         $lang='';
-        $is_wpml_active = pgs_woo_api_is_wpml_active();        
-        if($is_wpml_active){            
+        $is_wpml_active = pgs_woo_api_is_wpml_active();
+        if($is_wpml_active){
             $lang = pgs_woo_api_wpml_get_lang();
-            if(!empty($lang)){                
-                $lang_prifix = '_'.$lang;                                
+            if(!empty($lang)){
+                $lang_prifix = '_'.$lang;
                 $pgs_woo_api_wpml_home_option = get_option('pgs_woo_api_home_option'.$lang_prifix);
             }
         }
                 
-        $pgs_woo_api_home_option = array();$pgs_woo_api_home_option['app_logo'] = '';$pgs_woo_api_home_option['app_logo_light'] = '';        
+        $pgs_woo_api_home_option = array();$pgs_woo_api_home_option['app_logo'] = '';$pgs_woo_api_home_option['app_logo_light'] = '';
         $pgs_woo_api_home_option = get_option('pgs_woo_api_home_option');
         
-        $price_formate_option = get_woo_price_formate_option_array();        
+        $price_formate_option = get_woo_price_formate_option_array();
         
         if(!empty($lang)){
             $pgs_woo_api_home_option['app_logo'] = $this->pgs_woo_api_get_app_logo($pgs_woo_api_wpml_home_option,$pgs_woo_api_home_option);
@@ -73,7 +82,7 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
             $pgs_woo_api_home_option['feature_box_heading'] = $feature_box_data['feature_box_heading'];
             $pgs_woo_api_home_option['feature_box_status'] = $feature_box_data['feature_box_status'];
             $pgs_woo_api_home_option['feature_box'] = $feature_box_data['feature_box'];
-            $carousel_data =  $this->pgs_woo_api_get_home_products_carousel_data($pgs_woo_api_wpml_home_option,$app_ver);
+            $carousel_data =  $this->pgs_woo_api_get_home_products_carousel_data($pgs_woo_api_wpml_home_option,$this->app_ver);
         
         } else {
             $pgs_woo_api_home_option['app_logo'] = $this->pgs_woo_api_get_app_logo($pgs_woo_api_home_option);
@@ -86,10 +95,10 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
             $pgs_woo_api_home_option['feature_box_heading'] = $feature_box_data['feature_box_heading'];
             $pgs_woo_api_home_option['feature_box_status'] = $feature_box_data['feature_box_status'];
             $pgs_woo_api_home_option['feature_box'] = $feature_box_data['feature_box'];                        
-            $carousel_data =  $this->pgs_woo_api_get_home_products_carousel_data($pgs_woo_api_home_option,$app_ver);            
+            $carousel_data =  $this->pgs_woo_api_get_home_products_carousel_data($pgs_woo_api_home_option,$this->app_ver);            
         }
         
-        if($app_ver !== ''){
+        if($this->app_ver !== ''){
             $products_view_orders = array();
             if(isset($carousel_data['products_carousel'])){                
                 foreach($carousel_data['products_carousel'] as $key => $val){
@@ -109,7 +118,7 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
         $pgs_woo_api_home_option['info_pages'] = $this->pgs_woo_api_get_info_pages($pgs_woo_api_home_option,$lang);
         $pgs_woo_api_home_option['all_categories'] = $this->pgs_woo_api_cat_list(); 
         $pgs_woo_api_home_option['is_wishlist_active'] = pgs_woo_api_is_wishlist_active();
-        $pgs_woo_api_home_option['is_currency_switcher_active'] = pgs_woo_api_is_currency_switcher_active();
+        $pgs_woo_api_home_option['is_currency_switcher_active'] = $this->is_currency_switcher_active;
         $pgs_woo_api_home_option['is_order_tracking_active'] = pgs_woo_api_is_order_tracking_active();
         $pgs_woo_api_home_option['is_reward_points_active'] = pgs_woo_api_is_reward_points_active();        
         $pgs_woo_api_home_option['is_guest_checkout_active'] = pgs_woo_api_is_guest_checkout();
@@ -133,6 +142,7 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
         $pgs_woo_api_home_option['wpml_languages'] = $this->pgs_woo_api_get_all_wpml_langs($is_wpml_active);
         $checkout_redirect_urls  = $this->pgs_woo_api_get_checkout_redirect_url();
         $pgs_woo_api_home_option['checkout_redirect_url'] = $checkout_redirect_urls;
+        $pgs_woo_api_home_option['pgs_app_contact_info'] = $this->pgs_woo_api_get_contact_info($pgs_woo_api_home_option);
 
         /**
          *  Get App Assets app color
@@ -149,20 +159,30 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
             }
         }
         $pgs_woo_api_home_option['app_color'] = $app_color;
-        
+        $pgs_woo_api_home_option['wc_tax_enabled'] = false;//wc_tax_enabled
+        if(wc_tax_enabled()){
+            $pgs_woo_api_home_option['wc_tax_enabled'] = true;
+            $pgs_woo_api_home_option['woocommerce_tax_display_shop'] = "incl";//Including tax
+            if("excl" == get_option( 'woocommerce_tax_display_shop' )){
+                $pgs_woo_api_home_option['woocommerce_tax_display_shop'] = "excl";//Excluding tax
+            }
+            $pgs_woo_api_home_option['woocommerce_tax_display_cart'] = "incl";//Including tax
+            if("excl" == get_option( 'woocommerce_tax_display_cart' )){
+                $pgs_woo_api_home_option['woocommerce_tax_display_cart'] = "excl";//Excluding tax
+            }                
+        }
         $is_rtl = false;
         if ( is_rtl() ) {
             $is_rtl = true;
         }
         $pgs_woo_api_home_option['is_rtl'] = $is_rtl;
-        $cs_status = pgs_woo_api_is_currency_switcher_active();
-        if($cs_status){
+        if($this->is_currency_switcher_active){
             $currency_data = get_option('woocs');
             if(isset($currency_data) && !empty($currency_data)){
                 global $WOOCS;
                 $currencies = $WOOCS->get_currencies();
                 if(isset($currencies) && !empty($currencies)){
-                    $pgs_woo_api_home_option['currency_switcher'] = $currencies;                        
+                    $pgs_woo_api_home_option['currency_switcher'] = $currencies;
                 }    
             }
         }
@@ -173,7 +193,7 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
     public function pgs_woo_api_get_app_logo($pgs_woo_api_option,$default_lang_app_logo=array()){
         $app_logo_id = (isset($pgs_woo_api_option['app_logo']))?$pgs_woo_api_option['app_logo']:'';
         $app_logo_url = '';
-        if(!empty($app_logo_id)){    	  
+        if(!empty($app_logo_id)){
             $src = wp_get_attachment_image_src($app_logo_id, apply_filters( 'pgs_woo_api_app_logo_image', 'full' ) );
             if(!empty($src)){
                 $app_logo_url = $src[0];
@@ -187,7 +207,7 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
                 }
             }            
         }
-        return $app_logo_url;        
+        return $app_logo_url;
     }
     
     public function pgs_woo_api_get_app_logo_light($pgs_woo_api_option,$default_lang_logo_light=array()){
@@ -413,6 +433,11 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
                         $pgs_woo_api_home_option['products_carousel'][$k]['title'] = $v['title'];
                         $pgs_woo_api_home_option['products_carousel'][$k]['screen_order'] = $i;
                         $pgs_woo_api_home_option['products_carousel'][$k]['products'] = $this->pgs_woo_api_get_popular_products($no_of_items,$show='popular',$orderby,$order,$app_ver);
+                    } elseif( $k == 'top_rated_products' ){
+                        $pgs_woo_api_home_option['products_carousel'][$k]['status'] = $v['status'];
+                        $pgs_woo_api_home_option['products_carousel'][$k]['title'] = $v['title'];
+                        $pgs_woo_api_home_option['products_carousel'][$k]['screen_order'] = $i;
+                        $pgs_woo_api_home_option['products_carousel'][$k]['products'] = $this->pgs_woo_api_get_top_rated_products($no_of_items,$show='top_rated',$orderby,$order,$app_ver);
                     }
                     $i++;
                 }
@@ -422,7 +447,7 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
             $pgs_woo_api_home_option['popular_products'] = $this->pgs_woo_api_get_popular_products($no_of_items,$show='popular',$orderby,$order,$app_ver);
             $pgs_woo_api_home_option['scheduled_sale_products'] = $this->pgs_woo_api_scheduled_sale_products($no_of_items,$app_ver);
         }
-        return $pgs_woo_api_home_option;    
+        return $pgs_woo_api_home_option;
     }
     
     public function pgs_woo_api_get_all_wpml_langs($is_wpml_active){        
@@ -509,22 +534,74 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
         return $data;    
     }
     
-    function pgs_woo_api_get_recent_products_list($no_of_items,$show,$orderby,$order){
+    public function pgs_woo_api_get_recent_products_list($no_of_items,$show,$orderby,$order,$app_ver=''){
         $query = $this->pgs_woo_api_get_product_crousel_query($no_of_items,$show,$orderby,$order);
-        $result = $this->pgs_woo_api_get_product_crousel_data($query);
+        $result = $this->pgs_woo_api_get_product_crousel_data($query,$app_ver);
         return $result;
     }
 
-    function pgs_woo_api_get_feature_products_list($no_of_items,$show,$orderby,$order){        
+    public function pgs_woo_api_get_feature_products_list($no_of_items,$show,$orderby,$order,$app_ver=''){        
         $query = $this->pgs_woo_api_get_product_crousel_query($no_of_items,$show,$orderby,$order);        
-        $result = $this->pgs_woo_api_get_product_crousel_data($query);
+        $result = $this->pgs_woo_api_get_product_crousel_data($query,$app_ver);
         return $result;
+    }
+    
+    public function pgs_woo_api_get_top_rated_products($no_of_items,$show='top_rated',$orderby,$order,$app_ver){
+        $query_args = array(
+			'posts_per_page' => $no_of_items,
+			'no_found_rows'  => 1,
+			'post_status'    => 'publish',
+			'post_type'      => 'product',
+			'meta_key'       => '_wc_average_rating',
+			'orderby'        => array(
+                'meta_value_num' => 'DESC',
+                'ID' => 'ASC',
+            ),
+			'order'          => $order,
+			'tax_query'      => array()
+		);
+        
+        $product_visibility_terms  = wc_get_product_visibility_term_ids();
+
+		// Hide out of stock products.
+		if ( 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) ) {
+			$product_visibility_not_in[] = $product_visibility_terms['outofstock'];
+		}
+        
+        if ( !empty( $query_args['tax_query'] ) ) {
+			$query_args['tax_query']['relation'] = 'AND';
+		}
+        
+        if ( ! empty( $product_visibility_not_in ) ) {
+			$query_args['tax_query'][] = array(
+				'taxonomy' => 'product_visibility',
+				'field'    => 'term_taxonomy_id',
+				'terms'    => $product_visibility_not_in,
+				'operator' => 'NOT IN',
+			);
+		}        
+        $query = new WP_Query( $query_args );        
+        if ( $query->have_posts() ) {
+			while ( $query->have_posts() ) {
+				$query->the_post();
+                $product = wc_get_product( $query->post->ID );
+                $productdata[] = $this->pgs_woo_api_set_productdata($product,$this->is_currency_switcher_active,$app_ver);
+			}
+            return $productdata;
+        } else {
+            if($app_ver == ''){
+                return $error = array();
+            } else {
+                return $productdata;
+            }
+        }
+		wp_reset_postdata();
     }
          
     /**
      * Get All Popular Products     
      */ 
-    function pgs_woo_api_get_popular_products($no_of_items,$show,$orderby,$order,$app_ver=''){        
+    public function pgs_woo_api_get_popular_products($no_of_items,$show,$orderby,$order,$app_ver=''){        
         
         $productdata = array();
         $product_visibility_term_ids = wc_get_product_visibility_term_ids();
@@ -561,46 +638,11 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
         if ( $popular_products && $popular_products->have_posts() ) {
             while ( $popular_products->have_posts() ) {
 				$popular_products->the_post();
-				$product_id = get_the_ID();
-                if (has_post_thumbnail( $product_id )){
-                    $image = '';
-                    $image = get_the_post_thumbnail_url($product_id, apply_filters( 'pgs_woo_api_app_thumbnail_image', 'app_thumbnail' ));
-                    if(empty($image)){
-                        $image = woocommerce_placeholder_img_src();    
-                    } 
-                } else {
-                  $image = woocommerce_placeholder_img_src();  
-                }
+				$product_id = $popular_products->post->ID;
                 
                 pgs_woo_api_hook_remove_tax_in_price_html();//Remove include tax in price html
                 $product = wc_get_product( $product_id );
-                $price_html = $product->get_price_html();
-                $regular_price = $product->get_regular_price();
-                $sale_price = $product->get_sale_price();
-                $get_price = $product->get_price();
-                
-                $is_currency_switcher_active = pgs_woo_api_is_currency_switcher_active();
-                if($is_currency_switcher_active){
-                    $regular_price = $this->pgs_woo_api_update_currency_rate($regular_price);
-                    $sale_price = $this->pgs_woo_api_update_currency_rate($sale_price);
-                    $get_price = $this->pgs_woo_api_update_currency_rate($get_price);
-                }
-                
-                $price = array(
-                    'regular_price' => $regular_price,
-                    'sale_price' => $sale_price,
-                    'price' => $get_price
-                );
-                $average = $product->get_average_rating();
-                
-                $productdata[] = array(
-                    'id' => $product_id,
-                    'title' => html_entity_decode(get_the_title($product_id)),
-                    'image' => $image,
-                    'price_html' => $price_html,
-                    'price' => $price,
-                    'rating' => $average
-                );
+                $productdata[] = $this->pgs_woo_api_set_productdata($product,$this->is_currency_switcher_active,$app_ver);
 			}
             wp_reset_postdata();
             return $productdata;
@@ -612,7 +654,6 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
             }
         }
     }
-    
     
     /**
      * Gey All Scheduled Sale Products OR special_deal_products     
@@ -648,93 +689,26 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
         }
         $product_ids_on_sale = array_unique($product_ids_on_sale);
             
-        if ( !empty( $product_ids_on_sale ) ) {        
-            
-                foreach($product_ids_on_sale as $val){
-                         
+        if ( !empty( $product_ids_on_sale ) ) {                
+                foreach($product_ids_on_sale as $val){                         
                     $product_id = $val;
-                
-                    if (has_post_thumbnail( $product_id )){
-                        $image = get_the_post_thumbnail_url($product_id);    
-                    } else {
-                        $image = woocommerce_placeholder_img_src();               
-                    }
                     $from = get_post_meta($product_id,'_sale_price_dates_from',true);                    
                         
                     $now = new DateTime();
-                    $future_date = new DateTime(date('Y-m-d').' 24:00:00');
-                    
-                    $product = wc_get_product( $product_id );
-                    $price_html = $product->get_price_html();
-                    $regular_price = $product->get_regular_price();
-                    $sale_price = $product->get_sale_price();
-                    $get_price = $product->get_price();
-                    
-                    /**
-                     * Update currency rale if currency switcher plugin is active 
-                     */ 
-                    $is_currency_switcher_active = pgs_woo_api_is_currency_switcher_active();
-                    if($is_currency_switcher_active){                        
-                        $regular_price = $this->pgs_woo_api_update_currency_rate($regular_price);
-                        $sale_price = $this->pgs_woo_api_update_currency_rate($sale_price);
-                        $get_price = $this->pgs_woo_api_update_currency_rate($get_price);
-                    }
-                    
-                    
-                    $price = array(
-                        'regular_price' => $regular_price,
-                        'sale_price' => $sale_price,
-                        'price' => $get_price,
-                    );
-                    $per = 0;
-                    if( $product->is_type( 'simple' ) ){
-                        if($regular_price > 0 && $sale_price > 0){
-                            $per = round((($regular_price - $sale_price) / ($regular_price)) * 100);
-                        }
-                    } elseif( $product->is_type( 'variable' ) ){
-
-            			$available_variations = $product->get_available_variations();
-            
-            			if($available_variations){
-            
-            				$percents = array();
-            				foreach($available_variations as $variations){
-            
-            					$regular_price = $variations['display_regular_price'];
-            					$sale_price = $variations['display_price'];
-            
-            					if ($regular_price){
-            						$percentage = round( ( ( $regular_price - $sale_price ) / $regular_price ) * 100 );
-            						$percents[] =  $percentage;
-            					}
-            				}
-            
-            				$max_discount = min($percents);
-            				$per = $max_discount;
-            			}
-            		}
-                    
+                    $future_date = new DateTime(date('Y-m-d').' 24:00:00');                    
+                    $product = wc_get_product( $product_id );                    
                     $interval = $future_date->diff($now);                            
                     $deal_life = array(                        
                         'hours' => $interval->format('%h'),
                         'minutes' => $interval->format('%i'),
                         'seconds' => $interval->format('%s')
-                    );  
-                    
-                    
-                    $average = $product->get_average_rating();
-                              
-                    if($from <= time()){
-                        $productdata[] = array(
-                            'id' => $product_id,
-                            'title' => html_entity_decode(get_the_title($product_id)),
-                            'image' => $image,
-                            'deal_life' => $deal_life,
-                            'price_html' => $price_html,
-                            'price' => $price,
-                            'percentage' => $per,                     
-                            'rating' => $average
-                        );
+                    );                                                  
+                    if($from <= time()){                        
+                        $data = $this->pgs_woo_api_set_productdata($product,$this->is_currency_switcher_active,$app_ver);
+                        $per = $this->pgs_woo_api_get_max_discount_percentage($product,$data);                        
+                        $data['deal_life'] = $deal_life;
+                        $data['percentage'] = $per;
+                        $productdata[] = $data;
                     }                
                 }
                 if($app_ver == ''){
@@ -758,79 +732,15 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
     }
     
     
-    function pgs_woo_api_get_product_crousel_data($loop){                
+    public function pgs_woo_api_get_product_crousel_data($loop,$app_ver=''){                
         if($loop->have_posts()){
-            while ( $loop->have_posts() ) : $loop->the_post();global $product; 
-                //                             
-                $product_id = get_the_ID();
-            
-                if (has_post_thumbnail( $product_id )){
-                    $image = get_the_post_thumbnail_url($product_id);    
-                } else {
-                    $image = woocommerce_placeholder_img_src();               
-                }
-                
-                $product = wc_get_product( $product_id );
-                $price_html = $product->get_price_html();
-                $regular_price = $product->get_regular_price();
-                $sale_price = $product->get_sale_price();
-                $get_price = $product->get_price();
-                
-                /**
-                 * Update currency rale if currency switcher plugin is active 
-                 */ 
-                $is_currency_switcher_active = pgs_woo_api_is_currency_switcher_active();
-                if($is_currency_switcher_active){
-                    $regular_price = $this->pgs_woo_api_update_currency_rate($regular_price);
-                    $sale_price = $this->pgs_woo_api_update_currency_rate($sale_price);
-                    $get_price = $this->pgs_woo_api_update_currency_rate($get_price);
-                       
-                }
-                
-                
-                $price = array(
-                    'regular_price' => $regular_price,
-                    'sale_price' => $sale_price,
-                    'price' => $get_price,
-                );
-                $per = 0;
-                if( $product->is_type( 'simple' ) ){
-                    if($regular_price > 0 && $sale_price > 0){
-                        $per = round((($regular_price - $sale_price) / ($regular_price)) * 100);
-                    }
-                } elseif( $product->is_type( 'variable' ) ){
-
-        			$available_variations = $product->get_available_variations();
-        
-        			if($available_variations){
-        
-        				$percents = array();
-        				foreach($available_variations as $variations){
-        
-        					$regular_price = $variations['display_regular_price'];
-        					$sale_price = $variations['display_price'];
-        
-        					if ($regular_price){
-        						$percentage = round( ( ( $regular_price - $sale_price ) / $regular_price ) * 100 );
-        						$percents[] =  $percentage;
-        					}
-        				}
-        
-        				$max_discount = min($percents);
-        				$per = $max_discount;
-        			}
-        		}                          
-                
-                $average = $product->get_average_rating();
-                $productdata[] = array(
-                    'id' => $product_id,
-                    'title' => html_entity_decode(get_the_title($product_id)),
-                    'image' => $image,                    
-                    'price_html' => $price_html,
-                    'price' => $price,
-                    'percentage' => $per,                     
-                    'rating' => $average,                      
-                );             
+            while ( $loop->have_posts() ) : $loop->the_post();//global $product; 
+                pgs_woo_api_hook_remove_tax_in_price_html();//Remove include tax in price html                                             
+                $product = wc_get_product( $loop->post->ID );
+                $data = $this->pgs_woo_api_set_productdata($product,$this->is_currency_switcher_active,$app_ver);
+                $per = $this->pgs_woo_api_get_max_discount_percentage($product,$data);                                
+                $data['percentage'] = $per;
+                $productdata[] = $data;
             endwhile;
         } else {            
             $productdata = array();
@@ -839,7 +749,7 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
         return $productdata;
     }
     
-    function pgs_woo_api_get_product_crousel_query($number,$show,$orderby,$order){		 
+    public function pgs_woo_api_get_product_crousel_query($number,$show,$orderby,$order){		 
         $product_visibility_term_ids = wc_get_product_visibility_term_ids();
 		$query_args = array(
 			'posts_per_page' => $number,
@@ -895,7 +805,7 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
     }
     
     
-    function pgs_woo_api_get_checkout_redirect_url(){
+    public function pgs_woo_api_get_checkout_redirect_url(){
         //checkout redirect url
         $pgs_woo_api_checkout_custom_redirect_urls = get_option('pgs_woo_api_checkout_custom_redirect_urls');
         $redirect_urls=array();
@@ -911,6 +821,116 @@ class PGS_WOO_API_HomeController extends PGS_WOO_API_Controller{
             }
         }
         return $redirect_urls;
+    }
+    
+    public function pgs_woo_api_get_contact_info($pgs_woo_api_home_option){
+        if(!isset($pgs_woo_api_home_option['pgs_app_contact_info']['whatsapp_floating_button'])){
+            if(!empty($pgs_woo_api_home_option['pgs_app_contact_info']['whatsapp_no'])){
+                $pgs_woo_api_home_option['pgs_app_contact_info']['whatsapp_floating_button'] = 'enable';        
+            } else {
+                $pgs_woo_api_home_option['pgs_app_contact_info']['whatsapp_floating_button'] = 'disable';
+            }
+        }
+        return $pgs_woo_api_home_option['pgs_app_contact_info'];        
+    }
+    
+    
+    public function pgs_woo_api_set_productdata($product,$is_currency_switcher_active,$app_ver){
+        
+        $product_id = $product->get_id();
+        if (has_post_thumbnail( $product_id )){
+            $image = '';
+            $image = get_the_post_thumbnail_url($product_id, apply_filters( 'pgs_woo_api_app_thumbnail_image', 'app_thumbnail' ));
+            if(empty($image)){
+                $image = woocommerce_placeholder_img_src();    
+            } 
+        } else {
+          $image = woocommerce_placeholder_img_src();  
+        }
+        
+        $price_html = $product->get_price_html();
+        $regular_price = $product->get_regular_price();
+        $sale_price = $product->get_sale_price();
+        $get_price = $product->get_price();
+        $wc_tax_enabled = wc_tax_enabled();
+        $tax_status =  'none';
+        $tax_class = '';
+        if($wc_tax_enabled){
+            $tax_price = wc_get_price_to_display( $product );	//tax
+            $price_excluding_tax = wc_get_price_excluding_tax( $product );
+            $price_including_tax = wc_get_price_including_tax( $product );
+            $tax_status =  $product->get_tax_status();
+            $tax_class = $product->get_tax_class();
+        }
+        if($is_currency_switcher_active){
+            $regular_price = $this->pgs_woo_api_update_currency_rate($regular_price);
+            $sale_price = $this->pgs_woo_api_update_currency_rate($sale_price);
+            $get_price = $this->pgs_woo_api_update_currency_rate($get_price);            
+            if($wc_tax_enabled){
+                $tax_price = $this->pgs_woo_api_update_currency_rate($tax_price);
+                $price_excluding_tax = $this->pgs_woo_api_update_currency_rate($price_excluding_tax);
+                $price_including_tax = $this->pgs_woo_api_update_currency_rate($price_including_tax);
+            }
+        }
+        $tax_price = (isset($tax_price))?$tax_price:'';
+        $price_including_tax = (isset($price_including_tax))?$price_including_tax:'';
+        $price_excluding_tax = (isset($price_excluding_tax))?$price_excluding_tax:'';
+        $price = array(
+            'regular_price' => $regular_price,
+            'sale_price' => $sale_price,
+            'price' => $get_price,
+            'tax_price' => $tax_price,//tax            
+            'price_including_tax' => $price_including_tax,
+            'price_excluding_tax' => $price_excluding_tax,            
+            'tax_status' =>  $tax_status,
+            'tax_class' => $tax_class
+        );
+        $average = $product->get_average_rating();
+        return array(
+            'id' => $product_id,
+            'title' => $product->get_name(),
+            'type' => $product->get_type(),
+            'on_sale' => $product->is_on_sale(),
+            'image' => $image,                    
+            'price_html' => $price_html,
+            'price' => $price,            
+            'rating' => ($average == '') ? "0" : $average            
+        );
+    }
+    
+    
+    public function pgs_woo_api_get_max_discount_percentage($product,$data){
+        $regular_price = $data['price']['regular_price'];
+        $sale_price = $data['price']['sale_price'];        
+        
+        $per = 0;
+        if( $product->is_type( 'simple' ) ){
+            if($regular_price > 0 && $sale_price > 0){
+                $per = round((($regular_price - $sale_price) / ($regular_price)) * 100);
+            }
+        } elseif( $product->is_type( 'variable' ) ){
+
+			$available_variations = $product->get_available_variations();
+
+			if($available_variations){
+
+				$percents = array();
+				foreach($available_variations as $variations){
+
+					$regular_price = $variations['display_regular_price'];
+					$sale_price = $variations['display_price'];
+
+					if ($regular_price){
+						$percentage = round( ( ( $regular_price - $sale_price ) / $regular_price ) * 100 );
+						$percents[] =  $percentage;
+					}
+				}
+                        
+				$max_discount = min($percents);
+				$per = $max_discount;
+			}
+		}
+        return $per;
     }
  }
 new PGS_WOO_API_HomeController;

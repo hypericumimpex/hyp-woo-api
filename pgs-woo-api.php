@@ -3,17 +3,19 @@
  * Plugin Name: HYP Woo Api
  * Plugin URI: https://github.com/hypericumimpex/hyp-woo-api/
  * Description: This plugin contains important functions and features for "WooCommerce API".
- * Version: 3.1.0
+ * Version: 3.1.2
  * Author: Romeo C.
  * Author URI: https://github.com/hypericumimpex/
- * Text Domain: pgs-woo-api 
+ * Text Domain: pgs-woo-api
+ * WC requires at least: 3.0
+ * WC tested up to: 3.5.0 
  */
 if ( ! function_exists( 'is_plugin_active' ) ) {    
     include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 }
 global $plugin_version;
 
-$plugin_version = '3.1.0';
+$plugin_version = '3.1.2';
 
 if( ! defined( 'PGS_API_PATH' ) ) define( 'PGS_API_PATH', plugin_dir_path( __FILE__ ) );
 if( ! defined( 'PGS_API_URL' ) ) define( 'PGS_API_URL', plugin_dir_url( __FILE__ ) );

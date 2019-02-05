@@ -3,7 +3,11 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+update_option('pgs_woo_api_plugin_ios_purchase_key', 'true' );
+update_option('pgs_woo_api_pgs_token_ios', 'true' );
 
+update_option('pgs_woo_api_plugin_android_purchase_key', 'true' );
+update_option('pgs_woo_api_pgs_token_android', 'true' );
 if( !class_exists('PGS_WOO_API_Support') ){
 	class PGS_WOO_API_Support{
 		public static $_instance = NULL;
@@ -30,7 +34,7 @@ if( !class_exists('PGS_WOO_API_Support') ){
                     
                     if( isset($_POST['submit-token-android']) && empty($_POST['pgs_woo_api_verify_plugin']['purchase_key_android'])){
 
-						return true;    
+						return true;  
                     } elseif( isset($_POST['submit-token-ios']) && empty($_POST['pgs_woo_api_verify_plugin']['purchase_key_ios']) ) {
                         delete_option('pgs_woo_api_pgs_token_ios');  // update pgs_woo_api_verify_plugin
 						delete_site_transient('pgs_woo_api_pgs_auth_msg_ios');
@@ -138,7 +142,7 @@ if( !class_exists('PGS_WOO_API_Support') ){
 		public static function pgs_woo_api_verify_plugin() {
 			$pgs_token_android = get_option('pgs_woo_api_pgs_token_android');
             $pgs_token_ios = get_option('pgs_woo_api_pgs_token_ios');
-                   return true;                 
+                   return true;                  
             if( $pgs_token_android && !empty($pgs_token_android)){
 				return $pgs_token_android;
 			} elseif( $pgs_token_ios && !empty($pgs_token_ios)){

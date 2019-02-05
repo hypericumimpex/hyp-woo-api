@@ -45,7 +45,10 @@ class PGS_WOO_API_CouponsController extends  PGS_WOO_API_Controller{
     
     /**
     * URL : http://yourdomain.com/wp-json/pgs-woo-api/v1/coupons
-    * @param page: ####
+    * @param page: ####    
+    * @param device_token : ####
+    * @param user_id : ####
+    * 
     */
     public function pgs_woo_api_get_coupons(){
         
@@ -63,6 +66,10 @@ class PGS_WOO_API_CouponsController extends  PGS_WOO_API_Controller{
             $device_token = $request['device_token'];
         }
         
+        $user_id = 0;
+        if(isset($request['user_id']) && !empty($request['user_id'])){
+            $user_id = $request['user_id'];
+        }
                  
 		$post_per_page = 10;		
         
@@ -79,7 +86,10 @@ class PGS_WOO_API_CouponsController extends  PGS_WOO_API_Controller{
             $data['message'] = esc_html__("Result successfully fetched","pgs-woo-api");
             foreach($shop_coupons as $shop_coupon){
                 $id = $shop_coupon->ID;                
-                $cupons[] = $this->pgs_woo_api_get_coupon_data(array('id' => $id),$device_token);
+                $hide_coupon_on_app = get_post_meta( $id, 'hide_coupon_on_app', true );                
+                if($hide_coupon_on_app != 'yes'){
+                    $cupons[] = $this->pgs_woo_api_get_coupon_data(array('id' => $id),$device_token,$user_id);
+                }
             }
             $data['data'] = $cupons;
             $response = rest_ensure_response( $data );
@@ -95,7 +105,7 @@ class PGS_WOO_API_CouponsController extends  PGS_WOO_API_Controller{
     /**
      * Get coupon data id wise 
      */ 
-    function pgs_woo_api_get_coupon_data($parameters,$device_token=''){
+    function pgs_woo_api_get_coupon_data($parameters,$device_token='',$user_id=''){
         $coupon = new WC_Coupon( $parameters['id'] );	
 		$data = $coupon->get_data();
 		$format_decimal = array( 'amount', 'minimum_amount', 'maximum_amount' );
@@ -119,7 +129,7 @@ class PGS_WOO_API_CouponsController extends  PGS_WOO_API_Controller{
 			$data[ $key ] = $data[ $key ] ? $data[ $key ] : null;
 		}
         
-        $is_coupon_scratched = $this->pgs_woo_api_get_scratch_coupon_meta($coupon->get_id(),$device_token);
+        $is_coupon_scratched = $this->pgs_woo_api_get_scratch_coupon_meta($coupon->get_id(),$device_token,$user_id);
         
 		return array(
 			'id'                          => $coupon->get_id(),
@@ -155,16 +165,22 @@ class PGS_WOO_API_CouponsController extends  PGS_WOO_API_Controller{
     
     
     /**
-    * URL : http://yourdomain.com/wp-json/pgs-woo-api/v1/scratch_coupon
+    * Get coupon meta 
     * @param coupon_id: ####
-    * @param is_coupon_scratched : yes
+    * @param is_coupon_scratched : yes/no
     * @param device_token : ####
     * @param user_id : ####
     */
-    public function pgs_woo_api_get_scratch_coupon_meta($coupon_id,$device_token){
+    public function pgs_woo_api_get_scratch_coupon_meta($coupon_id,$device_token,$user_id=''){
         global $wpdb;
+        $and='';$and='';
+        $u_id=0;
+        if(!empty($user_id)){
+            $u_id = (int)$user_id;
+        }
+        $and = " AND user_id=".$u_id;
         $table_name = $wpdb->prefix . "pgs_woo_api_scratch_coupons";            
-        $qur = "SELECT is_coupon_scratched FROM $table_name WHERE coupon_id = $coupon_id AND device_token = '$device_token'";
+        $qur = "SELECT is_coupon_scratched FROM $table_name WHERE coupon_id = $coupon_id AND device_token = '$device_token'$and";        
         $results = $wpdb->get_row( $qur, OBJECT );
         
         $is_coupon_scratched = 'no';
@@ -177,7 +193,7 @@ class PGS_WOO_API_CouponsController extends  PGS_WOO_API_Controller{
     /**
     * URL : http://yourdomain.com/wp-json/pgs-woo-api/v1/scratch_coupon
     * @param coupon_id: ####
-    * @param is_coupon_scratched : yes
+    * @param is_coupon_scratched : yes/no
     * @param device_token : ####
     * @param user_id : #### //optional
     */

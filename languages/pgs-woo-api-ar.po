@@ -4,15 +4,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PGS Woo Api 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2018-10-17 11:10+0530\n"
-"PO-Revision-Date: 2018-10-17 11:10+0530\n"
+"POT-Creation-Date: 2018-11-05 12:00+0530\n"
+"PO-Revision-Date: 2018-11-05 12:01+0530\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar_AE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 "X-Poedit-KeywordsList: __;_e;_x;_ex;_n;_nx;_n_noop;_nx_noop;"
@@ -21,10 +21,10 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: endpoints/class-pgs-woo-api-attributes-controller.php:242
-#: endpoints/class-pgs-woo-api-home-controller.php:752
-#: endpoints/class-pgs-woo-api-live-search-controller.php:93
-#: endpoints/class-pgs-woo-api-products-controller.php:269
+#: endpoints/class-pgs-woo-api-attributes-controller.php:287
+#: endpoints/class-pgs-woo-api-home-controller.php:726
+#: endpoints/class-pgs-woo-api-live-search-controller.php:86
+#: endpoints/class-pgs-woo-api-products-controller.php:309
 msgid "No product found"
 msgstr "لم يتم العثور على أي منتج"
 
@@ -109,11 +109,11 @@ msgstr "تم إرسال البريد الإلكتروني الخاص بك بنج
 msgid "Result successfully fetched"
 msgstr "النتيجة التي تم جلبها بنجاح"
 
-#: endpoints/class-pgs-woo-api-coupons-controller.php:90
+#: endpoints/class-pgs-woo-api-coupons-controller.php:93
 msgid "No Coupons found"
 msgstr "لم يتم العثور على كوبونات"
 
-#: endpoints/class-pgs-woo-api-coupons-controller.php:225
+#: endpoints/class-pgs-woo-api-coupons-controller.php:228
 msgid "Coupon scratched successfully."
 msgstr "خدش قسيمة بنجاح."
 
@@ -287,16 +287,16 @@ msgstr ""
 "تم إرسال رسالة إلكترونية إلى مفتاح إعادة تعيين كلمة المرور. تفقد بريدك "
 "الالكتروني من فضلك."
 
-#: endpoints/class-pgs-woo-api-products-controller.php:523
-#: endpoints/class-pgs-woo-api-products-controller.php:524
+#: endpoints/class-pgs-woo-api-products-controller.php:585
+#: endpoints/class-pgs-woo-api-products-controller.php:586
 msgid "Placeholder"
 msgstr "نائب"
 
-#: endpoints/class-pgs-woo-api-products-controller.php:758
+#: endpoints/class-pgs-woo-api-products-controller.php:820
 msgid "Weight"
 msgstr ""
 
-#: endpoints/class-pgs-woo-api-products-controller.php:765
+#: endpoints/class-pgs-woo-api-products-controller.php:827
 #, fuzzy
 #| msgid "Dimension: "
 msgid "Dimensions"
@@ -564,10 +564,18 @@ msgid "Please enter verification token."
 msgstr "يرجى إدخال رمز التحقق."
 
 #: inc/meta-box/add_coupon_meta.php:3
+msgid "Hide coupon"
+msgstr ""
+
+#: inc/meta-box/add_coupon_meta.php:3
+msgid "Hide this coupon on Application"
+msgstr ""
+
+#: inc/meta-box/add_coupon_meta.php:4
 msgid "Push notification"
 msgstr "دفع الاخطار"
 
-#: inc/meta-box/add_coupon_meta.php:3
+#: inc/meta-box/add_coupon_meta.php:4
 msgid "Send push notification to all users"
 msgstr "إرسال إعلام دفع لجميع المستخدمين"
 
@@ -710,87 +718,23 @@ msgstr "."
 msgid "Description."
 msgstr "وصف."
 
-#: inc/options-pages/option_functions.php:285
-#: inc/options-pages/option_functions.php:422
+#: inc/options-pages/option_functions.php:292
+#: inc/options-pages/option_functions.php:429
 msgid "Settings saved."
 msgstr "تم حفظ الإعدادات."
 
-#: inc/options-pages/option_functions.php:301
+#: inc/options-pages/option_functions.php:308
 msgid "The file "
 msgstr "الملف "
 
-#: inc/options-pages/option_functions.php:301
+#: inc/options-pages/option_functions.php:308
 msgid " has been uploaded."
 msgstr " تم تحميله."
 
-#: inc/options-pages/option_functions.php:307
-#: inc/options-pages/option_functions.php:313
+#: inc/options-pages/option_functions.php:314
+#: inc/options-pages/option_functions.php:320
 msgid "Sorry, there was an error uploading your file."
 msgstr "عذرا، حدث خطأ أثناء تحميل ملفك."
-
-#: inc/options-pages/option_functions.php:479
-#, php-format
-msgid ""
-"How to create featured product <a href=\"%s\" target=\"_blank\">click here</"
-"a>."
-msgstr ""
-
-#: inc/options-pages/option_functions.php:491
-#, php-format
-msgid ""
-"How to create special deal products <a href=\"%s\" target=\"_blank\">click "
-"here</a>."
-msgstr ""
-
-#: inc/options-pages/option_functions.php:501
-msgid "It will show recently added product list."
-msgstr ""
-
-#: inc/options-pages/option_functions.php:502
-msgid "It will show the products list based on total sales."
-msgstr ""
-
-#: inc/options-pages/option_functions.php:506
-#, fuzzy
-#| msgid "Feature Box"
-msgid "Feature Products"
-msgstr "ميزة مربع"
-
-#: inc/options-pages/option_functions.php:507
-#, fuzzy
-#| msgid "Categories menu items display on the home screen."
-msgid "Feature products carousels display on the home screen."
-msgstr "يتم عرض عناصر قائمة الفئات على الشاشة الرئيسية."
-
-#: inc/options-pages/option_functions.php:513
-msgid "Recent Products"
-msgstr ""
-
-#: inc/options-pages/option_functions.php:514
-#, fuzzy
-#| msgid "Banners displayed on the home screen."
-msgid "Recent products carousels display on the home screen."
-msgstr "لافتات معروضة على الشاشة الرئيسية."
-
-#: inc/options-pages/option_functions.php:520
-msgid "Special Deal Products"
-msgstr ""
-
-#: inc/options-pages/option_functions.php:521
-#, fuzzy
-#| msgid "Categories menu items display on the home screen."
-msgid "Special deal products carousels display on the home screen."
-msgstr "يتم عرض عناصر قائمة الفئات على الشاشة الرئيسية."
-
-#: inc/options-pages/option_functions.php:527
-msgid "Popular Products"
-msgstr ""
-
-#: inc/options-pages/option_functions.php:528
-#, fuzzy
-#| msgid "Banners displayed on the home screen."
-msgid "Popular products carousels display on the home screen."
-msgstr "لافتات معروضة على الشاشة الرئيسية."
 
 #: inc/options-pages/option_page.php:57
 msgid ""
@@ -835,10 +779,10 @@ msgstr "المنزل المتزلج بانر"
 msgid "Category Banners"
 msgstr "لافتات الفئة"
 
-#: inc/options-pages/option_page.php:90
+#: inc/options-pages/option_page.php:90 inc/options-pages/option_page.php:629
 #, fuzzy
 #| msgid "Product added!"
-msgid "Products carousel"
+msgid "Products View"
 msgstr "تمت إضافة المنتج!"
 
 #: inc/options-pages/option_page.php:91 inc/options-pages/option_page.php:692
@@ -861,20 +805,24 @@ msgstr "صفحة تشيكوت"
 msgid "Social Links"
 msgstr "روابط اجتماعية"
 
-#: inc/options-pages/option_page.php:97 inc/options-pages/option_page.php:1259
+#: inc/options-pages/option_page.php:97 inc/options-pages/option_page.php:1258
 msgid "Contact Info"
 msgstr "معلومات الاتصال"
 
-#: inc/options-pages/option_page.php:98 inc/options-pages/option_page.php:1311
+#: inc/options-pages/option_page.php:98 inc/options-pages/option_page.php:1310
 msgid "WhatsApp"
 msgstr ""
 
-#: inc/options-pages/option_page.php:99 inc/options-pages/option_page.php:1351
+#: inc/options-pages/option_page.php:99 inc/options-pages/option_page.php:1364
 msgid "Sample Data"
 msgstr ""
 
-#: inc/options-pages/option_page.php:100 inc/options-pages/option_page.php:1445
+#: inc/options-pages/option_page.php:100 inc/options-pages/option_page.php:1453
 msgid "WPML"
+msgstr ""
+
+#: inc/options-pages/option_page.php:101 inc/options-pages/option_page.php:1471
+msgid "Filters"
 msgstr ""
 
 #: inc/options-pages/option_page.php:111
@@ -922,7 +870,7 @@ msgstr "تصحيح"
 #: inc/options-pages/option_page.php:347 inc/options-pages/option_page.php:353
 #: inc/options-pages/option_page.php:445 inc/options-pages/option_page.php:564
 #: inc/options-pages/option_page.php:749 inc/options-pages/option_page.php:879
-#: inc/woo-api-functions.php:462
+#: inc/woo-api-functions.php:478
 msgid "Add Image"
 msgstr "إضافة صورة"
 
@@ -965,7 +913,7 @@ msgstr "صورة أيقونة أيقونة"
 
 #: inc/options-pages/option_page.php:365 inc/options-pages/option_page.php:483
 #: inc/options-pages/option_page.php:603 inc/options-pages/option_page.php:781
-#: inc/options-pages/option_page.php:904 inc/options-pages/option_page.php:1077
+#: inc/options-pages/option_page.php:904 inc/options-pages/option_page.php:1076
 msgid "Add"
 msgstr "إضافة"
 
@@ -1012,20 +960,14 @@ msgstr "صورة بانر"
 msgid "Banner Title"
 msgstr "بانر العنوان"
 
-#: inc/options-pages/option_page.php:629
-#, fuzzy
-#| msgid "Product added!"
-msgid "Products Carousel"
-msgstr "تمت إضافة المنتج!"
-
 #: inc/options-pages/option_page.php:631
 msgid ""
-"Products Carousels display on the home screen. we can also drag the position "
-"up and down"
+"Products View display on the home screen. we can also drag the position up "
+"and down"
 msgstr ""
 
 #: inc/options-pages/option_page.php:652 inc/options-pages/option_page.php:818
-#: inc/options-pages/option_page.php:1451
+#: inc/options-pages/option_page.php:1459
 #: inc/options-pages/setting_page.php:229
 #: inc/options-pages/setting_page.php:354
 #: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2659
@@ -1033,13 +975,21 @@ msgid "Status"
 msgstr "الحالة"
 
 #: inc/options-pages/option_page.php:653 inc/options-pages/option_page.php:819
-#: inc/options-pages/option_page.php:1452
+#: inc/options-pages/option_page.php:1325
+#: inc/options-pages/option_page.php:1460
+#: inc/options-pages/option_page.php:1479
+#: inc/options-pages/option_page.php:1492
+#: inc/options-pages/option_page.php:1501
 #: inc/options-pages/setting_page.php:230
 msgid "Enable"
 msgstr "مكن"
 
 #: inc/options-pages/option_page.php:654 inc/options-pages/option_page.php:820
-#: inc/options-pages/option_page.php:1453
+#: inc/options-pages/option_page.php:1326
+#: inc/options-pages/option_page.php:1461
+#: inc/options-pages/option_page.php:1480
+#: inc/options-pages/option_page.php:1493
+#: inc/options-pages/option_page.php:1502
 #: inc/options-pages/setting_page.php:231
 msgid "Disable"
 msgstr "تعطيل"
@@ -1096,8 +1046,8 @@ msgstr "معلومات عنا"
 
 #: inc/options-pages/option_page.php:947 inc/options-pages/option_page.php:975
 #: inc/options-pages/option_page.php:1001
-#: inc/options-pages/option_page.php:1049
-#: inc/options-pages/option_page.php:1106
+#: inc/options-pages/option_page.php:1048
+#: inc/options-pages/option_page.php:1105
 msgid "Select page"
 msgstr "حدد الصفحة"
 
@@ -1109,15 +1059,15 @@ msgstr "البنود و الظروف"
 msgid "Privacy Policy"
 msgstr "سياسة الخصوصية"
 
-#: inc/options-pages/option_page.php:1047
+#: inc/options-pages/option_page.php:1046
 msgid "Add info Pages"
 msgstr "إضافة صفحات المعلومات"
 
-#: inc/options-pages/option_page.php:1101
+#: inc/options-pages/option_page.php:1100
 msgid "Checkout Page Setting"
 msgstr "الخروج من وضع الصفحة"
 
-#: inc/options-pages/option_page.php:1102
+#: inc/options-pages/option_page.php:1101
 msgid ""
 "Checkout page in any e-commerce website plays the most crucial part as it is "
 "the online equivalent of a physical checkout counter shown to the customer "
@@ -1136,37 +1086,37 @@ msgstr ""
 "الخروج حسب اختياره في أي وقت يريده عن طريق الانتقال إلى خيار \"صفحة Checkout"
 "\" في \"إعدادات التطبيق\" وتحديد الصفحة التي قاموا بإنشائها."
 
-#: inc/options-pages/option_page.php:1104
+#: inc/options-pages/option_page.php:1103
 msgid "Select Checkout Page"
 msgstr "حدد صفحة Checkout"
 
-#: inc/options-pages/option_page.php:1136
+#: inc/options-pages/option_page.php:1135
 msgid "Custom Redirect URL(s)"
 msgstr ""
 
-#: inc/options-pages/option_page.php:1137
+#: inc/options-pages/option_page.php:1136
 msgid ""
 "Please add custom redirect url(s) you set in payment getway(s). Leave blank "
 "if you did not set. For example, your payment gateway redirect URL is."
 msgstr ""
 
-#: inc/options-pages/option_page.php:1139
+#: inc/options-pages/option_page.php:1138
 msgid "Separate each entry with the new line."
 msgstr ""
 
-#: inc/options-pages/option_page.php:1154
+#: inc/options-pages/option_page.php:1153
 msgid "Custom Css"
 msgstr ""
 
-#: inc/options-pages/option_page.php:1155
+#: inc/options-pages/option_page.php:1154
 msgid "You can add custom css code for app checkout page here."
 msgstr ""
 
-#: inc/options-pages/option_page.php:1194
+#: inc/options-pages/option_page.php:1193
 msgid "Social Media Settings"
 msgstr "إعدادات وسائل الاعلام الاجتماعية"
 
-#: inc/options-pages/option_page.php:1195
+#: inc/options-pages/option_page.php:1194
 msgid ""
 "Specify social media URLs, where the user redirected once he/she clicks on "
 "social media icons."
@@ -1174,69 +1124,81 @@ msgstr ""
 "حدد عناوين URL الخاصة بالوسائط الاجتماعية ، حيث قام المستخدم بإعادة التوجيه "
 "بمجرد نقره على أيقونات الشبكات الاجتماعية."
 
-#: inc/options-pages/option_page.php:1207
+#: inc/options-pages/option_page.php:1206
 msgid "Facebook"
 msgstr "Facebook"
 
-#: inc/options-pages/option_page.php:1211
+#: inc/options-pages/option_page.php:1210
 msgid "Twitter"
 msgstr "Twitter"
 
-#: inc/options-pages/option_page.php:1216
+#: inc/options-pages/option_page.php:1215
 msgid "LinkedIn"
 msgstr ""
 
-#: inc/options-pages/option_page.php:1220
+#: inc/options-pages/option_page.php:1219
 msgid "Google Plus"
 msgstr "Google Plus"
 
-#: inc/options-pages/option_page.php:1224
+#: inc/options-pages/option_page.php:1223
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: inc/options-pages/option_page.php:1229
+#: inc/options-pages/option_page.php:1228
 msgid "Instagram"
 msgstr ""
 
-#: inc/options-pages/option_page.php:1268
+#: inc/options-pages/option_page.php:1267
 msgid "Address Line 1"
 msgstr "العنوان الأول"
 
-#: inc/options-pages/option_page.php:1272
+#: inc/options-pages/option_page.php:1271
 msgid "Address Line 2"
 msgstr "Address Line 2"
 
-#: inc/options-pages/option_page.php:1277
+#: inc/options-pages/option_page.php:1276
 msgid "Email"
 msgstr "البريد الإلكتروني"
 
-#: inc/options-pages/option_page.php:1281
+#: inc/options-pages/option_page.php:1280
 msgid "Phone"
 msgstr "هاتف"
 
-#: inc/options-pages/option_page.php:1312
+#: inc/options-pages/option_page.php:1324
+msgid "WhatsApp Floating Button"
+msgstr ""
+
+#: inc/options-pages/option_page.php:1330
 msgid "Enter your WhatsApp number here"
 msgstr ""
 
-#: inc/options-pages/option_page.php:1319
+#: inc/options-pages/option_page.php:1332
 msgid "WhatsApp No"
 msgstr ""
 
-#: inc/options-pages/option_page.php:1353
+#: inc/options-pages/option_page.php:1366
 msgid ""
 "You can import pre-defined sample data, as shown on our demo site, from here."
 msgstr ""
 
-#: inc/options-pages/option_page.php:1354
+#: inc/options-pages/option_page.php:1367
 msgid ""
 "Please take a backup before importing any sample data to prevent any data "
 "loss during installation."
 msgstr ""
 
-#: inc/options-pages/option_page.php:1425
+#: inc/options-pages/option_page.php:1433
 #: inc/setup-wizard/envato_setup/envato_setup.php:1011
 #: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:2824
 msgid "Install"
+msgstr ""
+
+#: inc/options-pages/option_page.php:1478
+msgid "Price"
+msgstr ""
+
+#: inc/options-pages/option_page.php:1500
+msgid "Average Rating"
 msgstr ""
 
 #: inc/options-pages/setting_page.php:95
@@ -1630,7 +1592,7 @@ msgid "Run Setup Wizard Again"
 msgstr ""
 
 #: inc/setup-wizard/envato_setup/envato_setup.php:646
-#: inc/woo-api-functions.php:501
+#: inc/woo-api-functions.php:518
 msgid "Cancel"
 msgstr ""
 
@@ -2075,7 +2037,7 @@ msgid "Install Required Plugins"
 msgstr ""
 
 #: inc/tgm-plugin-activation/core/class-tgm-plugin-activation.php:335
-#: inc/woo-api-functions.php:502
+#: inc/woo-api-functions.php:519
 msgid "Install Plugins"
 msgstr ""
 
@@ -2458,73 +2420,158 @@ msgstr ""
 msgid "Hide Details"
 msgstr "بيانات المستخدم : "
 
-#: inc/woo-api-functions.php:460
+#: inc/woo-api-functions.php:476
 msgid "Are you sure you want to delete this element?"
 msgstr "هل تريد بالتأكيد حذف هذا العنصر؟"
 
-#: inc/woo-api-functions.php:461
+#: inc/woo-api-functions.php:477
 msgid "Choose Image"
 msgstr "اختر صورة"
 
-#: inc/woo-api-functions.php:499
+#: inc/woo-api-functions.php:516
 msgid "Warning"
 msgstr ""
 
-#: inc/woo-api-functions.php:500
+#: inc/woo-api-functions.php:517
 msgid "Proceed"
 msgstr ""
 
-#: inc/woo-api-functions.php:503
+#: inc/woo-api-functions.php:520
 msgid ""
 "Importing demo content will import contents, widgets and theme options. "
 "Importing sample data will override current widgets and theme options. It "
 "can take some time to complete the import process."
 msgstr ""
 
-#: inc/woo-api-functions.php:816
+#: inc/woo-api-functions.php:851
 msgid "Please enter client key, client secret from Users -> Applications"
 msgstr ""
 
-#: inc/woo-api-functions.php:980
+#: inc/woo-api-functions.php:1030
 #, php-format
 msgid "[%s] Password Reset"
 msgstr "[%s] إعادة تعيين كلمة المرور"
 
-#: pgs-woo-api.php:81
+#: inc/woo-api-functions.php:1137
+#, php-format
+msgid ""
+"How to create featured product <a href=\"%s\" target=\"_blank\">click here</"
+"a>."
+msgstr ""
+
+#: inc/woo-api-functions.php:1149
+#, php-format
+msgid ""
+"How to create special deal products <a href=\"%s\" target=\"_blank\">click "
+"here</a>."
+msgstr ""
+
+#: inc/woo-api-functions.php:1159
+msgid "It will show recently added product list."
+msgstr ""
+
+#: inc/woo-api-functions.php:1160
+msgid "It will show the products list based on total sales."
+msgstr ""
+
+#: inc/woo-api-functions.php:1161
+msgid "It will show the products list based on top rating."
+msgstr ""
+
+#: inc/woo-api-functions.php:1166
+#, fuzzy
+#| msgid "Feature Box"
+msgid "Feature Products"
+msgstr "ميزة مربع"
+
+#: inc/woo-api-functions.php:1167
+#, fuzzy
+#| msgid "Categories menu items display on the home screen."
+msgid "Feature products view display on the home screen."
+msgstr "يتم عرض عناصر قائمة الفئات على الشاشة الرئيسية."
+
+#: inc/woo-api-functions.php:1173
+msgid "Recent Products"
+msgstr ""
+
+#: inc/woo-api-functions.php:1174
+#, fuzzy
+#| msgid "Banners displayed on the home screen."
+msgid "Recent products view display on the home screen."
+msgstr "لافتات معروضة على الشاشة الرئيسية."
+
+#: inc/woo-api-functions.php:1180
+msgid "Special Deal Products"
+msgstr ""
+
+#: inc/woo-api-functions.php:1181
+#, fuzzy
+#| msgid "Categories menu items display on the home screen."
+msgid "Special deal products view display on the home screen."
+msgstr "يتم عرض عناصر قائمة الفئات على الشاشة الرئيسية."
+
+#: inc/woo-api-functions.php:1187
+msgid "Popular Products"
+msgstr ""
+
+#: inc/woo-api-functions.php:1188
+#, fuzzy
+#| msgid "Banners displayed on the home screen."
+msgid "Popular products view display on the home screen."
+msgstr "لافتات معروضة على الشاشة الرئيسية."
+
+#: inc/woo-api-functions.php:1194
+#, fuzzy
+#| msgid "Feature Box"
+msgid "Top Rated Products"
+msgstr "ميزة مربع"
+
+#: inc/woo-api-functions.php:1195
+#, fuzzy
+#| msgid "Categories menu items display on the home screen."
+msgid "Top Rated products view display on the home screen."
+msgstr "يتم عرض عناصر قائمة الفئات على الشاشة الرئيسية."
+
+#: pgs-woo-api.php:83
 msgid "PGS Woo Api"
 msgstr "بس وو أبي"
 
-#: pgs-woo-api.php:82
+#: pgs-woo-api.php:84
 msgid "Requires the following plugins to be activated"
 msgstr "يتطلب تفعيل المكونات الإضافية التالية"
 
-#: pgs-woo-api.php:85 pgs-woo-api.php:89 pgs-woo-api.php:92 pgs-woo-api.php:97
-#: pgs-woo-api.php:100
+#: pgs-woo-api.php:87 pgs-woo-api.php:91 pgs-woo-api.php:94 pgs-woo-api.php:99
+#: pgs-woo-api.php:102
 msgid "Please"
 msgstr "رجاء"
 
-#: pgs-woo-api.php:85
+#: pgs-woo-api.php:87
 msgid "install / activate"
 msgstr "تثبيت / تفعيل"
 
-#: pgs-woo-api.php:85 pgs-woo-api.php:89 pgs-woo-api.php:92 pgs-woo-api.php:97
-#: pgs-woo-api.php:100
+#: pgs-woo-api.php:87 pgs-woo-api.php:91 pgs-woo-api.php:94 pgs-woo-api.php:99
+#: pgs-woo-api.php:102
 msgid "plugin"
 msgstr "توصيل في"
 
-#: pgs-woo-api.php:89 pgs-woo-api.php:97
+#: pgs-woo-api.php:91 pgs-woo-api.php:99
 msgid "install"
 msgstr ""
 
-#: pgs-woo-api.php:92 pgs-woo-api.php:100
+#: pgs-woo-api.php:94 pgs-woo-api.php:102
 #, fuzzy
 #| msgid "Deactivate User"
 msgid "activate"
 msgstr "إلغاء تنشيط المستخدم"
 
-#: template/app_checkout.php:87
+#: template/app_checkout.php:94
 msgid "Your cart is empty."
 msgstr "عربة التسوق فارغة."
+
+#, fuzzy
+#~| msgid "Product added!"
+#~ msgid "Products Carousel"
+#~ msgstr "تمت إضافة المنتج!"
 
 #~ msgid "Enter a value for this field"
 #~ msgstr "أدخل قيمة لهذا الحقل"

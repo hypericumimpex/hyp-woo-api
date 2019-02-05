@@ -1,15 +1,15 @@
 jQuery(document).ready(function() {
     
-    jQuery( ".pgs-woo-api-sort-products-carousel" ).sortable({
-        //placeholder: "ui-state-highlight"
-    });
-    jQuery( ".pgs-woo-api-sort-products-carousel" ).disableSelection();
-    
     /**
     * On update option or settings show loader
     */
     if(document.getElementById('pgs-expand-div-options-products-carousel')){
         
+        jQuery( ".pgs-woo-api-sort-products-carousel" ).sortable({
+            //placeholder: "ui-state-highlight"
+        });
+        jQuery( ".pgs-woo-api-sort-products-carousel" ).disableSelection();
+            
         jQuery('.pgs-expand-div-btn').each(function(){
             jQuery(this).on('click',function(){
                 //alert('hi');
@@ -19,11 +19,11 @@ jQuery(document).ready(function() {
         });
         var disable_url = jQuery('.disable-data-url').attr('data-url');
         jQuery(document).on('click','.carousel-box-status',function(){            
-            var carouselstatus = jQuery(this).val();                        
+            var carouselstatus = jQuery(this).val();
             if(carouselstatus == "enable"){
                 var lblid = jQuery(this).attr('data-id');
                 jQuery('#'+lblid).removeClass('pgs-woo-api-disable-lbl');
-                jQuery('.is-disable-'+lblid).html('');                
+                jQuery('.is-disable-'+lblid).html('');
             } else {
                 var lblid = jQuery(this).attr('data-id');
                 
@@ -53,6 +53,19 @@ jQuery(document).ready(function() {
             jQuery('.feature-box').hide();
         } else {
             jQuery('.feature-box').show();
+        }
+    });
+    /** End **/
+    
+    /**
+    * Show / Hide options
+    */
+    jQuery('.whatsapp-floating-button-status').on('click',function(){
+        var status = jQuery(this).val();
+        if(status == "disable"){
+            jQuery('.pgs-woo-api-whatsapp-no').hide();
+        } else {
+            jQuery('.pgs-woo-api-whatsapp-no').show();
         }
     });
     /** End **/
@@ -435,42 +448,51 @@ jQuery(document).ready(function() {
             consumer_secret = jQuery('input.consumer_secret').val(),
             site_url = jQuery('input.pgs-site-url').val();
             plugin_varsion = pgs_app_sample_data_import_object.plugin_ver;
+            android_purchased = pgs_app_sample_data_import_object.purchased_android;
+            ios_purchased = pgs_app_sample_data_import_object.purchased_ios;            
 
         if(client_key == '' || client_secret == '' || token == '' || token_secret == '' || consumer_key == '' || consumer_secret == '') {
             credentials_code = 'Something went wrong!';
             jQuery('#credentials-code-api-btn').hide();
         } else if(jQuery(this).data('target') == 'credentials-code-android') {
             html_cd = '';
-            html_cd += 'public final String APP_URL = "'+ site_url +'/";\n';
-            html_cd += 'public final String WOO_MAIN_URL = APP_URL + "wp-json/wc/v2/";\n';
-            html_cd += 'public final String MAIN_URL = APP_URL + "wp-json/pgs-woo-api/v1/";\n\n';
-            html_cd += 'public static final String CONSUMERKEY = "'+ client_key +'";\n';
-            html_cd += 'public static final String CONSUMERSECRET = "'+ client_secret +'";\n';
-            html_cd += 'public static final String OAUTH_TOKEN = "'+ token +'";\n';
-            html_cd += 'public static final String OAUTH_TOKEN_SECRET = "'+ token_secret +'";\n\n';
-            html_cd += 'public static final String WOOCONSUMERKEY = "'+ consumer_key +'";\n';
-            html_cd += 'public static final String WOOCONSUMERSECRET = "'+ consumer_secret +'";\n';
-            html_cd += 'public static final String version="'+ plugin_varsion +'";';
+            if(android_purchased){
+                html_cd += 'public final String APP_URL = "'+ site_url +'/";\n';
+                html_cd += 'public final String WOO_MAIN_URL = APP_URL + "wp-json/wc/v2/";\n';
+                html_cd += 'public final String MAIN_URL = APP_URL + "wp-json/pgs-woo-api/v1/";\n\n';
+                html_cd += 'public static final String CONSUMERKEY = "'+ client_key +'";\n';
+                html_cd += 'public static final String CONSUMERSECRET = "'+ client_secret +'";\n';
+                html_cd += 'public static final String OAUTH_TOKEN = "'+ token +'";\n';
+                html_cd += 'public static final String OAUTH_TOKEN_SECRET = "'+ token_secret +'";\n\n';
+                html_cd += 'public static final String WOOCONSUMERKEY = "'+ consumer_key +'";\n';
+                html_cd += 'public static final String WOOCONSUMERSECRET = "'+ consumer_secret +'";\n';
+                html_cd += 'public static final String version="'+ plugin_varsion +'";';                
+                jQuery('#credentials-code-api-btn').show();
+            } else {                
+                html_cd += 'Please validate item purchase code. App Settings > Support';
+            }            
             credentials_code = html_cd;
-            jQuery('#credentials-code-api-btn').show();
         } else if(jQuery(this).data('target') == 'credentials-code-ios') {
             html_cd = ''; 
-            html_cd  += '#define OAUTH_CUSTOMER_KEY @"'+ consumer_key +'" \n';
-            html_cd  += '#define OAUTH_CUSTOMER_SERCET @"'+ consumer_secret +'"\n\n';
-            html_cd  += '#define OAUTH_CONSUMER_KEY_PLUGIN @"'+ client_key +'"\n';
-            html_cd  += '#define OAUTH_CONSUMER_SECRET_PLUGIN @"'+ client_secret +'"\n';
-            html_cd  += '#define OAUTH_TOKEN_PLUGIN @"'+ token +'"\n';
-            html_cd  += '#define OAUTH_TOKEN_SECRET_PLUGIN @"'+ token_secret +'"\n\n';
-            html_cd  += '#define appURL @"'+ site_url +'/"\n';
-            html_cd  += '#define PATH appURL@"wp-json/wc/v2/"\n';
-            html_cd  += '#define OTHER_API_PATH appURL@"wp-json/pgs-woo-api/v1/"\n';
-            html_cd  += '#define PLUGIN_VERSION @"'+ plugin_varsion +'"';
+            if(ios_purchased){
+                html_cd  += '#define OAUTH_CUSTOMER_KEY @"'+ consumer_key +'" \n';
+                html_cd  += '#define OAUTH_CUSTOMER_SERCET @"'+ consumer_secret +'"\n\n';
+                html_cd  += '#define OAUTH_CONSUMER_KEY_PLUGIN @"'+ client_key +'"\n';
+                html_cd  += '#define OAUTH_CONSUMER_SECRET_PLUGIN @"'+ client_secret +'"\n';
+                html_cd  += '#define OAUTH_TOKEN_PLUGIN @"'+ token +'"\n';
+                html_cd  += '#define OAUTH_TOKEN_SECRET_PLUGIN @"'+ token_secret +'"\n\n';
+                html_cd  += '#define appURL @"'+ site_url +'/"\n';
+                html_cd  += '#define PATH appURL@"wp-json/wc/v2/"\n';
+                html_cd  += '#define OTHER_API_PATH appURL@"wp-json/pgs-woo-api/v1/"\n';
+                html_cd  += '#define PLUGIN_VERSION @"'+ plugin_varsion +'"';
+                jQuery('#credentials-code-api-btn').show();
+            } else {
+                html_cd += 'Please validate item purchase code from App Settings > Support';
+            }
             credentials_code = html_cd;
-            jQuery('#credentials-code-api-btn').show();
-        }
+        } 
         jQuery('.pgs-woo-api-credentials-code').removeClass('pgs-hidden');
         jQuery('.pgs-woo-api-credentials-code').text(credentials_code);
-
     });
 
     jQuery('#credentials-code-api-btn').on('click', function(e) {
@@ -616,4 +638,17 @@ jQuery(document).ready(function() {
         });
     }
     
+    
+    if(document.getElementById('pgs-woo-api-whatsapp-no-validation')){
+        jQuery("#pgs-woo-api-whatsapp-no-validation").keydown(function (e) {
+            if ( jQuery.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 || 
+                 (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||                 
+                 (e.keyCode >= 35 && e.keyCode <= 40)) {
+                     return;
+            }            
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    }
 });

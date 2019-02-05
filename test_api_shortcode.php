@@ -46,18 +46,20 @@ function pgs_woo_api_call_test_api($atts) {
         $posts = array();
         $posts = json_encode($posts);
         $responce = '';$error_msg='';
-        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-        curl_setopt($ch, CURLOPT_POST, true);        
+        curl_setopt($ch, CURLOPT_TIMEOUT, 1000);
+        curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $posts);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);        
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         $responce = curl_exec($ch);
         if (curl_error($ch)) {
             $error_msg = curl_error($ch);
         }
-        curl_close($ch);        
-        return json_encode($responce.$error_msg);                 
-    } else {        
+        curl_close($ch);
+        return json_encode($responce.$error_msg);
+    } else {
         $msg_array = array(
             "client_key" => $client_key,
             "client_secret" => $client_secret,
@@ -72,5 +74,5 @@ function pgs_woo_api_call_test_api($atts) {
         }
         $error = implode(",",$msg);
         return json_encode( esc_html__( "Missing oauth credentials $error in API settings page -> API Keys tab.",'pgs-woo-api' ));
-    }    
+    }
 }

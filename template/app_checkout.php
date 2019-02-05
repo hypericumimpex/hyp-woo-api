@@ -9,15 +9,22 @@ if(isset($cart_items)){
         // add cart contents
         WC()->cart->empty_cart();
         
-        if(isset($request['user_id']) && !empty($request['user_id']) && !is_user_logged_in()){
+        if(isset($request['user_id']) && !empty($request['user_id'])){
             $user_id = $request['user_id']; 
-            $user = get_user_by( 'id', $user_id);
-            
-            if( $user ) {
-                wp_set_current_user( $user_id, $user->data->user_login );
-                wp_set_auth_cookie( $user_id );
-                do_action( 'wp_login', $user->data->user_login,10);
-            }     
+            $current_user_id = null;
+            if(is_user_logged_in()){
+                $current_user_id = get_current_user_id();    
+            }            
+            if($current_user_id != $user_id){
+                //wp_destroy_current_session();
+                //wp_clear_auth_cookie();
+                $user = get_user_by( 'id', $user_id);            
+                if( $user ) {
+                    wp_set_current_user( $user_id, $user->data->user_login );
+                    wp_set_auth_cookie( $user_id );
+                    do_action( 'wp_login', $user->data->user_login,10);
+                }
+            }
         } else {
             if(!is_user_logged_in()){
                 //wp_destroy_current_session();
@@ -38,7 +45,8 @@ if(isset($cart_items)){
             $cart_item_key = WC()->cart->add_to_cart( $product_id, $quantity, $variation_id, $variations );            
         }        
     }
-}}?>
+}}
+pgs_woo_api_remove_admin_bar();?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -65,7 +73,6 @@ add_filter( 'woocommerce_checkout_registration_enabled', function( $data ) { ret
  * Hook: pgs_woo_api_app_checkout_before_main_content.
  */
 do_action( 'pgs_woo_api_app_checkout_before_main_content' );
-
     /**
     * Hook: pgs_woo_api_app_checkout_content_wrapper_start.
     * @hooked pgs_woo_api_app_checkout_output_content_wrapper_start - 10
@@ -103,7 +110,6 @@ do_action( 'pgs_woo_api_app_checkout_before_main_content' );
  * Hook: pgs_woo_api_app_checkout_after_main_content. 
  */
 do_action( 'pgs_woo_api_app_checkout_after_main_content' );
-add_action('after_setup_theme', 'pgs_woo_api_remove_admin_bar');
 wp_footer(); ?>
 </body>
 </html>

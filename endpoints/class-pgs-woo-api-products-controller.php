@@ -26,9 +26,7 @@ class PGS_WOO_API_ProductsController extends PGS_WOO_API_Controller{
 	}
 	
 	
-	public function pgs_woo_api_register_route() {        
-        
-        
+	public function pgs_woo_api_register_route() {
         register_rest_route( $this->namespace, $this->rest_base, array(
     		'methods' => WP_REST_Server::CREATABLE,//'POST',
     		'callback' => array( $this, 'pgs_woo_api_get_products'),
@@ -159,7 +157,47 @@ class PGS_WOO_API_ProductsController extends PGS_WOO_API_Controller{
 			$args['s'] = $search;
 		}
         
+        
+        
+        $product_visibility_terms  = wc_get_product_visibility_term_ids();
+		$product_visibility_not_in = array( is_search() && $main_query ? $product_visibility_terms['exclude-from-search'] : $product_visibility_terms['exclude-from-catalog'] );
 
+		// Hide out of stock products.
+		if ( 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) ) {
+			$product_visibility_not_in[] = $product_visibility_terms['outofstock'];
+		}
+        
+        // Filter by rating.
+		if ( isset( $request['rating_filter'] ) ) { // WPCS: input var ok, CSRF ok.
+			$rating_filter = array_filter( array_map( 'absint', explode( ',', $request['rating_filter'] ) ) ); // WPCS: input var ok, CSRF ok, Sanitization ok.
+			$rating_terms  = array();
+			for ( $i = 1; $i <= 5; $i ++ ) {
+				if ( in_array( $i, $rating_filter, true ) && isset( $product_visibility_terms[ 'rated-' . $i ] ) ) {
+					$rating_terms[] = $product_visibility_terms[ 'rated-' . $i ];
+				}
+			}            
+			if ( ! empty( $rating_terms ) ) {
+				$args['tax_query'][] = array(
+					'taxonomy'      => 'product_visibility',
+					'field'         => 'term_taxonomy_id',
+					'terms'         => $rating_terms,
+					'operator'      => 'IN',
+					'rating_filter' => true,
+				);
+			}
+		}
+        if ( !empty( $args['tax_query'] ) ) {
+			$args['tax_query']['relation'] = 'AND';
+		}
+        if ( ! empty( $product_visibility_not_in ) ) {
+			$args['tax_query'][] = array(
+				'taxonomy' => 'product_visibility',
+				'field'    => 'term_taxonomy_id',
+				'terms'    => $product_visibility_not_in,
+				'operator' => 'NOT IN',
+			);
+		}
+        
 		// Filter by tax class.
         if(isset($request['tax_class'])){
     		if ( ! empty( $request['tax_class'] ) ) {
@@ -235,11 +273,14 @@ class PGS_WOO_API_ProductsController extends PGS_WOO_API_Controller{
                     break;
         
                 case 'rating':
-                    $args['orderby'] = 'meta_value_num';
+                    //$args['orderby'] = 'meta_value_num';
                     $args['meta_key'] = '_wc_average_rating';
-                    $args['order'] = 'desc';
+                    //$args['order'] = 'DESC';
+                    $args['orderby']  = array(
+    					'meta_value_num' => 'DESC',
+    					'ID' => 'ASC',
+    				);
                     break;
-        
                 case 'popularity':
                     $args['orderby'] = 'meta_value_num';
                     $args['meta_key'] = 'total_sales';
@@ -250,8 +291,7 @@ class PGS_WOO_API_ProductsController extends PGS_WOO_API_Controller{
         
         if(empty($args['tax_query'])){
             unset($args['tax_query']);
-        }
-
+        }        
         $loop = new WP_Query( $args );    
         $error['status'] = 'error';
         if($loop->have_posts()):
@@ -321,17 +361,36 @@ class PGS_WOO_API_ProductsController extends PGS_WOO_API_Controller{
         $get_price = $wcp->get_price();
         $regular_price = $wcp->get_regular_price();
         $sale_price = $wcp->get_sale_price(); 
+        $wc_tax_enabled = wc_tax_enabled(); 
+        $tax_status =  'none';
+        $tax_class = '';
+        if($wc_tax_enabled){
+            $tax_price = wc_get_price_to_display( $wcp );	//tax            
+            $price_including_tax = wc_get_price_including_tax( $wcp );
+            $price_excluding_tax = wc_get_price_excluding_tax( $wcp );
+            $tax_status =  $wcp->get_tax_status();
+            $tax_class = $wcp->get_tax_class();
+        }
         $is_currency_switcher_active = pgs_woo_api_is_currency_switcher_active();
         if($is_currency_switcher_active){
             $regular_price = $this->pgs_woo_api_update_currency_rate($regular_price);
             $sale_price = $this->pgs_woo_api_update_currency_rate($sale_price);
-            $get_price = $this->pgs_woo_api_update_currency_rate($get_price);
+            $get_price = $this->pgs_woo_api_update_currency_rate($get_price);            
+            if($wc_tax_enabled){
+                $tax_price = $this->pgs_woo_api_update_currency_rate($tax_price);                
+                $price_including_tax = $this->pgs_woo_api_update_currency_rate($price_including_tax);
+                $price_excluding_tax = $this->pgs_woo_api_update_currency_rate($price_excluding_tax);                
+            }
         }
         $addition_info_html = ''; 
         $addition_info_data = array_filter( $wcp->get_attributes(), 'wc_attributes_array_filter_visible' );
         if ( $wcp && ( $wcp->has_attributes() || apply_filters( 'wc_product_enable_dimensions_display', $wcp->has_weight() || $wcp->has_dimensions() ) ) ) {
             $addition_info_html = $this->pgs_woo_api_get_addition_info_data($addition_info_data,$wcp);
         }
+        
+        $tax_price = (isset($tax_price))?$tax_price:'';
+        $price_including_tax = (isset($price_including_tax))?$price_including_tax:'';
+        $price_excluding_tax = (isset($price_excluding_tax))?$price_excluding_tax:'';
         $data = array(
 			'id' => $wcp->get_id(),
 			'name' => $wcp->get_name(),
@@ -349,6 +408,9 @@ class PGS_WOO_API_ProductsController extends PGS_WOO_API_Controller{
 			'short_description' => $wcp->get_short_description(),
 			'sku' =>  $wcp->get_sku(),
 			'price' =>  $get_price,
+            'tax_price'=> $tax_price, //tax
+            'price_excluding_tax' => $price_excluding_tax,
+            'price_including_tax' => $price_including_tax,
 			'regular_price' => $regular_price,
 			'sale_price' => $sale_price,
 			'date_on_sale_from' => wc_rest_prepare_date_response($wcp->get_date_on_sale_from()),
@@ -366,8 +428,8 @@ class PGS_WOO_API_ProductsController extends PGS_WOO_API_Controller{
 			'download_expiry' => $wcp->get_download_expiry(),
 			'external_url' => $wce->get_product_url(),
 			'button_text' => $wce->get_button_text(),
-			'tax_status' =>  $wcp->get_tax_status(),
-			'tax_class' => $wcp->get_tax_class(),
+			'tax_status' =>  $tax_status,
+            'tax_class' => $tax_class,
 			'manage_stock' => $wcp->get_manage_stock(),
 			'stock_quantity' => $wcp->get_stock_quantity(),
 			'in_stock' => $wcp->is_in_stock(),
@@ -386,7 +448,7 @@ class PGS_WOO_API_ProductsController extends PGS_WOO_API_Controller{
 			'shipping_class'        => $wcp->get_shipping_class(),
 			'shipping_class_id'     => $wcp->get_shipping_class_id(),
 			'reviews_allowed'       => $wcp->get_reviews_allowed(),
-			'average_rating'        => $this->get_average_rating($product_id),
+			'average_rating'        => $wcp->get_average_rating(),
 			'rating_count'          => $wcp->get_review_count(),
 			'related_ids'           => array_map( 'absint', array_values( wc_get_related_products( $wcp->get_id() ) ) ),
 			'upsell_ids'            => array_map( 'absint', $wcp->get_upsell_ids() ),

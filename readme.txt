@@ -34,6 +34,20 @@ Answer to foo bar dilemma.
 
 
 == Changelog ==
+== Version 3.1.2
+* Added: - Average Rating filter options
+* Added: - Hide coupon on Application option on coupons page.
+* Various Minor code/formatting improvements and fixes.
+
+
+== Version 3.1.1
+* Fixed: - Rename label Products carousel to Products view
+* Added: - The price including or excluding tax, based on the 'woocommerce_tax_display_shop' setting..
+* Added: - Option for enable/disable filters.
+* Added: - Option for show top rated product.
+* Added: - Option for whatsapp floating button enable/disable.
+* Various Minor code/formatting improvements and fixes.
+
 == Version 3.1.0
 * Fixed: - Add Unick Class in CSS for app checkout page.
 * Added: - Add option for set checkout redirect URLs for thank you screen in the application.
